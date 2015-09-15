@@ -56,6 +56,7 @@ nav a:hover {
   border-radius: 4px;
   transition: all .2s ease;
   cursor: pointer;
+  opacity: 0;
 }
 
 @media (min-width: 1800px;) {.item{flex-basis:calc(600px + 20px);}}

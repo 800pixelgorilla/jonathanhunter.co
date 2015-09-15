@@ -23,7 +23,6 @@ ins.play-gif:hover{
 .gifplayer-wrapper{
 	position:relative;
 	display: inline-block;
-	width: 400px;
 }
 
 .spinner {
