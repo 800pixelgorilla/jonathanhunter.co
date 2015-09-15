@@ -7,13 +7,6 @@
     <link rel='stylesheet' href='css/normalize.css'>
     <link rel='stylesheet' href='css/gifplayer.css'>
     <link rel='stylesheet' href='css/style.css'>
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
-	<script src='js/jquery.gifplayer.min.js'></script>
-	<script>
-		$(document).ready(function(){
-		  $('.gifplayer').gifplayer({ wait: 'true' });;
-		});
-	</script>
 </head>
 <body>
     <header>
@@ -92,5 +85,15 @@
 			<img class="gifplayer" src="images/rebelpilot.png">
 		</div>
 	</div>
+	<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+	<script src='js/jquery.gifplayer.min.js'></script>
+	<script>
+		$(window).load(function(){
+			$('.gifplayer').gifplayer({ wait: 'true' });
+		})
+		$(document).ready(function(){
+
+		});
+	</script>
 </body>
 </html>
