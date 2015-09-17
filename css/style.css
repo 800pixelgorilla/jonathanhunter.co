@@ -15,6 +15,9 @@ nav {
   margin: 0 auto;
   display: flex;
   align-items: center;
+  font-family: "europa",sans-serif;
+  font-style: normal;
+  font-weight: 300;
 }
 
 h1 {
