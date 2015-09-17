@@ -1,14 +1,14 @@
 body {
-  background-color: hsl(0,0%,90%);
+  background-color: #210011;
   font-family: sans-serif;
   padding: 0;
   margin: 0;
 }
 
 header {
-  background-color: #6495ED;
+/*   background-color: #6495ED; */
   color: #fff;
-  margin-bottom: 20px;
+/*   margin-bottom: 20px; */
 }
 
 nav {
@@ -32,8 +32,8 @@ nav a {
   color: #FFF;
   text-decoration: none;
   display: inline-block;
-  padding: 40px;
-  line-height: 40px;
+  padding: 20px;
+  line-height: 20px;
 }
 
 nav a:hover {
@@ -57,6 +57,9 @@ nav a:hover {
   background-size: cover;
   background-position: center;
   background-color: white;
+  border-style: solid;
+  border-color: #F4E2D8;
+  border-width: 2px;
   /*
 border-width: 10px 10px 30px;
   border-color: #FFF;
@@ -74,6 +77,28 @@ border-width: 10px 10px 30px;
   width: 100%;
 }
 
+.item:before {
+    content: attr(data-title);
+    /* color: white; */
+    font-family: europa;
+    font-weight: 400;
+    /* padding: 4px 6px 0px 6px; */
+    /* line-height: 5px; */
+    padding: 0px 6px;
+    padding-top: 6px;
+    margin-top: -4px;
+    border-radius: 2px;
+    font-size: 14px;
+    opacity: .60;
+    position: absolute;
+    top: 100%;
+    /* right: 95%; */
+    line-height: 25px;
+    background-color: #F4E2D8;
+    left: 0px;
+}
+
+/*
 .item:after {
   content: attr(data-title);
   font-family: sans-serif;
@@ -87,6 +112,7 @@ border-width: 10px 10px 30px;
   line-height: 25px;
   right:0px;
 }
+*/
 
 .label-container {
   position: absolute;
