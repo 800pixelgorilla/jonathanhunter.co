@@ -56,10 +56,12 @@ nav a:hover {
   background-size: cover;
   background-position: center;
   background-color: white;
-  border-width: 10px 10px 30px;
+  /*
+border-width: 10px 10px 30px;
   border-color: #FFF;
   border-style: solid;
   border-radius: 4px;
+*/
   transition: all .2s ease;
   cursor: pointer;
   opacity: 0;
@@ -71,6 +73,7 @@ nav a:hover {
   width: 100%;
 }
 
+/*
 .item:after {
   content: attr(data-title);
   font-family: sans-serif;
@@ -84,6 +87,7 @@ nav a:hover {
   line-height: 25px;
   right:0px;
 }
+*/
 
 .label-container {
   position: absolute;
