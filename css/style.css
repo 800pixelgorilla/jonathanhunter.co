@@ -1,3 +1,10 @@
+html {
+ box-sizing: border-box;
+}
+​*, *​:before, *:after {
+ box-sizing: inherit;
+}
+
 body {
   background-color: #210011;
   font-family: sans-serif;
@@ -8,6 +15,7 @@ body {
 header {
 /*   background-color: #6495ED; */
   color: #fff;
+  position: relative;
 /*   margin-bottom: 20px; */
 }
 
@@ -21,11 +29,12 @@ nav {
 }
 
 h1 {
-  margin: 0;
-  flex: 1;
+  margin: 0 auto;
+  padding: 10px;
   font-family: "europa",sans-serif;
   font-style: normal;
   font-weight: 300;
+  font-size: 50px;
 }
 
 nav a {
@@ -41,42 +50,74 @@ nav a:hover {
 }
 
 .container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-content: center;
   min-height: 100vh;
   margin: 0 auto;
+  text-align: center;
+  font-size: 0;
 }
 
 .item {
-  background: #6495ED;
-  margin: 10px;
-  /* margin-bottom: 25px; */
-  height:300px;
+	width:400px;
+  margin: 14px;
   position: relative;
-  background-size: cover;
-  background-position: center;
   background-color: white;
   border-style: solid;
-  border-color: #F4E2D8;
+  border-color: white;
   border-width: 2px;
-  /*
-border-width: 10px 10px 30px;
-  border-color: #FFF;
-  border-style: solid;
-  border-radius: 4px;
-*/
+  display: inline-block;
   transition: all .2s ease;
   cursor: pointer;
   opacity: 0;
-}
 
-@media (min-width: 1800px;) {.item{flex-basis:calc(600px + 20px);}}
+}
 
 .item img {
   width: 100%;
+  display: block;
 }
+
+.item:after{
+	content: attr(data-title);
+	background-color:white;
+	font-family: "europa",sans-serif;
+	font-style: normal;
+  	font-weight: 400;
+  	letter-spacing: .8px;
+	font-size: 16px;
+	color: #210011;
+	display: block;
+	position: absolute;
+	left: -10px;
+	bottom: 0px;
+	padding: 4px 10px;
+	border-radius: 1px;
+	opacity: 0;
+	transition: all 400ms ease;
+}
+
+.item:hover:after{
+	opacity:1;
+	bottom:10px;
+}
+
+#sig{
+	position: absolute;
+	width:300px;
+	margin-top: -30px;
+}
+/*
+.item:after {
+	content: attr(data-title);
+	font-size: 16px;
+	display: block;
+	position: absolute;
+	left:0;
+	background-color: #F4E2D8;
+	width: 100%;
+	padding: 20px 0px;
+	transition: all 0.4s ease;
+}
+*/
 
 /*
 .item:before {
