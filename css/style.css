@@ -23,6 +23,9 @@ nav {
 h1 {
   margin: 0;
   flex: 1;
+  font-family: "europa",sans-serif;
+  font-style: normal;
+  font-weight: 300;
 }
 
 nav a {
