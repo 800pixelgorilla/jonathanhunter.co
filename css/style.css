@@ -52,7 +52,7 @@ nav a:hover {
 .item {
   background: #6495ED;
   margin: 10px;
-  margin-bottom: 25px;
+  /* margin-bottom: 25px; */
   height:300px;
   position: relative;
   background-size: cover;
@@ -78,13 +78,11 @@ border-width: 10px 10px 30px;
   width: 100%;
 }
 
+/*
 .item:before {
     content: attr(data-title);
-    /* color: white; */
     font-family: europa;
     font-weight: 400;
-    /* padding: 4px 6px 0px 6px; */
-    /* line-height: 5px; */
     padding: 0px 6px;
     padding-top: 6px;
     margin-top: -4px;
@@ -93,11 +91,11 @@ border-width: 10px 10px 30px;
     opacity: .60;
     position: absolute;
     top: 100%;
-    /* right: 95%; */
     line-height: 25px;
     background-color: #F4E2D8;
     left: 0px;
 }
+*/
 
 /*
 .item:after {
