@@ -13,36 +13,66 @@ body {
 }
 
 header {
-/*   background-color: #6495ED; */
-  color: #fff;
+/*   background-color: #fff; */
   position: relative;
+  max-width: 1400px;
+  margin: 0 auto;
+  margin-top: 40px;
+  margin-bottom: 30px;
 /*   margin-bottom: 20px; */
 }
 
 nav {
-  margin: 0 auto;
-  display: flex;
-  align-items: center;
-  font-family: "europa",sans-serif;
+  font-family: "industry",sans-serif;
   font-style: normal;
   font-weight: 300;
 }
 
+/*
+nav:after{
+	width: 0; 
+	height: 0; 
+	top:0;
+	left: 0;
+	border-left: 0px solid transparent;
+	border-right: 120vw solid transparent;
+	display: block;
+	content:"";
+	position: absolute;
+	border-top: 59px solid rgba(255,255,255,.4);
+	z-index: -1;
+}
+*/
+
+/*
 h1 {
-  margin: 0 auto;
-  padding: 10px;
-  font-family: "europa",sans-serif;
+  font-family: "industry",sans-serif;
   font-style: normal;
-  font-weight: 300;
-  font-size: 50px;
+  font-weight: 200;
+  font-size: 18px;
+  width:404px;
+}
+*/
+
+.spacer{
+  margin-left: 14px;
+  margin-right: 14px;
+  font-family: "industry",sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 22px;
+  letter-spacing: 4px;
+  color:white;
+  width:404px;
+  position: relative;
+  display: inline-block;
+  text-align: left;
 }
 
 nav a {
-  color: #FFF;
+  color: white;
   text-decoration: none;
   display: inline-block;
-  padding: 20px;
-  line-height: 20px;
 }
 
 nav a:hover {
@@ -51,53 +81,70 @@ nav a:hover {
 
 .container {
   min-height: 100vh;
+  max-width: 1400px;
   margin: 0 auto;
   text-align: center;
   font-size: 0;
 }
 
 .item {
-	width:400px;
-  margin: 14px;
+  width:350px;
+  margin: 5px;
   position: relative;
-  background-color: white;
+/*   background-color: white; */
+/*
   border-style: solid;
   border-color: white;
   border-width: 2px;
+*/
+	
   display: inline-block;
   transition: all .2s ease;
   cursor: pointer;
   opacity: 0;
+  overflow: hidden;
 
 }
 
 .item img {
+  border-radius: 4px;
   width: 100%;
   display: block;
 }
 
 .item:after{
+	
 	content: attr(data-title);
 	background-color:white;
-	font-family: "europa",sans-serif;
+	font-family: "industry",sans-serif;
 	font-style: normal;
-  	font-weight: 400;
+  	font-weight: 500;
   	letter-spacing: .8px;
 	font-size: 16px;
 	color: #210011;
 	display: block;
 	position: absolute;
-	left: -10px;
-	bottom: 0px;
+	left:-90%;
+	bottom: 16px;
+/* 	opacity: 0; */
 	padding: 4px 10px;
-	border-radius: 1px;
-	opacity: 0;
-	transition: all 400ms ease;
+	padding-left: 40px;
+	border-radius: 2px;
+	-webkit-transition: all 450ms cubic-bezier(0.000, 1, 0.650, 0.935); /* older webkit */
+-webkit-transition: all 450ms cubic-bezier(0.000, 1.540, 0.650, 0.935); 
+   -moz-transition: all 450ms cubic-bezier(0.000, 1.540, 0.650, 0.935); 
+     -o-transition: all 450ms cubic-bezier(0.000, 1.540, 0.650, 0.935); 
+        transition: all 450ms cubic-bezier(0.000, 1.540, 0.650, 0.935); /* custom */
+    
+	
 }
+
+
 
 .item:hover:after{
 	opacity:1;
-	bottom:10px;
+	left:-30px;
+/* 	bottom:16px; */
 }
 
 #sig{
@@ -105,54 +152,6 @@ nav a:hover {
 	width:300px;
 	margin-top: -30px;
 }
-/*
-.item:after {
-	content: attr(data-title);
-	font-size: 16px;
-	display: block;
-	position: absolute;
-	left:0;
-	background-color: #F4E2D8;
-	width: 100%;
-	padding: 20px 0px;
-	transition: all 0.4s ease;
-}
-*/
-
-/*
-.item:before {
-    content: attr(data-title);
-    font-family: europa;
-    font-weight: 400;
-    padding: 0px 6px;
-    padding-top: 6px;
-    margin-top: -4px;
-    border-radius: 2px;
-    font-size: 14px;
-    opacity: .60;
-    position: absolute;
-    top: 100%;
-    line-height: 25px;
-    background-color: #F4E2D8;
-    left: 0px;
-}
-*/
-
-/*
-.item:after {
-  content: attr(data-title);
-  font-family: sans-serif;
-  font-weight: bold;
-  padding: 2px 4px;
-  border-radius: 2px;
-  font-size: 10px;
-  opacity: .5;
-  position: absolute;
-  top:100%;
-  line-height: 25px;
-  right:0px;
-}
-*/
 
 .label-container {
   position: absolute;
