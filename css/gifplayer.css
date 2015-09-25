@@ -1,10 +1,10 @@
 
 ins.play-gif{
 	position: absolute;
-	 font-family: "industry",sans-serif;
-	 font-style: normal;
-	 font-weight: 500;
-	 letter-spacing: -2px;
+	font-family: "industry",sans-serif;
+	font-style: normal;
+	font-weight: 500;
+	letter-spacing: -2px;
 	width: 44px;
 	height: 44px;
 	line-height: 51px;
@@ -13,7 +13,6 @@ ins.play-gif{
 	font-size: 26px;
 	color: #fff;
 	border-radius: 4px;
-/* 	border-radius: 50%; */
 	opacity: .9;
 	border: 2px solid #fff;
 	cursor:pointer;
