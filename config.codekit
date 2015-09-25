@@ -29,6 +29,28 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
+	"\/gor\/gor.js": {
+		"fileType": 64,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/gor\/gor.js",
+		"outputAbbreviatedPath": "\/gor\/min\/gor-min.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 1
+		},
+	"\/gor\/gor.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 1366,
+		"inputAbbreviatedPath": "\/gor\/gor.png",
+		"outputAbbreviatedPath": "\/gor\/gor.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
 	"\/images\/BECBis.png": {
 		"fileType": 32768,
 		"ignore": 0,

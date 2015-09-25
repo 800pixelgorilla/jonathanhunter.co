@@ -12,15 +12,25 @@ body {
   margin: 0;
 }
 
+#logo{
+	
+}
+
+#gor{
+	width:30px;
+	height:auto;
+	display: inline-block;
+	vertical-align: middle;
+	margin-top: -5px;
+	padding-right: 10px;
+}
+
 header {
-/*   background-color: #fff; */
-/*   position: relative; */
   text-align: center;
   max-width: 1400px;
   margin: 0 auto;
   margin-top: 40px;
-  margin-bottom: 30px;
-/*   margin-bottom: 20px; */
+  margin-bottom: 50px;
 }
 
 nav {
@@ -30,7 +40,10 @@ nav {
 }
 
 h1 {
-   font-family: "industry",sans-serif;
+	
+  vertical-align: middle;
+  display: inline-block;
+  font-family: "industry",sans-serif;
   font-style: normal;
   font-weight: 400;
   font-size: 24px;
