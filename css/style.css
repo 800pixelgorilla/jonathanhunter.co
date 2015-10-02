@@ -170,4 +170,8 @@ section{
 		display: block;
 	}
 	
+	#first-section{
+		padding-top: 100px;
+	}
+	
 }
