@@ -7,7 +7,6 @@
     <link rel='stylesheet' href='http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css'>
     <link rel='stylesheet' href='css/normalize.css'>
     <link rel='stylesheet' href='css/style.css'>
-    <link rel='stylesheet' href='css/gifplayer.css'>
     <link rel="stylesheet" type="text/css" href="css/jquery.fullPage.css" />
     <script src="https://use.typekit.net/lzt7ctc.js"></script>
 	<script>try{Typekit.load({ async: true });}catch(e){}</script>
@@ -100,17 +99,12 @@
 		$('section').each(function(index){
 			scrollQueue.push($(this));
 			var pos = $(this).offset();
-			
-			//console.log(pos.top+$(this).height());
-			//console.log("window " + $(window).scrollTop());
 			if(index < currentPos && pos.top+100 > $(window).scrollTop())
 			{
-/* 				console.log('in'); */
 				currentPos = index;
 			}
 			
 		})
-/* 		console.log(currentPos); */
 	}
 	
 	function nextPost(direction)
@@ -169,7 +163,6 @@
 			 	(elemBottom <= docViewBottom) && (elemTop >= docViewTop) ? imgURL = $(this).children('img').data('full') : imgURL = $(this).children('img').data('prev');
 			 	if(imgURL != $(this).children('img').attr('src'))
 			 	{
-/* 			 		$(this).children('img').data('loading','true'); */
 			 		getImage($(this),imgURL);
 			 	}
 	       });
@@ -185,7 +178,6 @@
 		
 			img.onload = function (){
 				target.children(".loading").removeClass("spinner");
-				console.log('loaded');
 				target.children('img').attr('src',url);
 				target.children('img').data('loading',false);
 				}
@@ -194,39 +186,6 @@
 	}
 	
 	</script>
-<!--  -->
-
-<!-- This following line is optional. Only necessary if you use the option css3:false and you want to use other easing effects rather than "linear", "swing" or "easeInOutCubic". -->
-<!-- <script src="js/vendors/jquery.easings.min.js"></script> -->
-
-
-<!-- This following line is only necessary in the case of using the plugin option `scrollOverflow:true` -->
-<!-- <script type="text/javascript" src="js/vendors/jquery.slimscroll.min.js"></script> -->
-
-<!-- <script type="text/javascript" src="js/jquery.fullPage.js"></script> -->
-<!--
-<script>
-$(document).ready(function() {
-		
-		function lazyLoad(){
-			var imgurl = $(this).data("img");
-			$(this).attr('src',imgurl);
-		}
-		
-	   $("#first-section").children('img').each(lazyLoad)	   
-       $('#fullpage').fullpage({
-        onLeave: function(index, nextIndex, direction){
-    		$(this).children(":first").children('img').delay(300).queue(function(next) { $(this).attr('src',""); next(); });
-    		(direction == 'down') ? $(this).next().children(":first").children('img').each(lazyLoad) : $(this).prev().children(":first").children('img').each(lazyLoad);
-		}
-        
-    });
-});
-
-
-
-</script>
--->
 </body>
 
 </html>

@@ -161,7 +161,7 @@ section{
 	position:absolute;
 	top:50%;
 	left:50%;
-	margin-top:-25px;
+	margin-top:-80px;
 	margin-left:-25px;
 	-webkit-animation: rotation .6s infinite linear;
 	-moz-animation: rotation .6s infinite linear;
