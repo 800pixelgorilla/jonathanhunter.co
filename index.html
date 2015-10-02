@@ -5,65 +5,105 @@
     <meta name="google" value="notranslate">
     <link rel='stylesheet' href='http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css'>
     <link rel='stylesheet' href='css/normalize.css'>
-    <link rel='stylesheet' href='css/gifplayer.css'>
     <link rel='stylesheet' href='css/style.css'>
+    <link rel='stylesheet' href='css/gifplayer.css'>
+    <link rel="stylesheet" type="text/css" href="css/jquery.fullPage.css" />
     <script src="https://use.typekit.net/lzt7ctc.js"></script>
 	<script>try{Typekit.load({ async: true });}catch(e){}</script>
 </head>
 <body>
-    <header>
-    <div id="logo">
-    <img id="gor" src="gor/gor.gif"></img>
-    <h1>Jonathan Hunter</h1>
-    </div>
-	<h2>animator_developer_illustrator</h2>
-</header>
-	<div class="container">
-		<div class="item" data-title="National Hamburger Day">
-			<img class="gifplayer" src="images/hamburgerDay.png">
-		</div>
-		<div class="item" data-title="National Video Game Day">
-			<img class="gifplayer" src="images/videoGameDay.png">
-		</div>
-		<div class="item" data-title="Labor Day">
-			<img class="gifplayer" src="images/labordayFinal.png">
-		</div>
-		<div class="item" data-title="Summer">
-			<img class="gifplayer" src="images/summer.png">
-		</div>
-		<div class="item" data-title="Parents Day">
-			<img class="gifplayer" src="images/parentsday.png">
-		</div>
-		<div class="item" data-title="Fry Sprinkler">
-			<img class="gifplayer" src="images/frysprinkler.png">
-		</div>
-		<div class="item" data-title="Sip of Glee">
-			<img class="gifplayer" src="images/girl.png">
-		</div>
-		<div class="item" data-title="Memorial Day">
-			<img class="gifplayer" src="images/memorialdaycup.png">
-		</div>
-		<div class="item" data-title="Crying Food">
-			<img class="gifplayer" src="images/cryingfood.png">
-		</div>
-		<div class="item" data-title="BEC Biscuit Seizure">
-			<img class="gifplayer" src="images/BECBis.png">
-		</div>
-		
-		
+	<div class="logo">
+	<img class="gor" src="gor/gor.gif">
+	<div class="myname">Jonathan Hunter</div>
 	</div>
-	<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
-	<script src='js/jquery.gifplayer.min.js'></script>
-	<script>
-		$(window).load(function(){
-			$('.gifplayer').gifplayer({ wait: 'true' });
-			$('.item').css( "opacity", "1" );
-		})
-		/*
-$(document).ready(function(){
+	<!--
+<div class='header-container'>
+		<header>
+				<img class="gor" src="gor/gor.gif">
+				<div class="myname"><h1>Jonathan Hunter</h1></div>
+				<nav>
+					<ul>contact</ul>
+				</nav>
+		</header>
+	</div>
+-->
+	<div id="fullpage">
+	<section class="section" id="first-section" style="background-color:#fef0d4; color:#724724">
+				<img class="single" data-img="images/hamburgerDay.gif" src="">
+				<div class="section-title">
+					<h1>Bunbrella</h1>
+					<h2>National Hamburger day</h2>
+				</div>
+	</section>
+	<section class="section" style="background-color:#7574b3; color:white">
+				<img class="single" data-img="images/videoGameDay.gif" src="">
+				<div class="section-title">
+					<h1>Lunch Run</h1>
+					<h2 style="font-weight:300;">National Videogame day</h2>
+				</div>
+	</section>
+	<section class="section" style="background-color:#80dcdd; color:#525273">
+				<img class="single" data-img="images/girl.gif" src="">
+				<div class="section-title">
+					<h1>Sip of Glee</h1>
+					<h2>McDonald’s Sweet Tea </h2>
+				</div>
+	</section>
+	<section class="section" id="first-section" style="background-color:#ffe6ca; color:#6b2b52">
+				<img class="single" data-img="images/summer.gif" src="">
+				<div class="section-title">
+					<h1>Summer Moments</h1>
+					<h2>McDonald’s Summer Social Post</h2>
+				</div>
+	</section>
+	<section class="section" style="background-color:#ade9f8; color:#026182">
+				<img class="single" data-img="images/memorialdaycup.gif"  src="">
+				<div class="section-title">
+					<h1>Hats Off</h1>
+					<h2>Memorial Day</h2>
+				</div>
+	</section>
+	<section class="section" style="background-color:#3f3967; color:#fed26b">
+				<img class="single" data-img="images/frySprinkler.gif" src="">
+				<div class="section-title">
+					<h1>Ketchup Sprinkler</h1>
+					<h2 style="font-weight:300;">Its not blood...</h2>
+				</div>
+	</section>
+	
+	</div>
 
-		});
-*/
-	</script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+<!-- This following line is optional. Only necessary if you use the option css3:false and you want to use other easing effects rather than "linear", "swing" or "easeInOutCubic". -->
+<script src="js/vendors/jquery.easings.min.js"></script>
+
+
+<!-- This following line is only necessary in the case of using the plugin option `scrollOverflow:true` -->
+<script type="text/javascript" src="js/vendors/jquery.slimscroll.min.js"></script>
+
+<script type="text/javascript" src="js/jquery.fullPage.js"></script>
+<script>
+$(document).ready(function() {
+		
+		function lazyLoad(){
+			var imgurl = $(this).data("img");
+			$(this).attr('src',imgurl);
+		}
+		
+	   $("#first-section").children('img').each(lazyLoad)	   
+       $('#fullpage').fullpage({
+        onLeave: function(index, nextIndex, direction){
+    		$(this).children(":first").children('img').delay(300).queue(function(next) { $(this).attr('src',""); next(); });
+    		(direction == 'down') ? $(this).next().children(":first").children('img').each(lazyLoad) : $(this).prev().children(":first").children('img').each(lazyLoad);
+		}
+        
+    });
+});
+
+
+
+</script>
 </body>
+
 </html>

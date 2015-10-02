@@ -6,138 +6,152 @@ html {
 }
 
 body {
-  background-color: #210011;
+  background-color: white;
   font-family: sans-serif;
   padding: 0;
   margin: 0;
 }
 
-#logo{
-	
-}
-
-#gor{
-	width:30px;
-	height:auto;
-	display: inline-block;
-	vertical-align: middle;
-	margin-top: -5px;
-	padding-right: 10px;
-}
-
-header {
-  text-align: center;
-  max-width: 1400px;
-  margin: 0 auto;
-  margin-top: 40px;
-  margin-bottom: 50px;
-}
-
-nav {
-  font-family: "industry",sans-serif;
-  font-style: normal;
-  font-weight: 300;
-}
-
-h1 {
-	
-  vertical-align: middle;
-  display: inline-block;
-  font-family: "industry",sans-serif;
-  font-style: normal;
-  font-weight: 400;
-  font-size: 24px;
-  letter-spacing: 4px;
-  color:white;
-}
-
-h2 {
-   font-family: "industry",sans-serif;
-  font-style: normal;
-  font-weight: 200;
-  font-size: 16px;
-  letter-spacing: 4px;
-  color:white;
-}
-
-
-nav a {
-  color: white;
-  text-decoration: none;
-  display: inline-block;
-}
-
-nav a:hover {
-  background-color: rgba(0,0,0,.25);
-}
-
-.container {
-  min-height: 100vh;
-  max-width: 1400px;
-  margin: 0 auto;
-  text-align: center;
-  font-size: 0;
-}
-
-.item {
-  width:380px;
-  margin: 4px;
-  position: relative;
-  display: inline-block;
-  transition: all .2s ease;
-  cursor: pointer;
-  opacity: 0;
-  overflow: hidden;
-
-}
-
-.item img {
-  width: 100%;
-  display: block;
-}
-
-.item:after{
-	
-	content: attr(data-title);
-	background-color:white;
+.logo{
+	position: fixed;
+	z-index: 999;
 	font-family: "industry",sans-serif;
 	font-style: normal;
-  	font-weight: 500;
-  	letter-spacing: .8px;
-	font-size: 16px;
-	color: #210011;
+	font-weight: 300;
+/* 	border: 2px solid black; */
+	background-color: #2E0927;
+	color:white;
+	padding: 10px;
+	padding-left: 30px;
+	padding-right: 30px;
+	top:10px;
+	left: calc((100% - 1090px)/2);
+	font-size: 20px;
+	vertical-align: middle;
+}
+
+section img{
+	max-width: 100%;
+	height:auto;
+	border: 12px solid white;
+	-webkit-box-shadow: 0px 12px 10px -10px rgba(0,0,0,0.4);
+	-moz-box-shadow: 0px 12px 10px -10px rgba(0,0,0,0.4);
+	box-shadow: 0px 12px 10px -10px rgba(0,0,0,0.4);
+}
+
+.header-container{
+	width: 100%;
+	position: fixed;
+	top:0;
+	z-index: 999;
+}
+
+header{
+	width: 80%;
+	height: 75px;
+	margin: 0 auto;
+	background-color: #2E0927;
+}
+
+nav{
+	font-family: "industry",sans-serif;
+	font-style: normal;
+	font-weight: 300;
+	font-size: 14px;
+	letter-spacing: 4px;
+	margin-right: 20px;
+	color:#f4f4f4;
+	float: right;
+	line-height: 75px;
+}
+
+nav ul{
+	margin: 0;
+}
+
+.gor{
+/* 	margin: 15px; */
+padding-right: 10px;
+	width:30px;
+	height: auto;
+	vertical-align: middle;
+}
+
+.myname{
+	vertical-align: middle;
+	display: inline-block;
+	color:#f4f4f4;
+}
+
+h1{
+	font-family: "industry",sans-serif;
+	font-style: normal;
+	font-weight: 400;
+	font-size: 3.5em;
+	letter-spacing: 4px;
+	margin: 0;
+}
+
+h2{
+	font-family: "industry",sans-serif;
+	font-style: normal;
+	font-weight: 400;
+	font-size: 20px;
+	letter-spacing: 4px;
+	padding-left: 4px;
+	margin: 0;
+}
+
+section{
+	background-color: white;
+	max-width: 1000px;
+	margin: 0 auto;
+	position: relative;
+/* 	padding-top: 120px; */
+}
+
+.section-title{
+	padding-top: 20px;
+/* 	padding-bottom: 80px; */
+	padding-left: 60px;
+}
+
+.single{
 	display: block;
-	position: absolute;
-	left:-90%;
-	bottom: 16px;
-	padding: 4px 10px;
-	padding-left: 40px;
-	-webkit-transition: 0.5s cubic-bezier(.13,1,.43,.96);
-	transition: 0.5s cubic-bezier(0.13, 1.57, 0.43, 0.96);
-    
+	margin: 0 auto;
+}
+
+@media (max-width: 1090px)
+{
+	.logo{
+		left:0;
+		margin: 0 auto;
+	}
+}
+
+@media (max-width: 600px)
+{
+	.logo{
+		top:0;
+		width:100%;
+	}
+
+	header{
+		width: 100%;
+	}
+	h1{
+		text-align: center;
+		display: block;
+		padding-left:0;
+		font-size: 10vw;
+	}
+	section img{
+		width:90%;
+	}
 	
-}
-.item:hover:after{
-	opacity:1;
-	left:-30px;
-}
-
-#sig{
-	position: absolute;
-	width:300px;
-	margin-top: -30px;
-}
-
-.label-container {
-  position: absolute;
-  top:calc(100% + 10px);
-}
-
-label {
-  color: #FFF;
-  background-color: #6495ED;
-  text-align: center;
-  border-radius: 4px;
-  padding: 6px;
-  margin-right: 6px;
+	.section-title{
+		padding-left: 0;
+		text-align: center;
+		display: block;
+	}
 }
