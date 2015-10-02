@@ -107,12 +107,12 @@ section{
 	max-width: 1000px;
 	margin: 0 auto;
 	position: relative;
-/* 	padding-top: 120px; */
+	padding-top: 120px;
 }
 
 .section-title{
 	padding-top: 20px;
-/* 	padding-bottom: 80px; */
+	padding-bottom: 80px;
 	padding-left: 60px;
 }
 

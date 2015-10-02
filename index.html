@@ -30,42 +30,42 @@
 -->
 	<div id="fullpage">
 	<section class="section" id="first-section" style="background-color:#fef0d4; color:#724724">
-				<img class="single" data-img="images/hamburgerDay.gif" src="">
+				<img class="single" data-full="images/hamburgerDay.gif" data-prev="images/hamburgerDay.png" src="images/hamburgerDay.gif">
 				<div class="section-title">
 					<h1>Bunbrella</h1>
 					<h2>National Hamburger day</h2>
 				</div>
 	</section>
 	<section class="section" style="background-color:#7574b3; color:white">
-				<img class="single" data-img="images/videoGameDay.gif" src="">
+				<img class="single" data-full="images/videoGameDay.gif" data-prev="images/videoGameDay.png" src="images/videoGameDay.png">
 				<div class="section-title">
 					<h1>Lunch Run</h1>
 					<h2 style="font-weight:300;">National Videogame day</h2>
 				</div>
 	</section>
 	<section class="section" style="background-color:#80dcdd; color:#525273">
-				<img class="single" data-img="images/girl.gif" src="">
+				<img class="single" data-full="images/girl.gif" data-prev="images/girl.png" src="images/girl.png">
 				<div class="section-title">
 					<h1>Sip of Glee</h1>
 					<h2>McDonald’s Sweet Tea </h2>
 				</div>
 	</section>
 	<section class="section" id="first-section" style="background-color:#ffe6ca; color:#6b2b52">
-				<img class="single" data-img="images/summer.gif" src="">
+				<img class="single" data-full="images/summer.gif" data-prev="images/summer.png" src="images/summer.png">
 				<div class="section-title">
 					<h1>Summer Moments</h1>
 					<h2>McDonald’s Summer Social Post</h2>
 				</div>
 	</section>
 	<section class="section" style="background-color:#ade9f8; color:#026182">
-				<img class="single" data-img="images/memorialdaycup.gif"  src="">
+				<img class="single" data-full="images/memorialdaycup.gif" data-prev="images/memorialdaycup.png"  src="images/memorialdaycup.png">
 				<div class="section-title">
 					<h1>Hats Off</h1>
 					<h2>Memorial Day</h2>
 				</div>
 	</section>
 	<section class="section" style="background-color:#3f3967; color:#fed26b">
-				<img class="single" data-img="images/frysprinkler.gif" src="">
+				<img class="single" data-full="images/frysprinkler.gif" data-prev="images/frysprinkler.png" src="images/frysprinkler.png">
 				<div class="section-title">
 					<h1>Ketchup Sprinkler</h1>
 					<h2 style="font-weight:300;">Its not blood...</h2>
@@ -73,17 +73,62 @@
 	</section>
 	
 	</div>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	<script>
+	
+	var didScroll = false;
+	window.onscroll = doThisStuffOnScroll;
 
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+function doThisStuffOnScroll() {
+    didScroll = true;
+}
+
+setInterval(function() {
+    if(didScroll) {
+       didScroll = false;
+       
+       $("section").each(function(){
+	     	var $elem = $(this);
+		 	var $window = $(window);
+
+		 	var docViewTop = $window.scrollTop() - 300;
+		 	var docViewBottom = docViewTop + $window.height() + 300;
+
+		 	var elemTop = $elem.offset().top;
+		 	var elemBottom = elemTop + $elem.height();
+		 	
+		 	var swap = ""; 
+		 	(elemBottom <= docViewBottom) && (elemTop >= docViewTop) ? swap = $(this).children('img').data('full') : swap = $(this).children('img').data('prev');
+		 	if(swap != $(this).children('img').attr('src'))$(this).children('img').attr('src',swap);
+		 	/*
+if((elemBottom <= docViewBottom) && (elemTop >= docViewTop))
+		 	{
+			 	var full = $(this).children('img').data('full');
+			 	$(this).children('img').attr('src',full);
+		 	}
+		 	else
+		 	{
+			 	var prev = $(this).children('img').data('prev');
+			 	$(this).children('img').attr('src',prev);
+		 	}
+*/
+       });
+       
+    }
+}, 100);
+	
+	</script>
+<!--  -->
 
 <!-- This following line is optional. Only necessary if you use the option css3:false and you want to use other easing effects rather than "linear", "swing" or "easeInOutCubic". -->
-<script src="js/vendors/jquery.easings.min.js"></script>
+<!-- <script src="js/vendors/jquery.easings.min.js"></script> -->
 
 
 <!-- This following line is only necessary in the case of using the plugin option `scrollOverflow:true` -->
-<script type="text/javascript" src="js/vendors/jquery.slimscroll.min.js"></script>
+<!-- <script type="text/javascript" src="js/vendors/jquery.slimscroll.min.js"></script> -->
 
-<script type="text/javascript" src="js/jquery.fullPage.js"></script>
+<!-- <script type="text/javascript" src="js/jquery.fullPage.js"></script> -->
+<!--
 <script>
 $(document).ready(function() {
 		
@@ -105,6 +150,7 @@ $(document).ready(function() {
 
 
 </script>
+-->
 </body>
 
 </html>
