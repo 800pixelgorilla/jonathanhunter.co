@@ -155,8 +155,11 @@ section{
 	}
 	
 	section img{
-	margin-top: 20px;
 		width:85%;
+	}
+	
+	section{
+		padding-top: 60px;
 	}
 	
 	.section-title{
