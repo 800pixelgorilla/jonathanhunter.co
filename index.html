@@ -76,41 +76,91 @@
 	</div>
 	
 	<div class="mobile-nav">
-		<div class="b-up button">▲</div>
-		<div class="b-down button">▼</div>
+		<div class="b-up button" onclick="nextPost('up')">▲</div>
+		<div class="b-down button" onclick="nextPost('down')">▼</div>
 	</div>
 	
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 	<script>
 	
+	var scrollQueue =[];
+	var currentPos = 9999;
+	
+	$(function() {
+		setupScrollQueue();
+	});
+	
+	function setupScrollQueue(){
+		$('section').each(function(index){
+			scrollQueue.push($(this));
+			var pos = $(this).offset();
+			
+			console.log(pos.top+$(this).height());
+			console.log("window " + $(window).scrollTop());
+			if(index < currentPos && pos.top+100 > $(window).scrollTop())
+			{
+				console.log('in');
+				currentPos = index;
+			}
+			
+		})
+		console.log(currentPos);
+	}
+	
+	function nextPost(direction)
+	{
+		var nextPos = 0;
+		if(direction == 'down')
+		{
+			if(currentPos = scrollQueue.length-1)currentPos = -1;
+			nextPos = $("#fullpage").children().eq(currentPos+1).offset().top;
+			nextPos-=65;
+			currentPos++;
+			$('html, body').animate({
+		 					
+                    scrollTop: nextPos
+					}, 500);
+		}
+		else
+		{
+			if(currentPos = 0)currentPos = scrollQueue.length;
+			nextPos = $("#fullpage").children().eq(currentPos-1).offset().top;
+			nextPos-=65;
+			currentPos--;
+			$('html, body').animate({
+		 					
+                    scrollTop: nextPos
+					}, 500);
+		}
+	}
+	
 	var didScroll = false;
 	window.onscroll = doThisStuffOnScroll;
 
-function doThisStuffOnScroll() {
-    didScroll = true;
-}
-
-setInterval(function() {
-    if(didScroll) {
-       didScroll = false;
-       
-       $("section").each(function(){
-	     	var $elem = $(this).children('img');
-		 	var $window = $(window);
-
-		 	var docViewTop = $window.scrollTop();
-		 	var docViewBottom = docViewTop + $window.height();
-
-		 	var elemTop = $elem.offset().top;
-		 	var elemBottom = elemTop + $elem.height();
-		 	
-		 	var swap = ""; 
-		 	(elemBottom <= docViewBottom) && (elemTop >= docViewTop) ? swap = $(this).children('img').data('full') : swap = $(this).children('img').data('prev');
-		 	if(swap != $(this).children('img').attr('src'))$(this).children('img').attr('src',swap);
-       });
-       
-    }
-}, 100);
+	function doThisStuffOnScroll() {
+	    didScroll = true;
+	}
+	
+	setInterval(function() {
+	    if(didScroll) {
+	       didScroll = false;
+	       
+	       $("section").each(function(){
+		     	var $elem = $(this).children('img');
+			 	var $window = $(window);
+	
+			 	var docViewTop = $window.scrollTop();
+			 	var docViewBottom = docViewTop + $window.height();
+	
+			 	var elemTop = $elem.offset().top;
+			 	var elemBottom = elemTop + $elem.height();
+			 	var swap = ""; 
+			 	(elemBottom <= docViewBottom) && (elemTop >= docViewTop) ? swap = $(this).children('img').data('full') : swap = $(this).children('img').data('prev');
+			 	if(swap != $(this).children('img').attr('src'))$(this).children('img').attr('src',swap);
+	       });
+	       
+	    }
+	}, 100);
 	
 	</script>
 <!--  -->

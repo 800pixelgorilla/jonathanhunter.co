@@ -129,10 +129,10 @@ section{
 	bottom:0px;
 	height:44px;
 	width:100%;
-	color:white;
 }
 
 .button{
+	color:#2E0927;
 	display: inline-block;
 	text-align: center;
 	width:44px;
@@ -142,16 +142,16 @@ section{
 	font-style: normal;
 	font-weight: 400;
 	font-size: 25px;
-	background-color: #2E0927;
+/* 	background-color: #2E0927; */
 	opacity: .75;
 }
 
 .b-up{
-	float:right;
+	float:left;
 }
 
 .b-down{
-	float:left;
+	float:right;
 }
 
 @media (max-width: 1090px)
