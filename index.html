@@ -16,6 +16,7 @@
 	<div class="logo">
 	<img class="gor" src="gor/gor.gif">
 	<div class="myname">Jonathan Hunter</div>
+	<div class="subhead">animator developer illustrator</div>
 	</div>
 	<!--
 <div class='header-container'>
@@ -68,7 +69,7 @@
 				<img class="single" data-full="images/frysprinkler.gif" data-prev="images/frysprinkler.png" src="images/frysprinkler.png">
 				<div class="section-title">
 					<h1>Ketchup Sprinkler</h1>
-					<h2 style="font-weight:300;">Its not blood...</h2>
+					<h2 style="font-weight:300;">Its not blood.</h2>
 				</div>
 	</section>
 	
@@ -88,11 +89,11 @@ setInterval(function() {
        didScroll = false;
        
        $("section").each(function(){
-	     	var $elem = $(this);
+	     	var $elem = $(this).children('img');
 		 	var $window = $(window);
 
 		 	var docViewTop = $window.scrollTop() - 300;
-		 	var docViewBottom = docViewTop + $window.height() + 300;
+		 	var docViewBottom = docViewTop + $window.height() + 400;
 
 		 	var elemTop = $elem.offset().top;
 		 	var elemBottom = elemTop + $elem.height();
@@ -100,18 +101,6 @@ setInterval(function() {
 		 	var swap = ""; 
 		 	(elemBottom <= docViewBottom) && (elemTop >= docViewTop) ? swap = $(this).children('img').data('full') : swap = $(this).children('img').data('prev');
 		 	if(swap != $(this).children('img').attr('src'))$(this).children('img').attr('src',swap);
-		 	/*
-if((elemBottom <= docViewBottom) && (elemTop >= docViewTop))
-		 	{
-			 	var full = $(this).children('img').data('full');
-			 	$(this).children('img').attr('src',full);
-		 	}
-		 	else
-		 	{
-			 	var prev = $(this).children('img').data('prev');
-			 	$(this).children('img').attr('src',prev);
-		 	}
-*/
        });
        
     }
