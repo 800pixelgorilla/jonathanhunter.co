@@ -16,7 +16,7 @@
 	<div class="logo">
 	<img class="gor" src="gor/gor.gif">
 	<div class="myname">Jonathan Hunter</div>
-	<div class="subhead">animator developer illustrator</div>
+<!-- 	<div class="subhead">animator developer illustrator</div> -->
 	</div>
 	<!--
 <div class='header-container'>
@@ -92,8 +92,8 @@ setInterval(function() {
 	     	var $elem = $(this).children('img');
 		 	var $window = $(window);
 
-		 	var docViewTop = $window.scrollTop() - 300;
-		 	var docViewBottom = docViewTop + $window.height() + 400;
+		 	var docViewTop = $window.scrollTop();
+		 	var docViewBottom = docViewTop + $window.height();
 
 		 	var elemTop = $elem.offset().top;
 		 	var elemBottom = elemTop + $elem.height();
