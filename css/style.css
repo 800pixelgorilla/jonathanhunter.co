@@ -143,14 +143,26 @@ section{
 		text-align: center;
 		display: block;
 		padding-left:0;
-		font-size: 10vw;
+		font-size: 7vw;
 	}
+	
+	h2{
+		text-align: center;
+		display: block;
+		padding-left:0;
+		
+		font-size: 3vw;
+	}
+	
 	section img{
-		width:90%;
+	margin-top: 20px;
+		width:85%;
 	}
 	
 	.section-title{
+		width:80%;
 		padding-left: 0;
+		margin: 0 auto;
 		text-align: center;
 		display: block;
 	}
