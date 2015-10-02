@@ -31,42 +31,48 @@
 -->
 	<div id="fullpage">
 	<section class="section" id="first-section" style="background-color:#fef0d4; color:#724724">
-				<img class="single" data-full="images/hamburgerDay.gif" data-prev="images/hamburgerDay.png" src="images/hamburgerDay.gif">
+				<div class="loading"></div>
+				<img class="single" data-loading="false" data-full="images/hamburgerDay.gif" data-prev="images/hamburgerDay.png" src="images/hamburgerDay.gif">
 				<div class="section-title">
 					<h1>Bunbrella</h1>
 					<h2>National Hamburger day</h2>
 				</div>
 	</section>
 	<section class="section" style="background-color:#7574b3; color:white">
-				<img class="single" data-full="images/videoGameDay.gif" data-prev="images/videoGameDay.png" src="images/videoGameDay.png">
+				<div class="loading"></div>
+				<img class="single" data-loading="false" data-full="images/videoGameDay.gif" data-prev="images/videoGameDay.png" src="images/videoGameDay.png">
 				<div class="section-title">
 					<h1>Lunch Run</h1>
 					<h2 style="font-weight:300;">National Videogame day</h2>
 				</div>
 	</section>
 	<section class="section" style="background-color:#80dcdd; color:#525273">
-				<img class="single" data-full="images/girl.gif" data-prev="images/girl.png" src="images/girl.png">
+				<div class="loading"></div>
+				<img class="single" data-loading="false" data-full="images/girl.gif" data-prev="images/girl.png" src="images/girl.png">
 				<div class="section-title">
 					<h1>Sip of Glee</h1>
 					<h2>McDonald’s Sweet Tea </h2>
 				</div>
 	</section>
 	<section class="section" style="background-color:#ffe6ca; color:#6b2b52">
-				<img class="single" data-full="images/summer.gif" data-prev="images/summer.png" src="images/summer.png">
+				<div class="loading"></div>
+				<img class="single" data-loading="false" data-full="images/summer.gif" data-prev="images/summer.png" src="images/summer.png">
 				<div class="section-title">
 					<h1>Summer Moments</h1>
 					<h2>McDonald’s Summer Social Post</h2>
 				</div>
 	</section>
 	<section class="section" style="background-color:#ade9f8; color:#026182">
-				<img class="single" data-full="images/memorialdaycup.gif" data-prev="images/memorialdaycup.png"  src="images/memorialdaycup.png">
+				<div class="loading"></div>
+				<img class="single" data-loading="false" data-full="images/memorialdaycup.gif" data-prev="images/memorialdaycup.png"  src="images/memorialdaycup.png">
 				<div class="section-title">
 					<h1>Hats Off</h1>
 					<h2>Memorial Day</h2>
 				</div>
 	</section>
 	<section class="section" style="background-color:#3f3967; color:#fed26b">
-				<img class="single" data-full="images/frysprinkler.gif" data-prev="images/frysprinkler.png" src="images/frysprinkler.png">
+				<div class="loading"></div>
+				<img class="single" data-loading="false" data-full="images/frysprinkler.gif" data-prev="images/frysprinkler.png" src="images/frysprinkler.png">
 				<div class="section-title">
 					<h1>Ketchup Sprinkler</h1>
 					<h2 style="font-weight:300;">Its not blood.</h2>
@@ -95,16 +101,16 @@
 			scrollQueue.push($(this));
 			var pos = $(this).offset();
 			
-			console.log(pos.top+$(this).height());
-			console.log("window " + $(window).scrollTop());
+			//console.log(pos.top+$(this).height());
+			//console.log("window " + $(window).scrollTop());
 			if(index < currentPos && pos.top+100 > $(window).scrollTop())
 			{
-				console.log('in');
+/* 				console.log('in'); */
 				currentPos = index;
 			}
 			
 		})
-		console.log(currentPos);
+/* 		console.log(currentPos); */
 	}
 	
 	function nextPost(direction)
@@ -159,10 +165,32 @@
 	
 			 	var elemTop = $elem.offset().top;
 			 	var elemBottom = elemTop + $elem.height();
-			 	var swap = ""; 
-			 	(elemBottom <= docViewBottom) && (elemTop >= docViewTop) ? swap = $(this).children('img').data('full') : swap = $(this).children('img').data('prev');
-			 	if(swap != $(this).children('img').attr('src'))$(this).children('img').attr('src',swap);
+			 	var imgURL = ""; 
+			 	(elemBottom <= docViewBottom) && (elemTop >= docViewTop) ? imgURL = $(this).children('img').data('full') : imgURL = $(this).children('img').data('prev');
+			 	if(imgURL != $(this).children('img').attr('src'))
+			 	{
+/* 			 		$(this).children('img').data('loading','true'); */
+			 		getImage($(this),imgURL);
+			 	}
 	       });
+	}
+	
+	function getImage(target,url)
+	{
+		if( target.children('img').data('loading') == false)
+		{
+			target.children(".loading").addClass("spinner");
+			target.children('img').data('loading',true);
+			var img = new Image()
+		
+			img.onload = function (){
+				target.children(".loading").removeClass("spinner");
+				console.log('loaded');
+				target.children('img').attr('src',url);
+				target.children('img').data('loading',false);
+				}
+			img.src = url;
+		}
 	}
 	
 	</script>
