@@ -121,6 +121,39 @@ section{
 	margin: 0 auto;
 }
 
+.mobile-nav{
+	display: none;
+	position: fixed;
+	z-index: 999;
+	left:0px;
+	bottom:0px;
+	height:44px;
+	width:100%;
+	color:white;
+}
+
+.button{
+	display: inline-block;
+	text-align: center;
+	width:44px;
+	height:44px;
+	line-height: 52px;
+	font-family: "industry",sans-serif;
+	font-style: normal;
+	font-weight: 400;
+	font-size: 25px;
+	background-color: #2E0927;
+	opacity: .75;
+}
+
+.b-up{
+	float:right;
+}
+
+.b-down{
+	float:left;
+}
+
 @media (max-width: 1090px)
 {
 	.logo{
@@ -174,4 +207,7 @@ section{
 		padding-top: 100px;
 	}
 	
+	.mobile-nav{
+		display: block;
+	}
 }
