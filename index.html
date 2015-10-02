@@ -112,7 +112,7 @@
 		var nextPos = 0;
 		if(direction == 'down')
 		{
-			if(currentPos = scrollQueue.length-1)currentPos = -1;
+			if(currentPos == scrollQueue.length-1)currentPos = -1;
 			nextPos = $("#fullpage").children().eq(currentPos+1).offset().top;
 			nextPos-=65;
 			currentPos++;
@@ -123,7 +123,7 @@
 		}
 		else
 		{
-			if(currentPos = 0)currentPos = scrollQueue.length;
+			if(currentPos == 0)currentPos = scrollQueue.length;
 			nextPos = $("#fullpage").children().eq(currentPos-1).offset().top;
 			nextPos-=65;
 			currentPos--;
