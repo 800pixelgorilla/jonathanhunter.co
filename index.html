@@ -51,7 +51,7 @@
 					<h2>McDonald’s Sweet Tea </h2>
 				</div>
 	</section>
-	<section class="section" id="first-section" style="background-color:#ffe6ca; color:#6b2b52">
+	<section class="section" style="background-color:#ffe6ca; color:#6b2b52">
 				<img class="single" data-full="images/summer.gif" data-prev="images/summer.png" src="images/summer.png">
 				<div class="section-title">
 					<h1>Summer Moments</h1>
@@ -132,6 +132,7 @@
                     scrollTop: nextPos
 					}, 500);
 		}
+		swap();
 	}
 	
 	var didScroll = false;
@@ -144,8 +145,12 @@
 	setInterval(function() {
 	    if(didScroll) {
 	       didScroll = false;
-	       
-	       $("section").each(function(){
+	       swap()
+	    }
+	}, 100);
+	
+	function swap(){
+		$("section").each(function(){
 		     	var $elem = $(this).children('img');
 			 	var $window = $(window);
 	
@@ -158,9 +163,7 @@
 			 	(elemBottom <= docViewBottom) && (elemTop >= docViewTop) ? swap = $(this).children('img').data('full') : swap = $(this).children('img').data('prev');
 			 	if(swap != $(this).children('img').attr('src'))$(this).children('img').attr('src',swap);
 	       });
-	       
-	    }
-	}, 100);
+	}
 	
 	</script>
 <!--  -->
