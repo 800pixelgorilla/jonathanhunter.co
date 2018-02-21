@@ -32,7 +32,7 @@ body {
 }
 
 section img{
-	max-width: 100%;
+	max-width: 85%;
 	height:auto;
 	border: 12px solid white;
 	-webkit-box-shadow: 0px 12px 10px -10px rgba(0,0,0,0.4);
