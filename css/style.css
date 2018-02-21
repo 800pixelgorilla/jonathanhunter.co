@@ -24,8 +24,9 @@ body {
 	padding: 10px;
 	padding-left: 30px;
 	padding-right: 30px;
-	top:10px;
-	left: calc((100% - 1090px)/2);
+/* 	top:10px; */
+/* 	left: calc((100% - 1090px)/2); */
+	right:0;
 	font-size: 20px;
 	vertical-align: middle;
 }
@@ -104,10 +105,12 @@ h2{
 
 section{
 	background-color: white;
-	max-width: 1000px;
+/* 	max-width: 1000px; */
 	margin: 0 auto;
 	position: relative;
 	padding-top: 120px;
+	width: 50%;
+	float:left;
 }
 
 .section-title{
