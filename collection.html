@@ -73,8 +73,9 @@
 		
 </section>
 -->
-<button :class="[sortOption==='name' ? 'is-checked' : '']" @click="sort('name')">Sort by name 2</button>
+
 <div id="vuegrid">
+<button :class="[sortOption==='name' ? 'is-checked' : '']" @click="sort('name')">Sort by name 2</button>
 <div>
   <isotope :list="games" id="root_isotope" class="isoDefault" :options='option' >
   		<div v-for='game in games' class="grid-item col" data-category="cat" :key="game.id">
