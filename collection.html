@@ -72,7 +72,7 @@
 <div id="vuegrid">
 <div>
   <isotope :list="games" id="root_isotope" class="isoDefault" :options='option' >
-  		<div v-for='game in games' class="grid-item col" data-category="cat" :key="element.id">
+  		<div v-for='game in games' class="grid-item col" data-category="cat" :key="game.id">
 			<div class="p2">
 				<img class="product-img" v-bind:src="game.image">
 				<h2 class="mt0">{{game.name}}</h2>
