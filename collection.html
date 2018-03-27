@@ -58,32 +58,22 @@
 			 	var game = {};
 			 	game.id = this.gsx$id.$t;
 			 	game.name = this.gsx$name.$t;
-			 	/*
-$.getJSON(bggurl+game.id, function(d){
-				 	game.image = d.image;
-				 	console.log(game.image);
-			 	})
-*/
 			 	gameList.push(game);
 			 })
-
-			 //getBGGInfo();
-			 gameList[0].image = 'https://cf.geekdo-images.com/original/img/lDN358RgcYvQfYYN6Oy2TXpifyM=/0x0/pic2437871.jpg';
+			 getBGGInfo();
 	    })
-		/*
 
 		function getBGGInfo()
 		{
 			for(var i=0;i<gameList.length;i++)
 			{
 				var game = gameList[i];
-				getJSON(bggurl+game.id,function(data){
+				$.getJSON(bggurl+game.id,function(data){
 					game.image = data.image;
-					
 				})
 			}
 		}
-*/
+
 		
        /*
  function getJSON(url,callback){
