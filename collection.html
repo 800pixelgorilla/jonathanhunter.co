@@ -58,8 +58,9 @@
 			 	var game = {};
 			 	game.id = this.gsx$id.$t;
 			 	game.name = this.gsx$name.$t;
-			 	$.getJSON(bggurl+game.id, function(data){
-				 	game.image = data.image;
+			 	$.getJSON(bggurl+game.id, function(d){
+				 	game.image = d.image;
+				 	console.log(game.image);
 			 	})
 			 	gameList.push(game);
 			 })
