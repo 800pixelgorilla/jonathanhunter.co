@@ -67,13 +67,11 @@
 			for(var i=0;i<gameList.length;i++)
 			{
 				var game = gameList[i];
-				getJSON(bggurl+game.id,updateGame)
+				getJSON(bggurl+game.id,function(data){
+					game.description = data.description;
+					console.log(game);
+				})
 			}
-		}
-		
-		function updateGame(data)
-		{
-			console.log(data);
 		}
 		
         function getJSON(url,callback){
