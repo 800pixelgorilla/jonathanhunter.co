@@ -65,11 +65,10 @@
 		{
 			$.each(gameList,function(key,value)
 			{
-				console.log(this);
-				console.log('test');
+				var game = this;
 				$.getJSON(bggurl+this.id,function(data){
-					console.log(this);
-					this.image = data.thumbnail;
+					console.log(game);
+					game.image = data.thumbnail;
 				})
 			})
 		}
