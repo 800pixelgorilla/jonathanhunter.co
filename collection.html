@@ -56,7 +56,7 @@
 			{
 				var game = {};
 					game.id = this.gsx$id.$t;
-				var bgginfo = getBggInfo(game.id);
+				var bgginfo = $.getJSON("http://bgg-json.azurewebsites.net/thing/"+game.id);
 				console.log(bgginfo);
 					
 				gameList.push(game);
