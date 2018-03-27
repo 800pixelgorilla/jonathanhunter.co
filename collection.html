@@ -61,11 +61,14 @@
 		});
 		for(var i=0;i<gameList.length;i++)
 		{
-			$.getJSON("http://bgg-json.azurewebsites.net/thing/"+id, function(d)
+			var g = gameList[i];
+			console.log(g.id);
+			/*
+$.getJSON("http://bgg-json.azurewebsites.net/thing/"+id, function(d)
 			{
-				var g = gameList[i];
-				console.log(g.id);
+				
 			})
+*/
 		}
 		
 		console.log(gameList);
