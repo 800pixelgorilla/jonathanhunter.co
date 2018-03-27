@@ -28,6 +28,17 @@
 	<script src="https://cdn.jsdelivr.net/npm/vue"></script>
 </head>
 
+<body class="bg-silver">
+	
+	<div id="grid">
+		<div v-for='game in games' class="grid-item col rounded border bg-white" data-category="cat">
+			<div class="p2">
+				<img class="product-img" src="https://cf.geekdo-images.com/opengraph/img/QmXTpxWFg56NwlqWDrATiAuRYfg=/fit-in/1200x630/pic2437871.jpg"/>
+				<h2 class="mt0">{{game.text}}</h2>
+			</div>
+		</div>
+	</div>
+
 <script>
 
 	var app = new Vue({
@@ -39,20 +50,9 @@
 			{ text: 'Clank' }
 		]
     }
-    });
+    })
 
 </script>
 
-<body class="bg-silver">
-	
-	<div id="grid">
-		<div class="grid-item col rounded border bg-white" data-category="cat">
-		<div v-for="game in games" class="p2">
-			<img class="product-img" src="https://cf.geekdo-images.com/opengraph/img/QmXTpxWFg56NwlqWDrATiAuRYfg=/fit-in/1200x630/pic2437871.jpg"/>
-			<h2 class="mt0">{{game.text}}</h2>
-		</div>
-		</div>
-	</div>
-	
 </body>
 </html>
