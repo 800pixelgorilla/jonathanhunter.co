@@ -47,21 +47,32 @@
 	var gameList = [];
 	
 	$(document).ready(function(){
-
+		
+		getJSON(sheeturl,postProcessing);
+		
 	    function postProcessing(data) {
-			 var sheetdata = data;
-			 console.log(sheetdata);
+			 var entry = data.feed.entry;
+			 $(entry).each(function()
+			 {
+			 	var game = {};
+			 	game.id = this.gsx$id.$t;
+			 	gameList.push(game);
+			 }
+			 getBGGInfo();
 	    }
+		
+		function getBGGInfo()
+		{
+			
+		}
 	
-		getValues();
-	
-        function getValues(){
+        function getJSON(url,callback){
              $.ajax({
-                url: sheeturl,
+                url: url,
                 type: 'get',
                 dataType: 'json',
                 cache: false,
-                success: postProcessing,
+                success: callback,
                 async:true,
                 });
         };
