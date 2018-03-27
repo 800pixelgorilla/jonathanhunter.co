@@ -65,11 +65,11 @@
 
 		function getBGGInfo()
 		{
+			console.log(gameList.length);
 			for(var i=0;i<gameList.length;i++)
 			{
-				var game = gameList[i];
-				$.getJSON(bggurl+game.id,function(data){
-					game.image = data.image;
+				$.getJSON(bggurl+gameList[i].id,function(data){
+					gameList[i].image = data.image;
 				})
 			}
 		}
