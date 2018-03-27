@@ -56,15 +56,23 @@
 			{
 				var game = {};
 				game.id = this.gsx$id.$t;
-				console.log(getBggInfo(game.id));
-					
 				gameList.push(game);
 			});
 		});
+		for(var i=0;i<gameList.length;i++)
+		{
+			$.getJSON("http://bgg-json.azurewebsites.net/thing/"+id, function(d)
+			{
+				var g = gameList[i];
+				console.log(g.id);
+			})
+		}
+		
 		console.log(gameList);
 	}
 	
-	function getBggInfo(id)
+	/*
+function getBggInfo(id)
 	{
 		var url = "http://bgg-json.azurewebsites.net/thing/"+id;
 		$.getJSON(url, function(json)
@@ -75,6 +83,7 @@
     	 	return d;
     	 });
 	}
+*/
 	
 	var app = new Vue({
 	el: '#grid',
