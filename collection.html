@@ -103,8 +103,10 @@
 			games:gameList,
 			option:
 			{
-				getSortData: { id: "id" },
-				sortBy : "id"
+				getSortData: { name: function(itemElem) {
+					return itemElem.name.toLowerCase();
+					} },
+				sortBy : "name"
 			}
 		}
     })
