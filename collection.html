@@ -57,10 +57,14 @@
 				game.id = this.gsx$id.$t;
 				gameList.push(game);
 			});
-			console.log(gameList.length);
+			jsonComplete();
+			//console.log(gameList.length);
 		});
 	}
-	
+	function jsonComplete()
+	{
+		console.log('oncomplete : ' + gameList.length)
+	}
 	/*
 function getBggInfo(id)
 	{
