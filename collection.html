@@ -69,7 +69,7 @@
 			for(var i=0;i<gameList.length;i++)
 			{
 				$.getJSON(bggurl+gameList[i].id,function(data){
-				console.log(gameList);
+				console.log(i);
 					gameList[i].image = data.image;
 				})
 			}
