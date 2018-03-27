@@ -77,7 +77,8 @@
 					game.image = data.thumbnail;
 					game.name = data.name;
 				})
-			})
+			});
+			$grid.isotope('layout');
 		}
 	})
 	
@@ -101,9 +102,6 @@
 				columnWidth: '.grid-sizer',
 				gutter: 8
 			  },
-		});
-		$grid.imagesLoaded().progress( function() {
-		  $grid.isotope('layout');
 		});
 	
 </script>
