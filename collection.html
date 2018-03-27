@@ -40,7 +40,27 @@
 	</div>
 
 <script>
-
+	
+	var spreadsheetID = "1BnJNhOKiDZQCPQGDIssVnIphZgW5_4PaNFWf9XzF6XUs";
+	var url = "https://spreadsheets.google.com/feeds/list/" + spreadsheetID + "/od6/public/values?alt=json";
+	var gameList = [];
+	initJSON();
+	
+	function initJSON()
+	{
+		$.getJSON(url, function(data)
+		{
+			var entry = data.feed.entry;
+			$(entry).each(function()
+			{
+				var game = {};
+					game.name = this.gsx$name.$t;
+				gameList.push(game);
+			}
+		}
+		console.log(gameList);
+	}
+	
 	var app = new Vue({
 	el: '#grid',
 	data:{
