@@ -68,7 +68,7 @@
 			console.log(gameList.length);
 			for(var i=0;i<gameList.length;i++)
 			{
-				$.getJSON(bggurl+gameList[i].id,function(data){
+				getJSON(bggurl+gameList[i].id,function(data){
 				console.log(i);
 					gameList[i].image = data.image;
 				})
@@ -76,8 +76,8 @@
 		}
 
 		
-       /*
- function getJSON(url,callback){
+       
+		function getJSON(url,callback){
              $.ajax({
                 url: url,
                 type: 'get',
@@ -87,7 +87,6 @@
                 async:true,
                 });
         };
-*/
 	})
 	
 	var app = new Vue({
