@@ -73,7 +73,7 @@
 		
 </section>
 -->
-
+<button :class="[sortOption==='name' ? 'is-checked' : '']" @click="sort('random')">Sort by random</button>
 <div id="vuegrid">
 <div>
   <isotope :list="games" id="root_isotope" class="isoDefault" :options='option' >
@@ -125,7 +125,8 @@
 			},
 			methods: {
 			    sort: function(key) {
-			     	this.sortOption = key;
+			     	this.isotopeSort(key);
+				 	this.sortOption = key;
 			    }
 			  }
 		}
@@ -153,8 +154,6 @@
 				$.getJSON(bggurl+this.id,function(data){
 					game.image = data.thumbnail;
 					game.name = data.name;
-					console.log('update9')
-					app.methods.sort('id');
 				})
 			});
 		}
