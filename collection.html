@@ -70,8 +70,9 @@
 		$.getJSON(url, function(json)
     	 {
     	 	console.log(json);
-    	 	console.log(json.description);
-    	 	return json.description;
+    	 	var d = json.description;
+    	 	console.log('new');
+    	 	return d;
     	 });
 	}
 	
