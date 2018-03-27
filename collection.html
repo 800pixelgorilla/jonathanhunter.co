@@ -32,35 +32,7 @@
 		<script src="https://cdn.rawgit.com/David-Desmaisons/Vue.Isotope/v2.0.1/dist/vue_isotope.js"></script>
 </head>
 
-<body class="bg-silver">
-
-<!--
-<section class="grid container masonry" id="vuegrid">
-
-		<div v-for='game in games' class="grid-item col" data-category="cat">
-			<div class="p2">
-				<div class="game-blur" :style="{ 'background-image' : 'url(' + game.image + ')' }"></div>
-				<div class="game-cover" :style="{ 'background-image' : 'url(' + game.image + ')' }"></div>
-				<img class="product-img" v-bind:src="game.image">
-				<h2 class="mt0">{{game.name}}</h2>
-			</div>
-		</div>
-		
-</section>
--->
-
-<!--
-<div id="main">
-<div>
-  <isotope :list="games" id="root_isotope" class="isoDefault" :options='option' >
-  		<div v-for='game in games' class="grid-item col" data-category="cat" :key="game.id">
-			<div class="p2">
-				<img class="product-img" v-bind:src="game.image">
-			</div>
-		</div>
-  </isotope>
-</div>
--->
+<body>
 
 <div id="main">
 <div>
@@ -103,11 +75,7 @@
 
 <script>
 	
-	var spreadsheetID = "1BnJNhOKiDZQCPQGDIssVnIphZgW5_4PaNFWf9XzF6XU";
-	var sheeturl = "https://spreadsheets.google.com/feeds/list/" + spreadsheetID + "/od6/public/values?alt=json";
-	var bggurl = "http://bgg-json.azurewebsites.net/thing/";
-	var gameList = []
-	
+	$(document).ready(function(){
 	var count = 0;
 	
 	var vm = new Vue({
@@ -182,76 +150,7 @@
 		    }
 		  }
 		});
-	
-/*
-	var vm = new Vue({
-	el: '#main',
-	data:{
-			games:gameList,
-			layouts: [
-			      "masonry",
-			      "fitRows",
-			      "cellsByRow",
-			      "vertical",
-			      "packery",
-			      "masonryHorizontal",
-			      "fitColumns",
-			      "cellsByColumn",
-			      "horiz"
-			    ],
-			currentLayout: 'masonry',
-			selected: null,
-			sortOption: "original-order",
-			filterOption: "show all",
-			option:
-			{
-				itemSelector: ".element-item",
-				getSortData: { id: 'id',name: function(itemElem) {
-						return itemElem.name.toLowerCase();
-					} },
-				sortBy : "id"
-			},
-			methods: {
-			    sort: function(key) {
-			     	this.isotopeSort(key);
-				 	this.sortOption = key;
-			    }
-			  }
-		}
-    })
-*/
-	
-	/*
-$(document).ready(function(){
-		
-	    $.getJSON(sheeturl, function(data) {
-			 var entry = data.feed.entry;
-			 $(entry).each(function()
-			 {
-			 	var game = {image:""};
-			 	game.name = this.gsx$name.$t;
-			 	game.id = this.gsx$id.$t;
-			 	gameList.push(game);
-			 })
-			 getBGGData();
-	    })
-		
-		function getBGGData()
-		{
-			$.each(gameList,function(key,value)
-			{
-				var game = this;
-				$.getJSON(bggurl+this.id,function(data){
-					game.image = data.thumbnail;
-					game.name = data.name;
-				})
-			});
-		}
-	})
-*/
-	
-	
-	
+});
 </script>
 
 </body>
