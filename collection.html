@@ -58,8 +58,21 @@
 			 	game.id = this.gsx$id.$t;
 			 	gameList.push(game);
 			 })
+			 getBGGData();
 	    })
+		
+		getBGGData()
+		{
+			gameList.each(function()
+			{
+				console.log(this);
 
+				$.getJSON(bggurl+this.id,function(data){
+					console.log(this);
+					this.image = data.thumbnail;
+				})
+			})
+		}
 	})
 	
 	var app = new Vue({
