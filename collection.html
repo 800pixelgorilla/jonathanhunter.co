@@ -59,10 +59,11 @@
 			 	game.id = this.gsx$id.$t;
 			 	game.name = this.gsx$name.$t;
 			 	$.getJSON(bggurl+game.id,function(d){
+			 		game.image = d.image;
+			 		console.log(game);
 				 	gameList.push(game);	
 			 	})
 			 })
-			 getBGGInfo();
 	    })
 
 		/*
