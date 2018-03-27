@@ -66,7 +66,7 @@
 			$.each(gameList,function(key,value)
 			{
 				console.log(this);
-
+				console.log('test');
 				$.getJSON(bggurl+this.id,function(data){
 					console.log(this);
 					this.image = data.thumbnail;
