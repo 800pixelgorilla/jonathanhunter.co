@@ -53,7 +53,7 @@
 			var entry = data.feed.entry;
 			$(entry).each(function()
 			{
-				var game = {name:""};
+				var game = {};
 				game.id = this.gsx$id.$t;
 				gameList.push(game);
 			});
@@ -68,6 +68,7 @@
 			$.getJSON("http://bgg-json.azurewebsites.net/thing/"+game.id,function(data)
 			{
 				game.description = data.description;
+				console.log(game.description);
 			});
 		}
 		updateModel();
