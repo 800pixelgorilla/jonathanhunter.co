@@ -56,7 +56,7 @@
 			 	var game = {image:""};
 			 	game.id = this.gsx$id.$t;
 			 	$.getJSON(bggurl+game.id,function(d){
-			 		game.image = d.image;
+			 		game.image = d.thumbnail;
 			 		game.name = d.name;
 				 	gameList.push(game);	
 			 	})
