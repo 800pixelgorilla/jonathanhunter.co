@@ -25,22 +25,49 @@
 			border-color: #fff;
 		}
 	</style>
-	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/vue"></script>
 </head>
 
 <body class="bg-silver">
-	
-	<div id="grid">
+
+<section class="grid container"
+
+	<div class="grid-sizer"></div>
 		<div v-for='game in games' class="grid-item col rounded border bg-white" data-category="cat">
 			<div class="p2">
 				<img class="product-img" v-bind:src="game.image">
 				<h2 class="mt0">{{game.name}}</h2>
 			</div>
 		</div>
-	</div>
+		
+</section>
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/3.2.0/imagesloaded.pkgd.min.js"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/2.2.2/isotope.pkgd.min.js"></script>
 
 <script>
+	
+	var $grid = $('.grid').isotope({
+			itemSelector: '.grid-item',
+			  percentPosition: true,
+			  getSortData: {
+			   // name: '.mt0',
+			   // category: '[data-category]',
+			   // price: '.price parseInt'
+			  },
+			  layoutMode: 'masonry',
+			  masonry: {
+				columnWidth: '.grid-sizer',
+				gutter: 8
+			  },
+		});
+		$grid.imagesLoaded().progress( function() {
+		  $grid.isotope('layout');
+		});
+	
 	
 	var spreadsheetID = "1BnJNhOKiDZQCPQGDIssVnIphZgW5_4PaNFWf9XzF6XU";
 	var sheeturl = "https://spreadsheets.google.com/feeds/list/" + spreadsheetID + "/od6/public/values?alt=json";
