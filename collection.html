@@ -56,10 +56,6 @@
 			{
 				var game = {};
 				game.id = this.gsx$id.$t;
-				
-				console.log('fixeder');
-				
-				var bgginfo = $.getJSON("http://bgg-json.azurewebsites.net/thing/"+game.id);
 				console.log(getBggInfo(game.id));
 					
 				gameList.push(game);
@@ -74,7 +70,7 @@
 		$.getJSON(url, function(json)
     	 {
     	 	console.log(json);
-    	 	return json;
+    	 	return json.description;
     	 });
 	}
 	
