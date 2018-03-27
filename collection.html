@@ -90,7 +90,7 @@
 			{
 				var game = this;
 				$.getJSON(bggurl+this.id,function(data){
-					game.image = data.thumbnail;
+					game.image = data.image;
 					game.name = data.name;
 				})
 			});
