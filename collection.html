@@ -111,7 +111,13 @@
 					return itemElem.name.toLowerCase();
 					} },
 				sortBy : "name"
-			}
+			},
+			methods: {
+			    sort: function(key) {
+			      this.isotopeSort(key);
+			      this.sortOption = key;
+			    }
+			  }
 		}
     })
 	
