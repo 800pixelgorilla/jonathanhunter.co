@@ -30,17 +30,15 @@
 
 <body class="bg-silver">
 
-<section class="grid container">
+<section class="grid container" id="vuegrid">
 
 	<div class="grid-sizer"></div>
-		<div id="grid">
-			<div v-for='game in games' class="grid-item col rounded border bg-white" data-category="cat">
+		<div v-for='game in games' class="grid-item col rounded border bg-white" data-category="cat">
 				<div class="p2">
 					<img class="product-img" v-bind:src="game.image">
 					<h2 class="mt0">{{game.name}}</h2>
 				</div>
 			</div>
-		</div>
 </section>
 
 
@@ -84,7 +82,7 @@
 	})
 	
 	var app = new Vue({
-	el: '#grid',
+	el: '#vuegrid',
 	data:{
 		games:gameList
     }
