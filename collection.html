@@ -1,168 +1,149 @@
+<!DOCTYPE html>
 <html>
 <head>
+	<title>Collection</title>
+	<link href="http://d2v52k3cl9vedd.cloudfront.net/basscss/7.0.4/basscss.min.css" rel="stylesheet">
+	<style type="text/css">
+		.bg-blue-gradient {
+			background: rgba(0,116,217,1);
+			background: -webkit-linear-gradient(top,rgba(0,116,217,1) 0%,rgba(0,65,122,1) 100%);
+			background: linear-gradient(to bottom,rgba(0,116,217,1) 0%,rgba(0,65,122,1) 100%);
+		}
+		.grid-sizer, .grid-item {
+			width: 250px;
+/* 			margin-bottom: 8px; */
+			position: relative;
+			overflow: hidden
+			box-sizing: border-box;
+		}
+		.bg-square-cash {
+			background-color: #22a301;
+		}
+		.zero {
+			font-size: 0;
+		}
+		.button-group button.is-checked {
+			color: #001f3f;
+			background-color: #fff;
+			border-color: #fff;
+		}
+		.game-cover{
+			width:100%;
+			height: 250px;
+			background-size: contain;
+			background-position: center;
+			background-repeat: no-repeat;
+			position: relative;
+		}
+		
+		.game-blur{
+			position: absolute;
+			top:-12%;
+			bottom:-12%;
+			left:-12%;
+			right:-12%;
+			background: no-repeat center;
+			background-size: cover;
+			z-index: 0;
+			filter:blur(1em) brightness(150%);
+		}
+		
+		.product-img{
+			width: 100%;
+		}
+		
+		
+	</style>
+	<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
 
-<style>
-.item {
-  background-color: #eee;
-  padding: 10px;
-  width: 200px;
-  height: 200px;
-  margin-bottom: 10px;
-  box-sizing: border-box;
-  font-family: monospace;
-  color: #333;
-}
+<body class="bg-silver">
 
-.is-checked {
-  background-color: #28F;
-}
+<!--
+<section class="grid container masonry" id="vuegrid">
 
-.isoDefault {
-  min-height: 210px;
-}
+		<div v-for='game in games' class="grid-item col" data-category="cat">
+			<div class="p2">
+				<div class="game-blur" :style="{ 'background-image' : 'url(' + game.image + ')' }"></div>
+				<div class="game-cover" :style="{ 'background-image' : 'url(' + game.image + ')' }"></div>
+				<img class="product-img" v-bind:src="game.image">
+				<h2 class="mt0">{{game.name}}</h2>
+			</div>
+		</div>
+		
+</section>
+-->
 
-</style>
+<div id="vuegrid">
+<div>
+  <isotope :list="games" id="root_isotope" class="isoDefault" :options='option' >
+  		<div v-for='game in games' class="grid-item col" data-category="cat" :key="game.id">
+			<div class="p2">
+				<img class="product-img" v-bind:src="game.image">
+<!-- 				<h2 class="mt0">{{game.name}}</h2> -->
+			</div>
+		</div>
+  </isotope>
+</div>
+
+
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.25/vue.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/3.2.0/imagesloaded.pkgd.min.js"></script>
 <script src="https://npmcdn.com/isotope-layout@3.0.5/dist/isotope.pkgd.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.13.1/lodash.min.js"></script>
-<script src="https://cdn.rawgit.com/David-Desmaisons/Vue.Isotope/v.1.1.0/src/vue_isotope.js"></script>
-
-</head>
-<body>
-<div id="main">
-<div>
-  <div id="root_isotope" class="isoDefault">
-    <div v-isotope-for="element in list" :options='option' @click="selected=element">
-      	<img class="product-img" v-bind:src="game.image">
-    </div>
-  </div>
-</div>
-
-<div id="change">
-  <button @click="add">Add</button>
-  <button @click="replace">Replace</button>
-</div>
-<div id="filter">
-  <div>
-    <input type="text" v-model="filterText" placeholder="no filter">
-    <button :class="[filterOption==='filterByText' ? 'is-checked' : '']" @click="filter('filterByText')">Filter</button>
-  </div>
-  <button :class="[filterOption==='isEven' ? 'is-checked' : '']" @click="filter('isEven')">Filter Even</button>
-  <button :class="[filterOption==='isOdd' ? 'is-checked' : '']" @click="filter('isOdd')">Filter Odd</button>
-  <button @click="filter()">Unfilter</button>
-</div>
-<div id="sort">
-  <button :class="[sortOption==='name' ? 'is-checked' : '']" @click="sort('name')">Sort by name</button>
-  <button :class="[sortOption==='id' ? 'is-checked' : '']" @click="sort('id')">Sort by id</button>
-  <button @click="shuttle">Shuttle</button>
-</div>
-<div>
-  <div v-if="selected" class="item">
-    <input type="text" name="" v-model="selected.name">
-    <br>
-    <input type="text" name="" v-model="selected.id">
-  </div>
-</div>
-</div>
+<script src="https://cdn.rawgit.com/David-Desmaisons/Vue.Isotope/v2.0.1/dist/vue_isotope.js"></script>
 
 <script>
-
-$(document).ready(function(){
-
-var count = 0;
-var gameList = [];
-var spreadsheetID = "1BnJNhOKiDZQCPQGDIssVnIphZgW5_4PaNFWf9XzF6XU";
-var sheeturl = "https://spreadsheets.google.com/feeds/list/" + spreadsheetID + "/od6/public/values?alt=json";
-var bggurl = "http://bgg-json.azurewebsites.net/thing/";
-
-var vm = new Vue({
-  el: "#main",
-  data: {
-    list: gameList,
-    selected: null,
-    sortOption: null,
-    filterOption: null,
-    filterText: "",
-    option: {
-      getSortData: {
-        id: "id",
-        name: function(itemElem) {
-          return itemElem.name.toLowerCase();
-        }
-      },
-      getFilterData: {
-        isEven: function(itemElem) {
-          return itemElem.id % 2 === 0;
-        },
-        isOdd: function(itemElem) {
-          return itemElem.id % 2 !== 0;
-        },
-        filterByText: function(itemElem) {
-          return itemElem.name.toLowerCase().includes(this.filterText.toLowerCase());
-        }
-      }
-    }
-  },
-  methods: {
-    add: function() {
-      this.list.push({
-        name: 'Juan',
-        id: count++
-      });
-    },
-    replace: function() {
-      this.list = [{
-        name: 'Edgard',
-        id: count++
-      }, {
-        name: 'James',
-        id: count++
-      }]
-    },
-    sort: function(key) {
-      this.isotopeSort(key);
-      this.sortOption = key;
-    },
-    filter: function(key) {
-      if (this.filterOption == key)
-        key = null;
-      this.isotopeFilter(key);
-      this.filterOption = key;
-    },
-    shuttle: function() {
-      this.isotopeShuttle();
-      this.sortOption = null;
-    }
-  }
-});
-
-$.getJSON(sheeturl, function(data) {
-	 var entry = data.feed.entry;
-	 $(entry).each(function()
-	 {
-	 	var game = {image:""};
-	 	game.name = this.gsx$name.$t;
-	 	game.id = this.gsx$id.$t;
-	 	gameList.push(game);
-	 	getBGGData()
-	 })
-})
-
-function getBGGData()
-{
-	$.each(gameList,function(key,value)
-	{
-		var game = this;
-		$.getJSON(bggurl+this.id,function(data){
-			game.image = data.thumbnail;
-			game.name = data.name;
-		})
-	});
-}
-
-});
+	
+	var spreadsheetID = "1BnJNhOKiDZQCPQGDIssVnIphZgW5_4PaNFWf9XzF6XU";
+	var sheeturl = "https://spreadsheets.google.com/feeds/list/" + spreadsheetID + "/od6/public/values?alt=json";
+	var bggurl = "http://bgg-json.azurewebsites.net/thing/";
+	var gameList = []
+	
+	var app = new Vue({
+	el: '#vuegrid',
+	data:{
+			games:gameList,
+			option:
+			{
+				getSortData: { name: function(itemElem) {
+					return itemElem.name.toLowerCase();
+					} },
+				sortBy : "name"
+			}
+		}
+    })
+	
+	$(document).ready(function(){
+		
+	    $.getJSON(sheeturl, function(data) {
+			 var entry = data.feed.entry;
+			 $(entry).each(function()
+			 {
+			 	var game = {image:""};
+			 	game.name = this.gsx$name.$t;
+			 	game.id = this.gsx$id.$t;
+			 	gameList.push(game);
+			 })
+			 getBGGData();
+	    })
+		
+		function getBGGData()
+		{
+			$.each(gameList,function(key,value)
+			{
+				var game = this;
+				$.getJSON(bggurl+this.id,function(data){
+					game.image = data.image;
+					game.name = data.name;
+				})
+			});
+		}
+	})
+	
+	
+	
 </script>
 
 </body>
