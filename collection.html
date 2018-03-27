@@ -40,7 +40,7 @@
 
 		<div v-for='game in games' class="grid-item col rounded border bg-white" data-category="cat">
 			<div class="p2">
-				<div class="game-cover" v-bind:style="{ backgroundImage: 'url(\'' + game.image + '\}"></div>
+				<div class="game-cover" :style="{ 'background-image' : 'url(' + game.image + ')' }"></div>
 				<img class="product-img" v-bind:src="game.image">
 				<h2 class="mt0">{{game.name}}</h2>
 			</div>
@@ -87,7 +87,7 @@
 			{
 				var game = this;
 				$.getJSON(bggurl+this.id,function(data){
-					game.image = data.image;
+					game.image = data.thumnail;
 					game.name = data.name;
 				})
 			});
