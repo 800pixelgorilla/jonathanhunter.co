@@ -34,7 +34,7 @@
 	<div id="grid">
 		<div v-for='game in games' class="grid-item col rounded border bg-white" data-category="cat">
 			<div class="p2">
-				<img class="product-img" src="https://cf.geekdo-images.com/opengraph/img/QmXTpxWFg56NwlqWDrATiAuRYfg=/fit-in/1200x630/pic2437871.jpg"/>
+				<img class="product-img" v-bind:src="game.image">
 				<h2 class="mt0">{{game.name}}</h2>
 			</div>
 		</div>
@@ -58,6 +58,9 @@
 			 	var game = {};
 			 	game.id = this.gsx$id.$t;
 			 	game.name = this.gsx$name.$t;
+			 	$.getJSON(bggurl+game.id, function(data){
+				 	game.image = data.image;
+			 	})
 			 	gameList.push(game);
 			 })
 			 //getBGGInfo();
