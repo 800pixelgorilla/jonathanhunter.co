@@ -70,6 +70,8 @@
 
 <script>
 
+$(document).ready(function(){
+
 var count = 0;
 var gameList = [];
 var spreadsheetID = "1BnJNhOKiDZQCPQGDIssVnIphZgW5_4PaNFWf9XzF6XU";
@@ -147,7 +149,7 @@ $.getJSON(sheeturl, function(data) {
 	 	gameList.push(game);
 	 })
 })
-
+});
 </script>
 
 </body>
