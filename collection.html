@@ -107,7 +107,6 @@
 			games:gameList,
 			option:
 			{
-				layout: "fitrows",
 				getSortData: { name: function(itemElem) {
 					return itemElem.name.toLowerCase();
 					} },
@@ -138,6 +137,7 @@
 				$.getJSON(bggurl+this.id,function(data){
 					game.image = data.image;
 					game.name = data.name;
+					app.sort('name');
 				})
 			});
 		}
