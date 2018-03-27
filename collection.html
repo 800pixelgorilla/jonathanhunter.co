@@ -54,6 +54,7 @@
 			var entry = data.feed.entry;
 			$(entry).each(function()
 			{
+				console.log(this.gsx$name.$t);
 				var game = {};
 					game.name = this.gsx$name.$t;
 				gameList.push(game);
