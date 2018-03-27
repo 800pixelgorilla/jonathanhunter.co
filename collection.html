@@ -55,7 +55,7 @@
 			 var entry = data.feed.entry;
 			 $(entry).each(function()
 			 {
-			 	var game = {image:"";
+			 	var game = {image:""};
 			 	game.id = this.gsx$id.$t;
 			 	game.name = this.gsx$name.$t;
 			 	gameList.push(game);
@@ -69,6 +69,7 @@
 			for(var i=0;i<gameList.length;i++)
 			{
 				$.getJSON(bggurl+gameList[i].id,function(data){
+				console.log(gameList);
 					gameList[i].image = data.image;
 				})
 			}
