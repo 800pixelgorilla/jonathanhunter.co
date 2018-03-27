@@ -35,8 +35,7 @@
 <div>
   <div id="root_isotope" class="isoDefault">
     <div v-isotope-for="element in list" :options='option' @click="selected=element">
-      {{element.name}}
-      <br> {{element.id}}
+      	<img class="product-img" v-bind:src="game.image">
     </div>
   </div>
 </div>
@@ -147,8 +146,22 @@ $.getJSON(sheeturl, function(data) {
 	 	game.name = this.gsx$name.$t;
 	 	game.id = this.gsx$id.$t;
 	 	gameList.push(game);
+	 	getBGGData()
 	 })
 })
+
+function getBGGData();
+{
+	$.each(gameList,function(key,value)
+	{
+		var game = this;
+		$.getJSON(bggurl+this.id,function(data){
+			game.image = data.thumbnail;
+			game.name = data.name;
+		})
+	});
+}
+
 });
 </script>
 
