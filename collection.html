@@ -64,12 +64,21 @@
 		
 		function getBGGInfo()
 		{
+			var app = new Vue({
+	el: '#grid',
+	data:{
+		games:[
+			{ text: 'Gloomhaven' },
+			{ text: 'Arkham Horror CCG' },
+			{ text: 'Clank' }
+		]
+    }
 			for(var i=0;i<gameList.length;i++)
 			{
 				var game = gameList[i];
 				getJSON(bggurl+game.id,function(data){
-					game.description = data.description;
-					console.log(game);
+					game.image = data.image;
+					
 				})
 			}
 		}
@@ -86,15 +95,7 @@
         };
 	})
 	
-	var app = new Vue({
-	el: '#grid',
-	data:{
-		games:[
-			{ text: 'Gloomhaven' },
-			{ text: 'Arkham Horror CCG' },
-			{ text: 'Clank' }
-		]
-    }
+	
     })
 
 </script>
