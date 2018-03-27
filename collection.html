@@ -54,7 +54,6 @@
 		
 		
 	</style>
-	<script src="https://cdn.jsdelivr.net/npm/vue"></script>
 </head>
 
 <body class="bg-silver">
@@ -88,8 +87,8 @@
 
 
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.25/vue.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/3.2.0/imagesloaded.pkgd.min.js"></script>
 <script src="https://npmcdn.com/isotope-layout@3.0.5/dist/isotope.pkgd.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.13.1/lodash.min.js"></script>
 <script src="https://cdn.rawgit.com/David-Desmaisons/Vue.Isotope/v2.0.1/dist/vue_isotope.js"></script>
@@ -105,6 +104,17 @@
 	el: '#vuegrid',
 	data:{
 			games:gameList,
+			layouts: [
+			      "masonry",
+			      "fitRows",
+			      "cellsByRow",
+			      "vertical",
+			      "packery",
+			      "masonryHorizontal",
+			      "fitColumns",
+			      "cellsByColumn",
+			      "horiz"
+			    ],
 			option:
 			{
 				getSortData: { name: function(itemElem) {
@@ -143,7 +153,7 @@
 					game.image = data.image;
 					game.name = data.name;
 					console.log('update5')
-					app.methods.sort('name');
+					//app.methods.sort('name');
 				})
 			});
 		}
