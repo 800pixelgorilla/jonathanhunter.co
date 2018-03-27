@@ -114,7 +114,6 @@
 			},
 			methods: {
 			    sort: function(key) {
-			    	console.log(test);
 			      this.isotopeSort(key);
 			      this.sortOption = key;
 			    }
@@ -144,8 +143,8 @@
 				$.getJSON(bggurl+this.id,function(data){
 					game.image = data.image;
 					game.name = data.name;
-					console.log('update2')
-					app.sort('name');
+					console.log('update3')
+					app.methods.sort('name');
 				})
 			});
 		}
