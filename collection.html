@@ -58,26 +58,25 @@
 				gameList.push(game);
 			});
 			jsonComplete();
-			//console.log(gameList.length);
 		});
 	}
 	function jsonComplete()
 	{
-		console.log('oncomplete : ' + gameList.length)
+		for(var i=0;i<gameList.length;i++)
+		{
+			var game = gameList[i];
+			$.getJSON("http://bgg-json.azurewebsites.net/thing/"+game.id,function(data)
+			{
+				game.description = data.description;
+			});
+		}
+		updateModel();
 	}
-	/*
-function getBggInfo(id)
+	
+	function updateModel()
 	{
-		var url = "http://bgg-json.azurewebsites.net/thing/"+id;
-		$.getJSON(url, function(json)
-    	 {
-    	 	console.log(json);
-    	 	var d = json.description;
-    	 	console.log('new');
-    	 	return d;
-    	 });
+		console.log(gameList);
 	}
-*/
 	
 	var app = new Vue({
 	el: '#grid',
