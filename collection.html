@@ -68,10 +68,9 @@
 			$.getJSON("http://bgg-json.azurewebsites.net/thing/"+game.id,function(data)
 			{
 				game.description = data.description;
-				console.log(game.description);
+				updateModel();
 			});
 		}
-		updateModel();
 	}
 	
 	function updateModel()
