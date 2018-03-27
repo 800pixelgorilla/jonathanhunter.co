@@ -90,7 +90,7 @@
 <div id="main">
 	<div>
 	  <div id="root_isotope" class="isoDefault">
-	    <div v-isotope-for="element in list" :options='option' @click="selected=element">
+	    <div v-isotope-for="game in games" :options='option' @click="selected=element">
 	    	<div class="p2">
 	    		<img class="product-img" v-bind:src="game.image">
 	    	</div>
@@ -118,7 +118,7 @@
 	var vm = new Vue({
 	el: '#main',
 	data:{
-			list:gameList,
+			games:gameList,
 			layouts: [
 			      "masonry",
 			      "fitRows",
