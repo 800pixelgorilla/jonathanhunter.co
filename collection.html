@@ -54,23 +54,40 @@
 
 <body class="bg-silver">
 
+<!--
 <section class="grid container masonry" id="vuegrid">
 
 		<div v-for='game in games' class="grid-item col" data-category="cat">
 			<div class="p2">
-<!-- 				<div class="game-blur" :style="{ 'background-image' : 'url(' + game.image + ')' }"></div> -->
-<!-- 				<div class="game-cover" :style="{ 'background-image' : 'url(' + game.image + ')' }"></div> -->
+				<div class="game-blur" :style="{ 'background-image' : 'url(' + game.image + ')' }"></div>
+				<div class="game-cover" :style="{ 'background-image' : 'url(' + game.image + ')' }"></div>
 				<img class="product-img" v-bind:src="game.image">
 				<h2 class="mt0">{{game.name}}</h2>
 			</div>
 		</div>
 		
 </section>
+-->
+
+<div id="vuegrid">
+<div>
+  <isotope :list="games" id="root_isotope" class="isoDefault" :options='option' >
+  		<div v-for='game in games' class="grid-item col" data-category="cat" :key="element.id">
+			<div class="p2">
+				<img class="product-img" v-bind:src="game.image">
+				<h2 class="mt0">{{game.name}}</h2>
+			</div>
+		</div>
+  </isotope>
+</div>
 
 
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/3.2.0/imagesloaded.pkgd.min.js"></script>
+<script src="https://npmcdn.com/isotope-layout@3.0.5/dist/isotope.pkgd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.13.1/lodash.min.js"></script>
+<script src="https://cdn.rawgit.com/David-Desmaisons/Vue.Isotope/v2.0.1/dist/vue_isotope.js"></script>
 
 <script>
 	
@@ -82,8 +99,13 @@
 	var app = new Vue({
 	el: '#vuegrid',
 	data:{
-		games:gameList
-    }
+			games:gameList,
+			option:
+			{
+				getSortData: { id: "id" },
+				sortBy : "id"
+			}
+		}
     })
 	
 	$(document).ready(function(){
