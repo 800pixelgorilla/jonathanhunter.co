@@ -125,7 +125,7 @@
 			},
 			methods: {
 			    sort: function(key) {
-			     // this.sort(key);
+			     	this.sortOption = key;
 			    }
 			  }
 		}
@@ -151,9 +151,9 @@
 			{
 				var game = this;
 				$.getJSON(bggurl+this.id,function(data){
-					game.image = data.image;
+					game.image = data.thumbnail;
 					game.name = data.name;
-					console.log('update7')
+					console.log('update8')
 					app.methods.sort('name');
 				})
 			});
