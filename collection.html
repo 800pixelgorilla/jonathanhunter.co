@@ -35,7 +35,7 @@
 		<div v-for='game in games' class="grid-item col rounded border bg-white" data-category="cat">
 			<div class="p2">
 				<img class="product-img" src="https://cf.geekdo-images.com/opengraph/img/QmXTpxWFg56NwlqWDrATiAuRYfg=/fit-in/1200x630/pic2437871.jpg"/>
-				<h2 class="mt0">{{game.text}}</h2>
+				<h2 class="mt0">{{game.name}}</h2>
 			</div>
 		</div>
 	</div>
@@ -45,22 +45,19 @@
 	var spreadsheetID = "1BnJNhOKiDZQCPQGDIssVnIphZgW5_4PaNFWf9XzF6XU";
 	var sheeturl = "https://spreadsheets.google.com/feeds/list/" + spreadsheetID + "/od6/public/values?alt=json";
 	var bggurl = "http://bgg-json.azurewebsites.net/thing/";
-	var gameList = [
-			{ text: 'blah' },
-			{ text: 'jokegame' },
-			{ text: 'Clank' }]
+	var gameList = []
 	
 	$(document).ready(function(){
 		
-		getJSON(sheeturl,postProcessing);
+		//getJSON(sheeturl,postProcessing);
 		
-	    function postProcessing(data) {
+	    $.getJSON(sheeturl, function(data) {
 			 var entry = data.feed.entry;
 			 $(entry).each(function()
 			 {
 			 	var game = {};
 			 	game.id = this.gsx$id.$t;
-			 	game.text = this.gsx$name.$t;
+			 	game.name = this.gsx$name.$t;
 			 	gameList.push(game);
 			 })
 			 //getBGGInfo();
@@ -80,7 +77,8 @@
 		}
 */
 		
-        function getJSON(url,callback){
+       /*
+ function getJSON(url,callback){
              $.ajax({
                 url: url,
                 type: 'get',
@@ -90,6 +88,7 @@
                 async:true,
                 });
         };
+*/
 	})
 	
 	var app = new Vue({
