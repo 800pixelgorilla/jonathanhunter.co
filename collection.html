@@ -62,20 +62,17 @@
 	}
 	function jsonComplete()
 	{
+		console.log(gameList.length);
 		for(var i=0;i<gameList.length;i++)
 		{
 			var game = gameList[i];
+			console.log(game);
 			$.getJSON("http://bgg-json.azurewebsites.net/thing/"+game.id,function(data)
 			{
 				game.description = data.description;
-				updateModel();
+				
 			});
 		}
-	}
-	
-	function updateModel()
-	{
-		console.log(gameList);
 	}
 	
 	var app = new Vue({
