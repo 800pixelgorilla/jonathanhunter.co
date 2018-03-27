@@ -86,6 +86,16 @@
 				})
 			});
 		}
+		
+		var $grid = $('.grid').isotope({
+			itemSelector: '.grid-item',
+			  percentPosition: true,
+			  layoutMode: 'masonry',
+			  masonry: {
+				columnWidth: '.grid-sizer',
+				gutter: 8
+			  },
+		});
 	})
 	
 	
