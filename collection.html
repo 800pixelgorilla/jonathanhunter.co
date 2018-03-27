@@ -45,7 +45,10 @@
 	var spreadsheetID = "1BnJNhOKiDZQCPQGDIssVnIphZgW5_4PaNFWf9XzF6XU";
 	var sheeturl = "https://spreadsheets.google.com/feeds/list/" + spreadsheetID + "/od6/public/values?alt=json";
 	var bggurl = "http://bgg-json.azurewebsites.net/thing/";
-	var gameList = [];
+	var gameList = [
+			{ text: 'Gloomhaven' },
+			{ text: 'Arkham Horror CCG' },
+			{ text: 'Clank' };]
 	
 	$(document).ready(function(){
 		
@@ -57,22 +60,15 @@
 			 {
 			 	var game = {};
 			 	game.id = this.gsx$id.$t;
+			 	game.text = this.gsx$name.$t;
 			 	gameList.push(game);
 			 })
-			 getBGGInfo();
+			 //getBGGInfo();
 	    }
-		
+		/*
+
 		function getBGGInfo()
 		{
-			var app = new Vue({
-	el: '#grid',
-	data:{
-		games:[
-			{ text: 'Gloomhaven' },
-			{ text: 'Arkham Horror CCG' },
-			{ text: 'Clank' }
-		]
-    }
 			for(var i=0;i<gameList.length;i++)
 			{
 				var game = gameList[i];
@@ -82,6 +78,7 @@
 				})
 			}
 		}
+*/
 		
         function getJSON(url,callback){
              $.ajax({
@@ -95,7 +92,11 @@
         };
 	})
 	
-	
+	var app = new Vue({
+	el: '#grid',
+	data:{
+		games:gameList
+    }
     })
 
 </script>
