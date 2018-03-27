@@ -46,7 +46,7 @@
 	var url = "https://spreadsheets.google.com/feeds/list/" + spreadsheetID + "/od6/public/values?alt=json";
 	var gameList = [];
 	initJSON();
-	console.log(gameList);
+	console.log(gameList.length);
 	function initJSON()
 	{
 		$.getJSON(url, function(data)
