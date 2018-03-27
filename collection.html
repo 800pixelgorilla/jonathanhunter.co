@@ -55,9 +55,10 @@
 			$(entry).each(function()
 			{
 				var game = {};
-					game.name = this.gsx$name.$t;
 					game.id = this.gsx$id.$t;
-					getBggInfo(game.id);
+				var bgginfo = getBggInfo(game.id);
+				console.log(bgginfo);
+					
 				gameList.push(game);
 			});
 		});
@@ -67,14 +68,8 @@
 	function getBggInfo(id)
 	{
 		var url = "http://bgg-json.azurewebsites.net/thing/"+id;
-		
-		console.log(url)
-		
 		$.getJSON(url, function(json)
     	 {
-    	 	console.log(json);
-    	 	//if(!json.Poster)console.log(title +" = "+json.Poster);
-    	 	//console.log(json.Poster)
     	 	return json;
     	 });
 	}
