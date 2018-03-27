@@ -118,11 +118,10 @@
 			    ],
 			option:
 			{
-				getSortData: { name: function(itemElem) {
-					return itemElem.name.toLowerCase();
-					id: 'id';
+				getSortData: { id: 'id',name: function(itemElem) {
+						return itemElem.name.toLowerCase();
 					} },
-				sortBy : "name"
+				sortBy : "id"
 			},
 			methods: {
 			    sort: function(key) {
