@@ -66,12 +66,11 @@
 	
 	function getBggInfo(id)
 	{
-		$.getJSON("https://bgg-json.azurewebsites.net/thing/"+id)
-		//$.getJSON("http://www.omdbapi.com/?t="+title+"&apikey=9184d20d", function(json)
+		$.getJSON("https://bgg-json.azurewebsites.net/thing/"+id, function(json))
     	 {
     	 	//if(!json.Poster)console.log(title +" = "+json.Poster);
     	 	//console.log(json.Poster)
-    	 	//return json.Poster;
+    	 	return json;
     	 });
 	}
 	
