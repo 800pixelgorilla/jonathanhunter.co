@@ -57,10 +57,10 @@
 				var game = {};
 				game.id = this.gsx$id.$t;
 				
-				console.log('fixed');
+				console.log('fixeder');
 				
 				var bgginfo = $.getJSON("http://bgg-json.azurewebsites.net/thing/"+game.id);
-				console.log(bgginfo);
+				console.log(getBggInfo(game.id));
 					
 				gameList.push(game);
 			});
@@ -73,6 +73,7 @@
 		var url = "http://bgg-json.azurewebsites.net/thing/"+id;
 		$.getJSON(url, function(json)
     	 {
+    	 	console.log(json);
     	 	return json;
     	 });
 	}
