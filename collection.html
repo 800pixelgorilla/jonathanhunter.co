@@ -74,20 +74,33 @@
 </section>
 -->
 
-<div id="vuegrid">
-<button :class="[sortOption==='name' ? 'is-checked' : '']" @click="sort('name')">Sort by name 3</button>
+<!--
+<div id="main">
 <div>
   <isotope :list="games" id="root_isotope" class="isoDefault" :options='option' >
   		<div v-for='game in games' class="grid-item col" data-category="cat" :key="game.id">
 			<div class="p2">
 				<img class="product-img" v-bind:src="game.image">
-<!-- 				<h2 class="mt0">{{game.name}}</h2> -->
 			</div>
 		</div>
   </isotope>
 </div>
+-->
 
-
+<div id="main">
+	<div>
+	  <div id="root_isotope" class="isoDefault">
+	    <div v-isotope-for="element in list" :options='option' @click="selected=element">
+	    	<div class="p2">
+	    		<img class="product-img" v-bind:src="game.image">
+	    	</div>
+	    </div>
+	  </div>
+	</div>
+	<div id="sort">
+	  <button :class="[sortOption==='name' ? 'is-checked' : '']" @click="sort('name')">Sort by name</button>
+	  <button :class="[sortOption==='id' ? 'is-checked' : '']" @click="sort('id')">Sort by id</button>
+	</div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/3.2.0/imagesloaded.pkgd.min.js"></script>
@@ -102,10 +115,10 @@
 	var bggurl = "http://bgg-json.azurewebsites.net/thing/";
 	var gameList = []
 	
-	var app = new Vue({
-	el: '#vuegrid',
+	var vm = new Vue({
+	el: '#main',
 	data:{
-			games:gameList,
+			list:gameList,
 			layouts: [
 			      "masonry",
 			      "fitRows",
@@ -127,7 +140,7 @@
 				getSortData: { id: 'id',name: function(itemElem) {
 						return itemElem.name.toLowerCase();
 					} },
-				sortBy : "random"
+				sortBy : "id"
 			},
 			methods: {
 			    sort: function(key) {
