@@ -34,11 +34,11 @@
 
 	<div class="grid-sizer"></div>
 		<div v-for='game in games' class="grid-item col rounded border bg-white" data-category="cat">
-				<div class="p2">
-					<img class="product-img" v-bind:src="game.image">
-					<h2 class="mt0">{{game.name}}</h2>
-				</div>
+			<div class="p2">
+				<img class="product-img" v-bind:src="game.image">
+				<h2 class="mt0">{{game.name}}</h2>
 			</div>
+		</div>
 </section>
 
 
@@ -60,22 +60,6 @@
 		games:gameList
     }
     })
-	
-	var $grid = $('.grid').isotope({
-			itemSelector: '.grid-item',
-			  percentPosition: true,
-			  getSortData: {
-			   // name: '.mt0',
-			   // category: '[data-category]',
-			   // price: '.price parseInt'
-			  },
-			  layoutMode: 'masonry',
-			  masonry: {
-				columnWidth: '.grid-sizer',
-				gutter: 8
-			  },
-		});
-	console.log($grid);
 	
 	$(document).ready(function(){
 		
@@ -101,7 +85,6 @@
 					game.name = data.name;
 				})
 			});
-			$grid.isotope('layout');
 		}
 	})
 	
