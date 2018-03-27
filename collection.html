@@ -46,26 +46,19 @@
 	var url = "https://spreadsheets.google.com/feeds/list/" + spreadsheetID + "/od6/public/values?alt=json";
 	var gameList = [];
 	initJSON();
-	
+	console.log(gameList);
 	function initJSON()
 	{
 		$.getJSON(url, function(data)
 		{
-			var items = data.items.map(function (item) {
-				return item.key + ': ' + item.value;
-				});
-			console.log(items);
-			/*
-var entry = data.feed.entry;
+			var entry = data.feed.entry;
 			$(entry).each(function()
 			{
 				var game = {name:""};
 				game.id = this.gsx$id.$t;
 				gameList.push(game);
 			});
-*/
 		});
-		
 	}
 	
 	/*
