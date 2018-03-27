@@ -43,10 +43,29 @@
 <script>
 	
 	var spreadsheetID = "1BnJNhOKiDZQCPQGDIssVnIphZgW5_4PaNFWf9XzF6XU";
-	var url = "https://spreadsheets.google.com/feeds/list/" + spreadsheetID + "/od6/public/values?alt=json";
+	var sheeturl = "https://spreadsheets.google.com/feeds/list/" + spreadsheetID + "/od6/public/values?alt=json";
 	var gameList = [];
 	
+	$(document).ready(function(){
+
+	    function postProcessing(data) {
+			 var sheetdata = data;
+			 console.log(sheetdata);
+	    }
 	
+		getValues();
+	
+        function getValues(){
+             $.ajax({
+                url: sheeturl,
+                type: 'get',
+                dataType: 'json',
+                cache: false,
+                success: postProcessing,
+                async:true,
+                });
+        };
+	})
 	
 	var app = new Vue({
 	el: '#grid',
