@@ -35,7 +35,7 @@
 <div>
   <div id="root_isotope" class="isoDefault">
     <div v-isotope-for="element in list" :options='option' @click="selected=element">
-      	<img class="product-img" v-bind:src="game.image">
+      	<img class="product-img" v-bind:src="element.image">
     </div>
   </div>
 </div>
