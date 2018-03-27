@@ -54,12 +54,9 @@
 			 $(entry).each(function()
 			 {
 			 	var game = {image:""};
+			 	game.name = this.gsx$name.$t;
 			 	game.id = this.gsx$id.$t;
-			 	$.getJSON(bggurl+game.id,function(d){
-			 		game.image = d.thumbnail;
-			 		game.name = d.name;
-				 	gameList.push(game);	
-			 	})
+			 	
 			 })
 	    })
 
