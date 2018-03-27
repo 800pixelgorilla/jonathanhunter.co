@@ -58,12 +58,15 @@
 			 	var game = {image:""};
 			 	game.id = this.gsx$id.$t;
 			 	game.name = this.gsx$name.$t;
-			 	gameList.push(game);
+			 	$.getJSON(bggurl+game.id,function(d){
+				 	gameList.push(game);	
+			 	})
 			 })
 			 getBGGInfo();
 	    })
 
-		function getBGGInfo()
+		/*
+function getBGGInfo()
 		{
 			console.log(gameList.length);
 			for(var i=0;i<gameList.length;i++)
@@ -88,6 +91,7 @@
                 async:true,
                 });
         };
+*/
 	})
 	
 	var app = new Vue({
