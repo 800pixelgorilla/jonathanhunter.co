@@ -115,6 +115,9 @@
 			      "cellsByColumn",
 			      "horiz"
 			    ],
+			 selected: null,
+			 sortOption: null,
+			 filterOption: null,
 			option:
 			{
 				getSortData: { name: function(itemElem) {
@@ -124,7 +127,7 @@
 			},
 			methods: {
 			    sort: function(key) {
-			        this.isotopeSort(key);
+			        this.sort(key);
 			    }
 			  }
 		}
