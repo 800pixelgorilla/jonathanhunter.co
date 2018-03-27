@@ -54,7 +54,7 @@
 			var entry = data.feed.entry;
 			$(entry).each(function()
 			{
-				var game = {};
+				var game = {name:""};
 				game.id = this.gsx$id.$t;
 				gameList.push(game);
 			});
