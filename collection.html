@@ -55,7 +55,10 @@
 			$(entry).each(function()
 			{
 				var game = {};
-					game.id = this.gsx$id.$t;
+				game.id = this.gsx$id.$t;
+				
+				console.log('fixed');
+				
 				var bgginfo = $.getJSON("http://bgg-json.azurewebsites.net/thing/"+game.id);
 				console.log(bgginfo);
 					
