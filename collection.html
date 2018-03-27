@@ -45,35 +45,8 @@
 	var spreadsheetID = "1BnJNhOKiDZQCPQGDIssVnIphZgW5_4PaNFWf9XzF6XU";
 	var url = "https://spreadsheets.google.com/feeds/list/" + spreadsheetID + "/od6/public/values?alt=json";
 	var gameList = [];
-	initJSON();
-	function initJSON()
-	{
-		$.getJSON(url, function(data)
-		{
-			var entry = data.feed.entry;
-			$(entry).each(function()
-			{
-				var game = {};
-				game.id = this.gsx$id.$t;
-				gameList.push(game);
-			});
-			jsonComplete();
-		});
-	}
-	function jsonComplete()
-	{
-		console.log(gameList.length);
-		for(var i=0;i<gameList.length;i++)
-		{
-			var game = gameList[i];
-			console.log(game);
-			$.getJSON("http://bgg-json.azurewebsites.net/thing/"+game.id,function(data)
-			{
-				game.description = data.description;
-				
-			});
-		}
-	}
+	
+	
 	
 	var app = new Vue({
 	el: '#grid',
