@@ -51,19 +51,21 @@
 	{
 		$.getJSON(url, function(data)
 		{
-			var entry = data.feed.entry;
+			var items = data.items.map(function (item) {
+				return item.key + ': ' + item.value;
+				});
+			console.log(items);
+			/*
+var entry = data.feed.entry;
 			$(entry).each(function()
 			{
 				var game = {name:""};
 				game.id = this.gsx$id.$t;
 				gameList.push(game);
 			});
+*/
 		});
 		
-		console.log(gameList.length);
-		console.log(gameList);
-		console.log(gameList.length);
-		console.log(gameList[1]);
 	}
 	
 	/*
