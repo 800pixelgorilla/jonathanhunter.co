@@ -73,7 +73,7 @@
 		
 </section>
 -->
-<button :class="[sortOption==='name' ? 'is-checked' : '']" @click="sort('random')">Sort by random</button>
+<button :class="[sortOption==='name' ? 'is-checked' : '']" @click="sort('name')">Sort by name</button>
 <div id="vuegrid">
 <div>
   <isotope :list="games" id="root_isotope" class="isoDefault" :options='option' >
@@ -121,7 +121,7 @@
 				getSortData: { id: 'id',name: function(itemElem) {
 						return itemElem.name.toLowerCase();
 					} },
-				sortBy : "name"
+				sortBy : "random"
 			},
 			methods: {
 			    sort: function(key) {
