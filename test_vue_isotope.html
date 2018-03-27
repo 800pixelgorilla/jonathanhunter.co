@@ -23,6 +23,7 @@
 
 </style>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.25/vue.min.js"></script>
 <script src="https://npmcdn.com/isotope-layout@3.0.5/dist/isotope.pkgd.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.13.1/lodash.min.js"></script>
@@ -70,23 +71,15 @@
 <script>
 
 var count = 0;
+var gameList = [];
+var spreadsheetID = "1BnJNhOKiDZQCPQGDIssVnIphZgW5_4PaNFWf9XzF6XU";
+var sheeturl = "https://spreadsheets.google.com/feeds/list/" + spreadsheetID + "/od6/public/values?alt=json";
+var bggurl = "http://bgg-json.azurewebsites.net/thing/";
 
 var vm = new Vue({
   el: "#main",
   data: {
-    list: [{
-      name: "John",
-      id: 25
-    }, {
-      name: "Joao",
-      id: 7
-    }, {
-      name: "Albert",
-      id: 12
-    }, {
-      name: "Jean",
-      id: 100
-    }],
+    list: gameList,
     selected: null,
     sortOption: null,
     filterOption: null,
@@ -143,6 +136,19 @@ var vm = new Vue({
     }
   }
 });
+/*
+
+$.getJSON(sheeturl, function(data) {
+	 var entry = data.feed.entry;
+	 $(entry).each(function()
+	 {
+	 	var game = {image:""};
+	 	game.name = this.gsx$name.$t;
+	 	game.id = this.gsx$id.$t;
+	 	gameList.push(game);
+	 })
+})
+*/
 
 </script>
 
