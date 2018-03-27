@@ -67,8 +67,8 @@
 			{
 				var game = this;
 				$.getJSON(bggurl+this.id,function(data){
-					console.log(game);
 					game.image = data.thumbnail;
+					game.name = data.name;
 				})
 			})
 		}
