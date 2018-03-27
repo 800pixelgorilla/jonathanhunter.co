@@ -24,13 +24,26 @@
 			background-color: #fff;
 			border-color: #fff;
 		}
+		
+		.masonry { /* Masonry container */
+		    column-count: 4;
+		    column-gap: 1em;
+		}
+		
+		.grid-item { /* Masonry bricks or child elements */
+		    background-color: #eee;
+		    display: inline-block;
+		    margin: 0 0 1em;
+		    width: 100%;
+		}
+		
 	</style>
 	<script src="https://cdn.jsdelivr.net/npm/vue"></script>
 </head>
 
 <body class="bg-silver">
 
-<section class="grid container" id="vuegrid">
+<section class="grid container masonry" id="vuegrid">
 
 		<div v-for='game in games' class="grid-item col rounded border bg-white" data-category="cat">
 			<div class="p2">
