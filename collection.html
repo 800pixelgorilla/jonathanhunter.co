@@ -54,13 +54,25 @@
 			var entry = data.feed.entry;
 			$(entry).each(function()
 			{
-				console.log(this.gsx$name.$t);
 				var game = {};
 					game.name = this.gsx$name.$t;
+					game.id = this.gsx$id.$t;
+					console.log(getBggInfo(game.id));
 				gameList.push(game);
 			});
 		});
 		console.log(gameList);
+	}
+	
+	function getBggInfo(id)
+	{
+		$.getJSON("https://bgg-json.azurewebsites.net/thing/"+id)
+		//$.getJSON("http://www.omdbapi.com/?t="+title+"&apikey=9184d20d", function(json)
+    	 {
+    	 	//if(!json.Poster)console.log(title +" = "+json.Poster);
+    	 	//console.log(json.Poster)
+    	 	//return json.Poster;
+    	 });
 	}
 	
 	var app = new Vue({
