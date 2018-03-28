@@ -27,13 +27,13 @@
 <script src="https://npmcdn.com/isotope-layout@3.0.5/dist/isotope.pkgd.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.13.1/lodash.min.js"></script>
 <script src="https://cdn.rawgit.com/David-Desmaisons/Vue.Isotope/v.1.1.0/src/vue_isotope.js"></script>
-
+<script src="https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.min.js"></script>
 </head>
 <body>
 <div id="main">
 <div>
   <div id="root_isotope" class="isoDefault">
-    <div v-isotope-for="element in list" :options='option' @click="selected=element">
+    <div id="imageContainer" v-isotope-for="element in list" :options='option' @click="selected=element">
       	<img class="product-img" v-bind:src="element.image">
     </div>
   </div>
@@ -128,8 +128,12 @@ $.getJSON(mycollection, function(data) {
 		game.id = game.gameId;
 		gameList.push(game);
 	})
-	$( window ).resize();
 })
+
+$('#imageContainer').imagesLoaded( function() {
+		console.log('loaded')
+		$( window ).resize();
+	});
 
 /*
 function getBGGData()
