@@ -39,10 +39,6 @@
   </div>
 </div>
 
-<div id="change">
-  <button @click="add">Add</button>
-  <button @click="replace">Replace</button>
-</div>
 <div id="filter">
   <div>
     <input type="text" v-model="filterText" placeholder="no filter">
@@ -85,6 +81,7 @@ var vm = new Vue({
     sortOption: null,
     filterOption: null,
     filterText: "",
+    currentLayout: 'fitRows',
     option: {
       getSortData: {
         id: "id",
@@ -106,21 +103,6 @@ var vm = new Vue({
     }
   },
   methods: {
-    add: function() {
-      this.list.push({
-        name: 'Juan',
-        id: count++
-      });
-    },
-    replace: function() {
-      this.list = [{
-        name: 'Edgard',
-        id: count++
-      }, {
-        name: 'James',
-        id: count++
-      }]
-    },
     sort: function(key) {
       this.isotopeSort(key);
       this.sortOption = key;
@@ -146,20 +128,10 @@ $.getJSON(mycollection, function(data) {
 		game.id = game.gameId;
 		gameList.push(game);
 	})
-	 //var entry = data.feed.entry;
-	 /*
-$(entry).each(function()
-	 {
-	 	var game = {image:""};
-	 	game.name = this.gsx$name.$t;
-	 	game.id = this.gsx$id.$t;
-	 	gameList.push(game);
-	 	
-	 })
-*/
-	// getBGGData()
+	$( window ).resize();
 })
 
+/*
 function getBGGData()
 {
 	$.each(gameList,function(key,value)
@@ -171,6 +143,7 @@ function getBGGData()
 		})
 	});
 }
+*/
 
 });
 </script>
