@@ -75,6 +75,7 @@ var gameList = [];
 var spreadsheetID = "1BnJNhOKiDZQCPQGDIssVnIphZgW5_4PaNFWf9XzF6XU";
 var sheeturl = "https://spreadsheets.google.com/feeds/list/" + spreadsheetID + "/od6/public/values?alt=json";
 var bggurl = "http://bgg-json.azurewebsites.net/thing/";
+var mycollection = "https://bgg-json.azurewebsites.net/collection/800pixelgorilla?grouped=true"
 
 var vm = new Vue({
   el: "#main",
@@ -137,9 +138,17 @@ var vm = new Vue({
   }
 });
 
-$.getJSON(sheeturl, function(data) {
-	 var entry = data.feed.entry;
-	 $(entry).each(function()
+$.getJSON(mycollection, function(data) {
+	//console.log(data)
+	$(data).each(function(){
+		console.log(this);
+		var game = this;
+		game.id = game.gameId;
+		gameList.push(game);
+	})
+	 //var entry = data.feed.entry;
+	 /*
+$(entry).each(function()
 	 {
 	 	var game = {image:""};
 	 	game.name = this.gsx$name.$t;
@@ -147,7 +156,8 @@ $.getJSON(sheeturl, function(data) {
 	 	gameList.push(game);
 	 	
 	 })
-	 getBGGData()
+*/
+	// getBGGData()
 })
 
 function getBGGData()
