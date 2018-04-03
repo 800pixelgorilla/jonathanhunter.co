@@ -47,7 +47,7 @@ width: 250px;
 		<isotope ref="cpt" id="root_isotope" class="isoDefault" :options='getOptions()' v-images-loaded:on.progress="layout" :list="list" @filter="filterOption=arguments[0]" @sort="sortOption=arguments[0]">
 		
 			<div v-for="element,index in list" :key="element.id">
-				<img class="boximage" v-bind:src="element.image">
+				<img class="boximage" v-bind:src="element.thumnail">
 			</div>
 		
 		</isotope>
