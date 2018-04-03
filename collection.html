@@ -1,136 +1,59 @@
 <html>
+
 <head>
 
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.16/vue.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.13.1/lodash.min.js"></script>
+<script type="text/javascript" src="https://npmcdn.com/isotope-layout@3.0.5/dist/isotope.pkgd.min.js"></script>
+
+<script type="text/javascript" src="https://npmcdn.com/isotope-cells-by-column@1.1.4/cells-by-column.js"></script>
+<script type="text/javascript" src="https://npmcdn.com/isotope-cells-by-row@1.1.4/cells-by-row.js"></script>
+<script type="text/javascript" src="https://npmcdn.com/isotope-fit-columns@1.1.4/fit-columns.js"></script>
+<script type="text/javascript" src="https://npmcdn.com/isotope-horizontal@2.0.1/horizontal.js"></script>
+<script type="text/javascript" src="https://npmcdn.com/isotope-masonry-horizontal@2.0.1/masonry-horizontal.js"></script>
+<script type="text/javascript" src="https://npmcdn.com/isotope-packery@2.0.1/packery-mode.pkgd.js"></script>
+
+<script type="text/javascript" src="https://cdn.rawgit.com/David-Desmaisons/Vue.Isotope/master/dist/vue_isotope.js"></script>
+<script type="text/javascript" src="https://cdn.rawgit.com/David-Desmaisons/Vue.Isotope/v2.0.1/dist/vue_isotope.js"></script>
+<script type="text/javascript" src="https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.min.js"></script>
+<script src="js/vueimagesloaded.js"></script>
+</head>
+
 <style>
-.item {
-  width: 250px;
-  margin-bottom: 10px;
-  box-sizing: border-box;
-}
-
-.product-img{
-	width: 100%;
-}
-
-.is-checked {
-  background-color: #28F;
-}
-
-.isoDefault {
-  min-height: 210px;
-}
-
+	.item{
+		/*
+width: 250px;
+		margin-bottom: 10px;
+*/
+	height:250px;
+	margin: 10px;
+	}
+	
+	.boximage{
+		height: 100%;
+	}
 </style>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.25/vue.min.js"></script>
-<script src="https://npmcdn.com/isotope-layout@3.0.5/dist/isotope.pkgd.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.13.1/lodash.min.js"></script>
-<script src="https://cdn.rawgit.com/David-Desmaisons/Vue.Isotope/v.1.1.0/src/vue_isotope.js"></script>
-<script src="https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.min.js"></script>
-</head>
 <body>
 <div id="main">
-<div>
-  <div id="root_isotope" class="isoDefault">
-    <div id="imageContainer" v-isotope-for="element in list" :options='option' @click="selected=element">
-      	<img class="product-img" v-bind:src="element.image">
-    </div>
-  </div>
+	<h2>Layout</h2>
+		  	<div>
+		    	<button v-for="layout in layouts" :class="[layout===currentLayout? 'is-checked' : '']" class="button" @click="changeLayout(layout)">
+					{{layout}}
+				</button>
+			</div>
+	<div>
+		<isotope ref="cpt" id="root_isotope" class="isoDefault" :options='getOptions()' v-images-loaded:on.progress="layout" :list="list" @filter="filterOption=arguments[0]" @sort="sortOption=arguments[0]">
+		
+			<div v-for="element,index in list" :key="element.id">
+				<img class="boximage" v-bind:src="element.image">
+			</div>
+		
+		</isotope>
+	<div>
 </div>
-
-<div id="filter">
-  <div>
-    <input type="text" v-model="filterText" placeholder="no filter">
-    <button :class="[filterOption==='filterByText' ? 'is-checked' : '']" @click="filter('filterByText')">Filter</button>
-  </div>
-  <button :class="[filterOption==='isEven' ? 'is-checked' : '']" @click="filter('isEven')">Filter Even</button>
-  <button :class="[filterOption==='isOdd' ? 'is-checked' : '']" @click="filter('isOdd')">Filter Odd</button>
-  <button @click="filter()">Unfilter</button>
-</div>
-<div id="sort">
-  <button :class="[sortOption==='name' ? 'is-checked' : '']" @click="sort('name')">Sort by name</button>
-  <button :class="[sortOption==='id' ? 'is-checked' : '']" @click="sort('id')">Sort by id</button>
-  <button @click="shuttle">Shuttle</button>
-</div>
-<div>
-  <div v-if="selected" class="item">
-    <input type="text" name="" v-model="selected.name">
-    <br>
-    <input type="text" name="" v-model="selected.id">
-  </div>
-</div>
-</div>
-
-<script>
-
-$(document).ready(function(){
-
-var count = 0;
-var gameList = [];
-var spreadsheetID = "1BnJNhOKiDZQCPQGDIssVnIphZgW5_4PaNFWf9XzF6XU";
-var sheeturl = "https://spreadsheets.google.com/feeds/list/" + spreadsheetID + "/od6/public/values?alt=json";
-var bggurl = "http://bgg-json.azurewebsites.net/thing/";
-var mycollection = "https://bgg-json.azurewebsites.net/collection/800pixelgorilla?grouped=true"
-
-var vm = new Vue({
-  el: "#main",
-  data: {
-    list: gameList,
-    selected: null,
-    sortOption: null,
-    filterOption: null,
-    filterText: "",
-    currentLayout: 'fitRows',
-    option: {
-      getSortData: {
-        id: "id",
-        name: function(itemElem) {
-          return itemElem.name.toLowerCase();
-        }
-      },
-      getFilterData: {
-        isEven: function(itemElem) {
-          return itemElem.id % 2 === 0;
-        },
-        isOdd: function(itemElem) {
-          return itemElem.id % 2 !== 0;
-        },
-        filterByText: function(itemElem) {
-          return itemElem.name.toLowerCase().includes(this.filterText.toLowerCase());
-        }
-      }
-    }
-  },
-  methods: {
-    sort: function(key) {
-      this.isotopeSort(key);
-      this.sortOption = key;
-    },
-    filter: function(key) {
-      if (this.filterOption == key)
-        key = null;
-      this.isotopeFilter(key);
-      this.filterOption = key;
-    },
-    shuttle: function() {
-      this.isotopeShuttle();
-      this.sortOption = null;
-    }
-  }
-});
-
-$.getJSON(mycollection, function(data) {
-	//console.log(data)
-	$(data).each(function(){
-		var game = this;
-		game.id = game.gameId;
-		gameList.push(game);
-	})
-})
-
-});
-</script>
-
+<script type="text/javascript" src="js/main.js"></script>
 </body>
+
 </html>
