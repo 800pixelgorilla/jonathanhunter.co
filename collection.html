@@ -121,28 +121,17 @@ var vm = new Vue({
 });
 
 $.getJSON(mycollection, function(data) {
+	console.log(data)
 	$(data).each(function(){
 		var game = this;
 		game.id = game.gameId;
 		gameList.push(game);
+		$( window ).resize();
 	})
-	$('#imageContainer').imagesLoaded()
-	  .always( function( instance ) {
-	    console.log('all images loaded');
-	  })
-	  .done( function( instance ) {
-	    console.log('all images successfully loaded');
-	  })
-	  .fail( function() {
-	    console.log('all images loaded, at least one is broken');
-	  })
-	  .progress( function( instance, image ) {
-	    var result = image.isLoaded ? 'loaded' : 'broken';
-	    console.log( 'image is ' + result + ' for ' + image.img.src );
-	  });
-	
-	});
 })
+
+
+});
 </script>
 
 </body>
