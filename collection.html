@@ -121,15 +121,15 @@ var vm = new Vue({
 });
 
 $.getJSON(mycollection, function(data) {
-	console.log(data)
+	console.log('timeout')
 	$(data).each(function(){
 		var game = this;
 		game.id = game.gameId;
 		gameList.push(game);
-		$( window ).resize();
+		
 	})
 })
-
+setTimeout($( window ).resize(), 10000);
 
 });
 </script>
