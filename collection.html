@@ -1,6 +1,7 @@
 <html>
 
 <head>
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.9/css/all.css" integrity="sha384-5SOiIsAziJl6AWe0HWRKTXlfcSHKmYV4RBF18PPJ173Kzn7jzMyFuTtk8JA7QQG1" crossorigin="anonymous">
 
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.16/vue.min.js"></script>
@@ -28,10 +29,35 @@ width: 250px;
 */
 	height:15vw;
 	margin: 6px;
+	padding-bottom: 15px;
 	}
 	
 	.boximage{
 		height: 100%;
+	}
+	
+	.stars-outer {
+	  display: table;
+	  position: relative;
+	  font-family: FontAwesome;
+	}
+	 
+	.stars-outer::before {
+	  content: "\f006 \f006 \f006 \f006 \f006";
+	}
+	 
+	.stars-inner {
+	  position: absolute;
+	  top: 0;
+	  left: 0;
+	  white-space: nowrap;
+	  overflow: hidden;
+	  width: 0;
+	}
+	 
+	.stars-inner::before {
+	  content: "\f005 \f005 \f005 \f005 \f005";
+	  color: #f8ce0b;
 	}
 </style>
 
@@ -53,10 +79,13 @@ width: 250px;
 		<isotope ref="cpt" id="root_isotope" class="isoDefault" :options='option' v-images-loaded:on.progress="callback" :list="list" @filter="filterOption=arguments[0]" @sort="sortOption=arguments[0]">
 		
 			<div v-for="element,index in list" :key="element.id">
-				<div class='geek-rating'>{{element.geekRating}}</div>
+				
 				<a v-bind:href="element.image" class="progressive replace">
 					<img class="boximage" v-bind:src="element.thumbnail">
 				</a>
+				<div class="stars-outer">
+					<div class="stars-inner" v-bind:style="{width:element.starPercentage}" ></div>
+				</div>
 			</div>
 		
 		</isotope>

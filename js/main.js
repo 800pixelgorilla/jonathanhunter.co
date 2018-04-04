@@ -2,6 +2,17 @@ var count=0;
 var gameList = [];
 var mycollection = "https://bgg-json.azurewebsites.net/collection/800pixelgorilla?grouped=true"
 var callbacklimit = true;
+ 
+/*
+for(const rating in ratings) {  
+  // 2
+  const starPercentage = (ratings[rating] / starTotal) * 100;
+  // 3
+  const starPercentageRounded = `${(Math.round(starPercentage / 10) * 10)}%`;
+  // 4
+  document.querySelector(`.${rating} .stars-inner`).style.width = starPercentageRounded; 
+}
+*/
 
 var vm = new Vue({
 	el: "#main",
@@ -26,6 +37,7 @@ var vm = new Vue({
 	      "horiz"
 	    ],
 	    currentLayout: 'masonry',
+		
 	    option:{
 		    layoutMode: 'masonry',
 	          	masonry: {
@@ -65,7 +77,13 @@ $.getJSON(mycollection, function(data) {
 	$(data).each(function(){
 		var game = this;
 		game.id = game.gameId;
-		game.geekRating = Math.round(game.averageRating)
+		
+		var perc = (game.averageRating / 10) * 100;
+		
+		game.starPercentage = (Math.round(perc/10) * 10) + "%";
+		
+		console.log(game.starPercentage)
+		
 		gameList.push(game);
 	})
 })
