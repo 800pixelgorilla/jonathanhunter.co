@@ -37,17 +37,19 @@ width: 250px;
 
 <body>
 <div id="main">
-	<h2>Layout</h2>
+	<h2>Collection</h2>
 		  	<div>
 		    	<button v-for="layout in layouts" :class="[layout===currentLayout? 'is-checked' : '']" class="button" @click="changeLayout(layout)">
 					{{layout}}
 				</button>
 			</div>
-	<div>
-		<isotope ref="cpt" id="root_isotope" class="isoDefault" :options='getOptions()' v-images-loaded:on.progress="layout" :list="list" @filter="filterOption=arguments[0]" @sort="sortOption=arguments[0]">
+	<div >
+		<isotope ref="cpt" id="root_isotope" class="isoDefault" :options='getOptions()' v-images-loaded:on.progress="callback" :list="list" @filter="filterOption=arguments[0]" @sort="sortOption=arguments[0]">
 		
 			<div v-for="element,index in list" :key="element.id">
-				<img class="boximage" v-bind:src="element.thumbnail">
+				<a v-bind:href="element.image" class="progressive replace">
+					<img class="boximage" v-bind:src="element.thumbnail">
+				</a>
 			</div>
 		
 		</isotope>

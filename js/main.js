@@ -1,6 +1,7 @@
 var count=0;
 var gameList = [];
 var mycollection = "https://bgg-json.azurewebsites.net/collection/800pixelgorilla?grouped=true"
+var callbacklimit = true;
 
 var vm = new Vue({
 	el: "#main",
@@ -69,3 +70,20 @@ $.getJSON(mycollection, function(data) {
 		gameList.push(game);
 	})
 })
+
+function callback(instance){
+   vm.layout();
+   if(instance.images.length == instance.progressedCount && callbacklimit)
+   {
+   		callbacklimit = false;
+	   $('.progressive').each(function(){
+		   var bigimage = new Image();
+		   var c = $(this);
+		   bigimage.onload = function()
+		   {
+		   	  c.children('.boximage').attr('src',bigimage.src);
+		   } 
+		   bigimage.src = $(this).attr('href');
+	   })
+   }
+}
