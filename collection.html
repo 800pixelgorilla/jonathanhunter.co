@@ -26,8 +26,8 @@
 width: 250px;
 		margin-bottom: 10px;
 */
-	height:250px;
-	margin: 10px;
+	height:15vw;
+	margin: 6px;
 	}
 	
 	.boximage{
@@ -38,15 +38,22 @@ width: 250px;
 <body>
 <div id="main">
 	<h2>Collection</h2>
+			
+			 <div class="button-group">
+			    <button class="button" :class="[sortOption==='original-order'? 'is-checked' : '']" @click="sort('original-order')">original order</button>
+			    <button v-for="(val, key) in option.getSortData" class="button" :class="[key===sortOption? 'is-checked' : '']" @click="sort(key)">{{key}}</button>
+			  </div>
+			
 		  	<div>
 		    	<button v-for="layout in layouts" :class="[layout===currentLayout? 'is-checked' : '']" class="button" @click="changeLayout(layout)">
 					{{layout}}
 				</button>
 			</div>
 	<div >
-		<isotope ref="cpt" id="root_isotope" class="isoDefault" :options='getOptions()' v-images-loaded:on.progress="callback" :list="list" @filter="filterOption=arguments[0]" @sort="sortOption=arguments[0]">
+		<isotope ref="cpt" id="root_isotope" class="isoDefault" :options='option' v-images-loaded:on.progress="callback" :list="list" @filter="filterOption=arguments[0]" @sort="sortOption=arguments[0]">
 		
 			<div v-for="element,index in list" :key="element.id">
+				<div class='geek-rating'>{{element.geekRating}}</div>
 				<a v-bind:href="element.image" class="progressive replace">
 					<img class="boximage" v-bind:src="element.thumbnail">
 				</a>

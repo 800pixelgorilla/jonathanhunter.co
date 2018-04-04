@@ -26,34 +26,32 @@ var vm = new Vue({
 	      "horiz"
 	    ],
 	    currentLayout: 'masonry',
-	},
-	methods:{
-		getOptions: function () {
-			var _this = this
-			return {
-				layoutMode: 'masonry',
+	    option:{
+		    layoutMode: 'masonry',
 	          	masonry: {
 	            	gutter: 10
 	          	},
+	          	itemSelector: '.item',
 				getSortData: {
 	        		id: "id",
 	        		name: function(itemElem){
 	        			return itemElem.name.toLowerCase();     
-	        		}
+	        		},
+	        		geekRating: function(itemElem){
+	        			return 10-itemElem.averageRating;
+	        		},
 	        	},
 	      		getFilterData:{
-	      			isEven: function(itemElem){
-	      				return itemElem.id % 2 === 0;
-	      			},
-	      			isOdd: function(itemElem){
-	      				return itemElem.id % 2 !== 0;
-	      			},
 	      			filterByText: function(itemElem){
 	        			return itemElem.name.toLowerCase().includes(_this.filterText.toLowerCase());
 	        		}
 	      		}
-	      	}
-		},
+	    }
+	},
+	methods:{
+		sort: function(key) {
+	      this.$refs.cpt.sort(key);
+	    },
 		layout: function () {
 			this.$refs.cpt.layout('fitRows');
 		},
@@ -67,6 +65,7 @@ $.getJSON(mycollection, function(data) {
 	$(data).each(function(){
 		var game = this;
 		game.id = game.gameId;
+		game.geekRating = Math.round(game.averageRating)
 		gameList.push(game);
 	})
 })
