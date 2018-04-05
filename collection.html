@@ -22,59 +22,89 @@
 </head>
 
 <style>
+	
+	body{background-color: white;}
+	
 	.item{
-		/*
-width: 250px;
-		margin-bottom: 10px;
-*/
-	height:300px;
-	margin: 6px;
-	padding-bottom: 15px;
+		height: 300px;
+		margin: 3px;
+		background-color: white;
+    	padding-bottom: 40px;
 	}
 	
 	.boximage{
 		height: 100%;
+		outline: 3px solid black;
+		outline-offset: -3px;
 	}
 	
 	.stars-outer {
-	  display: table;
-	  position: relative;
-	  font-family: FontAwesome;
+	    display: table;
+	    position: relative;
+	    font-family: FontAwesome;
+	    font-size: 20px;
+	    letter-spacing: .2em;
 	}
 	 
 	.stars-outer::before {
-	  content: "\f006 \f006 \f006 \f006 \f006";
+	  	content: "\f006 \f006 \f006 \f006 \f006";
+	  	opacity: 0;
 	}
 	 
 	.stars-inner {
-	  position: absolute;
-	  top: 0;
-	  left: 0;
-	  white-space: nowrap;
-	  overflow: hidden;
-	  width: 0;
+		position: absolute;
+	    top: 0;
+	    left: 0;
+	    white-space: nowrap;
+	    overflow: hidden;
+	    width: 0;
 	}
 	 
 	.stars-inner::before {
-	  content: "\f005 \f005 \f005 \f005 \f005";
-	  color: #f8ce0b;
+	  	content: "\f005 \f005 \f005 \f005 \f005";
+	  	color: white;
 	}
+	
+	.rating-container {
+	    line-height: 40px;
+	    background-color: 941902;
+	    padding-left: 1em;
+	    border-radius: 6px;
+	    margin-top: -10px;
+	    padding-top: 10px;
+	}
+	
+	.num-players {
+	    font-size: 16px;
+	    color: white;
+	    position: absolute;
+	    top: 88%;
+	    right: 6%;
+	    font-family: FontAwesome;
+	}
+	
 </style>
 
 <body>
 <div id="main">
-	<h2>Collection</h2>
+	
+<h2>Collection</h2>
 			
 			 <div class="button-group">
-			    <button class="button" :class="[sortOption==='original-order'? 'is-checked' : '']" @click="sort('original-order')">original order</button>
+			 	<button class="button" :class="[sortOption==='original-order'? 'is-checked' : '']" @click="sort('original-order')">original order</button>
+			 	
+			 	<button class="button" :class="[sortOption==='name'? 'is-checked' : '']" @click="sort('name')">Name</button>
+			 	<button class="button" :class="[sortOption==='rating'? 'is-checked' : '']" @click="sort('rating')">Rating</button>
+			 	
 			    <button v-for="(val, key) in option.getSortData" class="button" :class="[key===sortOption? 'is-checked' : '']" @click="sort(key)">{{key}}</button>
 			  </div>
 			
-		  	<div>
+		<!--  	<div>
 		    	<button v-for="layout in layouts" :class="[layout===currentLayout? 'is-checked' : '']" class="button" @click="changeLayout(layout)">
 					{{layout}}
 				</button>
 			</div>
+-->
 	<div >
 		<isotope ref="cpt" id="root_isotope" class="isoDefault" :options='option' v-images-loaded:on.progress="callback" :list="list" @filter="filterOption=arguments[0]" @sort="sortOption=arguments[0]">
 		
@@ -83,8 +113,11 @@ width: 250px;
 				<a v-bind:href="element.image" class="progressive replace">
 					<img class="boximage" v-bind:src="element.thumbnail">
 				</a>
-				<div class="stars-outer">
-					<div class="stars-inner" v-bind:style="{width:element.starPercentage}" ></div>
+				<div class="rating-container">
+					<div class="stars-outer">
+						<div class="stars-inner" v-bind:style="{width:element.starPercentage}" ></div>
+					</div>
+					<div class="num-players"><i class="fas fa-people-carry"></i> {{element.minPlayers}} - {{element.maxPlayers}}</div>
 				</div>
 			</div>
 		

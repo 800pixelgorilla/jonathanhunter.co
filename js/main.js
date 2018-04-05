@@ -45,12 +45,13 @@ var vm = new Vue({
 	          	},
 	          	itemSelector: '.item',
 				getSortData: {
-	        		id: "id",
-	        		name: function(itemElem){
+					minPlayers : 'minPlayers',
+					maxPlayers : 'maxPlayers',
+	        		Name: function(itemElem){
 	        			return itemElem.name.toLowerCase();     
 	        		},
-	        		geekRating: function(itemElem){
-	        			return 10-itemElem.averageRating;
+	        		Rating: function(itemElem){
+	        			return 10-itemElem.rating;
 	        		},
 	        	},
 	      		getFilterData:{
@@ -78,12 +79,9 @@ $.getJSON(mycollection, function(data) {
 		var game = this;
 		game.id = game.gameId;
 		
-		var perc = (game.averageRating / 10) * 100;
+		var perc = (game.rating / 10) * 100;
 		
-		game.starPercentage = (Math.round(perc/10) * 10) + "%";
-		
-		console.log(game.starPercentage)
-		
+		game.starPercentage = (Math.round(perc/10) * 10)-2 + "%";
 		gameList.push(game);
 	})
 })
