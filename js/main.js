@@ -45,8 +45,8 @@ var vm = new Vue({
 	          	},
 	          	itemSelector: '.item',
 				getSortData: {
-					minPlayers : 'minPlayers',
-					maxPlayers : 'maxPlayers',
+// 					minPlayers : 'minPlayers',
+// 					maxPlayers : 'maxPlayers',
 	        		Name: function(itemElem){
 	        			return itemElem.name.toLowerCase();     
 	        		},
