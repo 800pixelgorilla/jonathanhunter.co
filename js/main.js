@@ -87,6 +87,7 @@ $.getJSON(mycollection, function(data) {
 })
 
 function callback(instance){
+	console.log(instanct.images.length);
    vm.layout();
    if(instance.images.length == instance.progressedCount && callbacklimit)
    {
