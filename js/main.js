@@ -77,7 +77,7 @@ var vm = new Vue({
 $.getJSON(mycollection, function(data) {
 	console.log($(data).length);
 	
-	document.getElementById("title").appendChild(" - " +$(data).length);
+	document.getElementById("title").textContent += (" - " +$(data).length);
 	
 	$(data).each(function(){
 		var game = this;
