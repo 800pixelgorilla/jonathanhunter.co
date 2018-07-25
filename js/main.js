@@ -75,6 +75,7 @@ var vm = new Vue({
 });
 
 $.getJSON(mycollection, function(data) {
+	console.log($data.length);
 	$(data).each(function(){
 		var game = this;
 		game.id = game.gameId;
@@ -87,7 +88,6 @@ $.getJSON(mycollection, function(data) {
 })
 
 function callback(instance){
-	console.log(instance.images.length);
    vm.layout();
    if(instance.images.length == instance.progressedCount && callbacklimit)
    {
