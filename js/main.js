@@ -75,7 +75,7 @@ var vm = new Vue({
 });
 
 $.getJSON(mycollection, function(data) {
-	console.log($data.length);
+	console.log($(data).length);
 	$(data).each(function(){
 		var game = this;
 		game.id = game.gameId;
