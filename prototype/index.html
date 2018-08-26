@@ -43,7 +43,7 @@
 		/*ANIMATION*/
 		function startBanner()
 		{			
-				
+			TweenMax.set("#cta_white",{autoAlpha:0});
 			TweenMax.set("#cover",{autoAlpha:0});
 			var d = .2;
 			
@@ -63,7 +63,10 @@
 			TweenMax.to(["#text5","#text6"],.3,{scale:.5,autoAlpha:0,ease:Cubic.easeInOut,transformOrigin:"50% 25%",delay:d+=2});
 			TweenMax.from("#text7",.6,{scale:1.5,autoAlpha:0,ease:Cubic.easeInOut,transformOrigin:"50% 25%",delay:d+=.2});
 			TweenMax.from("#text8",.6,{scale:1.5,autoAlpha:0,ease:Cubic.easeInOut,transformOrigin:"50% 25%",delay:d+=.2});
-/* 			TweenMax.to("#cta",.6,{scale:1.2,ease:Sine.easeInOut,repeat:1,yoyo:true,delay:d}); */
+			
+			
+			
+			TweenMax.to("#cta_white",.6,{autoAlpha:1,ease:Sine.easeInOut,repeat:3,yoyo:true,delay:d+=.2});
 		}
 		
 		function chevTransition(pic,d)
@@ -151,9 +154,10 @@
 			<img src="text6.png" id="text6" width="300" height="250">
 			<img src="text7.png" id="text7" width="300" height="250">
 			<img src="text8.png" id="text8" width="300" height="250">
+			<img src="blur.png" alt="blur" width="300" height="250">
+			<img src="footer.gif" id="footer" width="300" height="67" style="bottom:-2px;">
+			<img src="cta_white.png" id="cta_white" width="300" height="250">
 			
-			<img src="footer.gif" id="footer" width="300" height="67" style="bottom:0;">
-<!-- 			<img src="cta.png" id="cta" width="70" height="43" style="left:220px; top:195px;"> -->
 		</div>
 		<div id="cover"></div>
 		<button id="background_exit_dc"></button>
