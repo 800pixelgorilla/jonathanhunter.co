@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+	<title>300x250</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta name="ad.size" content="width=300,height=250">
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.0/TweenMax.min.js"></script>
+	<script src="EndArrayPlugin.js"></script>
+	<style>
+
+		body, body * {position: absolute; vertical-align: baseline;border: 0;outline: 0;padding: 0;margin: 0;}
+		#container_dc {width:298px;height:248px;border: 1px solid #000000;top: 0px;left: 0px;margin: auto;}
+		#content_dc {overflow: hidden;width: 100%;height: 100%;top: 0px;left: 0px;background-color: #000000;z-index: 100;background-repeat: no-repeat;}
+		#cover {width: 300px;height: 250px;left: -1px;top:-1px;background-color: #000000;z-index:900;}
+		#background_exit_dc {width: 100%;height: 100%;top: 0px;left: 0px;cursor: pointer;opacity: 0;z-index: 901; cursor: pointer;}
+		#content_dc div{overflow: hidden; image-rendering: -webkit-optimize-contrast;}
+		
+		#bg{background-color: black; width:300px; height:250px;}
+		#pic2holder{width: 300px; height:250px; right:0; background-position: right; background-image: url('pic2.jpg');}
+		#pic3holder{width: 300px; height:250px; right:0; background-position: right; background-image: url('pic3.jpg');}
+		
+		:focus {outline:none;}
+		::-moz-focus-inner {border:0;}
+
+	</style>
+	
+	<script>
+		/*VERSION VARIABLES*/
+		var clickTag="http://kdstudio.com/degree-programs/acting/";
+		var w = 300;
+		var h = 250;
+		var chev = [.5,0,1,0,.52,.5,1,1,.5,1,0,.5];
+		
+		
+		window.onload = function() {	
+			bgExit = document.getElementById('background_exit_dc');
+			document.getElementById("background_exit_dc").addEventListener('click', bgExitHandler, false);
+			startBanner();
+		}
+
+		/*ANIMATION*/
+		function startBanner()
+		{			
+			TweenMax.set("#cta_white",{autoAlpha:0});
+			TweenMax.set("#cover",{autoAlpha:0});
+			var d = .2;
+			
+			TweenMax.to("#cta",.25,{scale:1.2,ease:Cubic.easeOut,repeat:1,yoyo:true,delay:d});
+			
+			TweenMax.from("#text1",.6,{scale:1.5,autoAlpha:0,ease:Cubic.easeInOut,transformOrigin:"50% 25%",delay:d+=.2});
+			
+			chevTransition("#pic2",d+=1.2);
+			TweenMax.from("#text3",.6,{scale:1.5,autoAlpha:0,ease:Cubic.easeInOut,transformOrigin:"50% 25%",delay:d+=1.2});
+			
+			chevTransition("#pic3",d+=1.2);
+			TweenMax.from("#text5",.6,{scale:1.5,autoAlpha:0,ease:Cubic.easeInOut,transformOrigin:"50% 25%",delay:d+=1.2});
+			
+			TweenMax.to(["#text5","#text6"],.3,{scale:.5,autoAlpha:0,ease:Cubic.easeInOut,transformOrigin:"50% 25%",delay:d+=2});
+			TweenMax.from("#text7",.6,{scale:1.5,autoAlpha:0,ease:Cubic.easeInOut,transformOrigin:"50% 25%",delay:d+=.2});
+			TweenMax.from("#text8",.6,{scale:1.5,autoAlpha:0,ease:Cubic.easeInOut,transformOrigin:"50% 25%",delay:d+=.2});
+			
+			
+			
+			TweenMax.to("#cta_white",.6,{autoAlpha:1,ease:Sine.easeInOut,repeat:3,yoyo:true,delay:d+=.2});
+		}
+		
+		function chevTransition(pic,d)
+		{
+			var pStart1 = getClipPathArray(500,325,w+50,-150);
+			var pStart2 = getClipPathArray(200,130,w+50,0);
+			var pStart3 = getClipPathArray(500,320,w+50,-150);
+			
+			var pEnd1 = getClipPathArray(500,325,-500,-150);
+			var pEnd2 = getClipPathArray(200,130,-200,0);
+			var pEnd3 = getClipPathArray(500,320,-70,-150);
+			
+			clipPath(pic+'a',pStart1);
+			clipPath(pic+'b',pStart2);
+			clipPath(pic+'c',pStart3);
+			
+			TweenMax.set(pic+'a',{autoAlpha:.3})
+			
+			TweenMax.to(pStart1,1.2,{endArray:pEnd1,onUpdate:clipPath,onUpdateParams:[pic+'a',pStart1],ease:Sine.easeIn,delay:d});
+			TweenMax.to(pStart2,1,{endArray:pEnd2,onUpdate:clipPath,onUpdateParams:[pic+'b',pStart2],ease:Sine.easeIn,delay:d+=.2});
+			TweenMax.to(pStart3,1,{endArray:pEnd3,onUpdate:clipPath,onUpdateParams:[pic+'c',pStart3],ease:Sine.easeInOut,delay:d+=.35});
+			TweenMax.from(pic+"holder",.5,{width:0,ease:Cubic.easeOut,transformOrigin:"100% 0",ease:Sine.easeIn,delay:d+=.4});
+			
+			function clipPath(pic,from)
+			{
+				TweenMax.set(pic,{clipPath:getClipPath(from),webkitClipPath:getClipPath(from)});
+			}
+		}
+		
+		function getClipPath(clipArray)
+		{
+			var path = "polygon(";
+			for(var i = 0;i<clipArray.length;i++)
+			{
+				path += clipArray[i] + "% ";
+				if( i == chev.length-1){
+					path += ")";
+				}
+				else if( i % 2 != 0){
+					path += ", "
+				}
+			}
+			return path;
+		}
+		
+		function getClipPathArray(cH,cW,cX,cY)
+		{
+			var pX = cX / w * 100;
+			var pY = cY / h * 100;
+			var pH = cH / h * 100;
+			var pW = cW / w * 100;
+			var pathArray = [];
+			for(var i = 0;i<chev.length;i++)
+			{
+				(i % 2 == 0) ? pathArray.push( pW * chev[i] + pX ) : pathArray.push( pH * chev[i] + pY );
+			}
+			return pathArray;
+		}
+	
+		
+	</script>
+</head>
+
+<body>
+
+	<div id="container_dc" style="margin:0;padding:0;">
+		<div id="content_dc">
+			
+			<img src="pic1.jpg" id="pic1" width="300" height="250">
+			<img src="text1.png" id="text1" width="300" height="250">
+			
+			<img src="pic2.jpg" id="pic2b" width="300" height="250" >
+			<img src="pic2.jpg" id="pic2a" width="300" height="250" >
+			<img src="pic2.jpg" id="pic2c" width="300" height="250" style="left:-2px;">	
+			<div id="pic2holder"></div>
+			<img src="text3.png" id="text3" width="300" height="250">
+			
+			<img src="pic3.jpg" id="pic3b" width="300" height="250" >
+			<img src="pic3.jpg" id="pic3a" width="300" height="250" >
+			<img src="pic3.jpg" id="pic3c" width="300" height="250" style="left:-2px;">	
+			<div id="pic3holder"></div>
+			<img src="text5.png" id="text5" width="300" height="250">
+			
+			<img src="text7.png" id="text7" width="300" height="250">
+			<img src="text8.png" id="text8" width="300" height="250">
+			<img src="blur.png" alt="blur" width="300" height="250">
+			<img src="footer.gif" id="footer" width="300" height="67" style="bottom:-2px;">
+			<img src="cta_white.png" id="cta_white" width="300" height="250">
+			
+		</div>
+		<div id="cover"></div>
+		<button id="background_exit_dc"></button>
+	</div>
+
+	<script>
+		function bgExitHandler(e) {
+			window.open(window.clickTag);
+		}
+	</script>
+	
+</body>
+</html>
