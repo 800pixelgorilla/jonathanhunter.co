@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+	<title>320x50</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta name="ad.size" content="width=320,height=50">
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.0/TweenMax.min.js"></script>
+	<style>
+
+		body, body * {position: absolute; vertical-align: baseline;border: 0;outline: 0;padding: 0;margin: 0;}
+		#container_dc {width:318px;height:48px;border: 1px solid #000000;top: 0px;left: 0px;margin: auto;}
+		#content_dc {overflow: hidden;width: 100%;height: 100%;top: 0px;left: 0px;background-color: #000000;z-index: 100;background-repeat: no-repeat;}
+		#cover {width: 320px;height: 50px;left: -1px;top:-1px;background-color: #000000;z-index:500;}
+		#background_exit_dc {width: 100%;height: 100%;top: 0px;left: 0px;cursor: pointer;opacity: 0;z-index: 501; cursor: pointer;}
+		#content_dc div{overflow: hidden; image-rendering: -webkit-optimize-contrast;}
+		
+		#bg{background-color: black; width:320px; height:50px;}
+		
+		:focus {outline:none;}
+		::-moz-focus-inner {border:0;}
+
+	</style>
+	
+	<script>
+		/*VERSION VARIABLES*/
+		var clickTag="http://kdstudio.com/degree-programs/musical-theatre/";
+		var w = 320;
+		var h = 50;
+		var chev = [.5,0,1,0,.52,.5,1,1,.5,1,0,.5];
+		
+		
+		window.onload = function() {	
+			bgExit = document.getElementById('background_exit_dc');
+			document.getElementById("background_exit_dc").addEventListener('click', bgExitHandler, false);
+			startBanner();
+		}
+
+		/*ANIMATION*/
+		function startBanner()
+		{			
+			TweenMax.set("#cta_white",{autoAlpha:0});
+			TweenMax.set("#cover",{autoAlpha:0});
+			var d = .2;
+			
+			TweenMax.from("#logo",.6,{x:"+=10",autoAlpha:0,ease:Cubic.easeOut,delay:d+=.2})
+			TweenMax.from("#bg",.6,{x:"-=10",autoAlpha:0,ease:Cubic.easeOut,delay:d+=.2})
+			
+			TweenMax.from("#text1",.5,{scale:.5,autoAlpha:0,ease:Cubic.easeOut,transformOrigin:"60% 50%",delay:d+=.4})
+			TweenMax.from("#text2",.5,{scale:.5,autoAlpha:0,ease:Cubic.easeOut,transformOrigin:"60% 50%",delay:d+=.15})
+			
+			TweenMax.to("#cta_white",.6,{autoAlpha:1,ease:Sine.easeInOut,repeat:3,yoyo:true,delay:d+=1});
+		}
+		
+			
+		
+	</script>
+</head>
+
+<body>
+
+	<div id="container_dc" style="margin:0;padding:0;">
+		<div id="content_dc">
+			<img src="bg.png" id="bg" width="320" height="50">		
+			<img src="text2.png" id="text2" width="320" height="50">
+			<img src="text1.png" id="text1" width="320" height="50">
+			<img src="logo.png" id="logo" width="320" height="50">
+			<img src="cta.png" id="cta" width="320" height="50">
+			<img src="cta-white.png" id="cta_white" width="320" height="50">
+			
+			
+		</div>
+		<div id="cover"></div>
+		<button id="background_exit_dc"></button>
+	</div>
+
+	<script>
+		function bgExitHandler(e) {
+			window.open(window.clickTag);
+		}
+	</script>
+	
+</body>
+</html>
