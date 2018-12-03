@@ -1,6 +1,6 @@
 var count=0;
 var gameList = [];
-var mycollection = "https://bgg-json.azurewebsites.net/collection/800pixelgorilla"
+var mycollection = "https://www.boardgamegeek.com/xmlapi/collection/800pixelgorilla"
 var callbacklimit = true;
  
 /*
