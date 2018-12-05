@@ -37,10 +37,10 @@ var vm = new Vue({
 	      "cellsByColumn",
 	      "horiz"
 	    ],
-	    currentLayout: 'masonry',
+	    currentLayout: 'packery',
 		
 	    option:{
-		    layoutMode: 'masonry',
+		    layoutMode: 'packery',
 	          	masonry: {
 	            	gutter: 10
 	          	},
