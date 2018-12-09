@@ -1,131 +1,16 @@
 <html>
 
 <head>
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.9/css/all.css" integrity="sha384-5SOiIsAziJl6AWe0HWRKTXlfcSHKmYV4RBF18PPJ173Kzn7jzMyFuTtk8JA7QQG1" crossorigin="anonymous">
-
+<meta name="viewport" content="width=device-width, initial-scale=0.86, maximum-scale=3.0, minimum-scale=0.86">
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.16/vue.min.js"></script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.13.1/lodash.min.js"></script>
-<script type="text/javascript" src="https://npmcdn.com/isotope-layout@3.0.5/dist/isotope.pkgd.min.js"></script>
-
-<script type="text/javascript" src="https://npmcdn.com/isotope-cells-by-column@1.1.4/cells-by-column.js"></script>
-<script type="text/javascript" src="https://npmcdn.com/isotope-cells-by-row@1.1.4/cells-by-row.js"></script>
-<script type="text/javascript" src="https://npmcdn.com/isotope-fit-columns@1.1.4/fit-columns.js"></script>
-<script type="text/javascript" src="https://npmcdn.com/isotope-horizontal@2.0.1/horizontal.js"></script>
-<script type="text/javascript" src="https://npmcdn.com/isotope-masonry-horizontal@2.0.1/masonry-horizontal.js"></script>
-<script type="text/javascript" src="https://npmcdn.com/isotope-packery@2.0.1/packery-mode.pkgd.js"></script>
-
-<script type="text/javascript" src="https://cdn.rawgit.com/David-Desmaisons/Vue.Isotope/master/dist/vue_isotope.js"></script>
-<script type="text/javascript" src="https://cdn.rawgit.com/David-Desmaisons/Vue.Isotope/v2.0.1/dist/vue_isotope.js"></script>
-<script type="text/javascript" src="https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.min.js"></script>
-<script src="js/vueimagesloaded.js"></script>
 </head>
-
-<style>
-	
-	body{background-color: white;}
-	
-	.item{
-		height: 300px;
-		margin: 3px;
-		background-color: white;
-    	padding-bottom: 40px;
-	}
-	
-	.boximage{
-		height: 100%;
-		outline: 3px solid black;
-		outline-offset: -3px;
-		min-width:220px;
-	}
-	
-	.stars-outer {
-	    display: table;
-	    position: relative;
-	    font-family: FontAwesome;
-	    font-size: 20px;
-	    letter-spacing: .2em;
-	}
-	 
-	.stars-outer::before {
-	  	content: "\f006 \f006 \f006 \f006 \f006";
-	  	opacity: 0;
-	}
-	 
-	.stars-inner {
-		position: absolute;
-	    top: 0;
-	    left: 0;
-	    white-space: nowrap;
-	    overflow: hidden;
-	    width: 0;
-	}
-	 
-	.stars-inner::before {
-	  	content: "\f005 \f005 \f005 \f005 \f005";
-	  	color: white;
-	}
-	
-	.rating-container {
-	    line-height: 40px;
-	    background-color: 941902;
-	    padding-left: 1em;
-	    border-radius: 6px;
-	    margin-top: -10px;
-	    padding-top: 10px;
-	}
-	
-	.num-players {
-	    font-size: 16px;
-	    color: white;
-	    position: absolute;
-	    top: 88%;
-	    right: 6%;
-	    font-family: FontAwesome;
-	}
-	
-</style>
 
 <body>
 <div id="main">
 	
-<h2 id="title">Collection</h2>
-			
-			 <div class="button-group">
-<!-- 			 	<button class="button" :class="[sortOption==='original-order'? 'is-checked' : '']" @click="sort('original-order')">original order</button> -->
-			 	
-<!-- 			 	<button class="button" :class="[sortOption==='name'? 'is-checked' : '']" @click="sort('name')">Name</button> -->
-<!-- 			 	<button class="button" :class="[sortOption==='rating'? 'is-checked' : '']" @click="sort('rating')">Rating</button> -->
-			 	
-			    <button v-for="(val, key) in option.getSortData" class="button" :class="[key===sortOption? 'is-checked' : '']" @click="sort(key)">{{key}}</button>
-			  </div>
-			
-		<!--  	<div>
-		    	<button v-for="layout in layouts" :class="[layout===currentLayout? 'is-checked' : '']" class="button" @click="changeLayout(layout)">
-					{{layout}}
-				</button>
-			</div>
--->
-	<div >
-		<isotope ref="cpt" id="root_isotope" class="isoDefault" :options='option' v-images-loaded:on.progress="callback" :list="list" @filter="filterOption=arguments[0]" @sort="sortOption=arguments[0]">
-		
-			<div v-for="element,index in list" :key="element.id">
-				
-				<a v-bind:href="element.image" class="progressive replace">
-					<img class="boximage" v-bind:src="element.thumbnail">
-				</a>
-				<div class="rating-container">
-					<div class="stars-outer">
-						<div class="stars-inner" v-bind:style="{width:element.starPercentage}" ></div>
-					</div>
-					<div class="num-players"><i class="fas fa-people-carry"></i> {{element.minPlayers}} - {{element.maxPlayers}}</div>
-				</div>
-			</div>
-		
-		</isotope>
-	<div>
 </div>
-<script type="text/javascript" src="js/main.js"></script>
+<script type="text/javascript" src="js/collection.js"></script>
 </body>
 
 </html>
