@@ -34,7 +34,7 @@
 		var h = 250
 		var clickTag="https://centralmarket.com"
 				
-		var rt = 1.5
+		var rt = 1.8
 		
 		window.onload = function() {	
 			bgExit = document.getElementById('background_exit_dc')
@@ -69,12 +69,16 @@
 			TweenMax.set(["#orange_box","#t1-holder","#t2-holder"],{autoAlpha:0,delay:d+.6})
 			
 			TweenMax.from("#t3",.35,{autoAlpha:0,x:"-=100",ease:Back.easeOut,delay:d+=.1})
-// 			TweenMax.from("#t4",.35,{autoAlpha:0,x:"-=100",ease:Back.easeOut,delay:d+=.04})
+			TweenMax.from("#logo",.35,{autoAlpha:0,x:"-=100",ease:Back.easeOut,delay:d+=.04})
 			TweenMax.from("#t5",0,{autoAlpha:0,delay:d+=.5})
 			TweenMax.from("#t6",.3,{autoAlpha:0,scaleX:0,ease:Back.easeOut,transformOrigin:"75% 0",delay:d+=.3})
 			TweenMax.from("#icon1",.5,{rotation:180,x:"+=50",autoAlpha:0,ease:Back.easeOut,delay:d+.2})
 			TweenMax.from("#icon2",.5,{rotation:-180,x:"-=50",autoAlpha:0,ease:Back.easeOut,delay:d+.2})
 			TweenMax.from("#t7",0,{autoAlpha:0,delay:d+=.45})
+			
+			TweenMax.to("#logo",.3,{scale:1,x:0,y:0,ease:Back.easeOut,delay:d+=rt*1.2})
+			TweenMax.to(['#t3,#t5',"#t6","#t7","#icon1","#icon2"],.1,{autoAlpha:0,delay:d+.01})
+			TweenMax.from("#cta",.3,{y:"-=20",autoAlpha:0,ease:Back.easeOut,delay:d})
 		}	
         
 		
@@ -95,15 +99,14 @@
 				<img src="t2-ss.png" id="t2-ss" width="479" height="559" >
 			</div></div>
 			<img src="t3.png" id="t3" width="970" height="250" >
-			<img src="t4.png" id="t4" width="970" height="250" >
 			<img src="t5.png" id="t5" width="970" height="250" >
 			<img src="t6.png" id="t6" width="970" height="250" >
 			<img src="t7.png" id="t7" width="970" height="250" >
 			<img src="icon1.png" id="icon1" width="77" height="78" >
 			<img src="icon2.png" id="icon2" width="77" height="78" >
-<!-- 			<img src="cta.png" id="cta" width="970" height="250" > -->
+			<img src="cta.png" id="cta" width="970" height="250" >
 			<img src="logo.png" id="logo" width="970" height="250" >
-<!-- 			<img src="food.png" id="food" width="970" height="250" > -->
+			<img src="food.png" id="food" width="970" height="250" >
 		</div>
 			
 		<div id="cover"></div>
