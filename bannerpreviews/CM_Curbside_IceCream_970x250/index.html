@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+	<title>970x250</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta name="ad.size" content="width=970,height=250">
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.0/TweenMax.min.js"></script>
+	
+	<style>
+
+		body, body * {position: absolute; vertical-align: baseline;border: 0;outline: 0;padding: 0;margin: 0;}
+		#container_dc {width:968px;height:248px;border: 1px solid #000000;top: 0px;left: 0px;margin: auto;}
+		#content_dc {overflow: hidden;width: 100%;height: 100%;top: 0px;left: 0px;background-color: #000000;z-index: 100;background-repeat: no-repeat;}
+		#cover {width: 970px;height: 250px;left: -1px;top:-1px;background-color: #000000;z-index:900;}
+		#background_exit_dc {width: 100%;height: 100%;top: 0px;left: 0px;cursor: pointer;opacity: 0;z-index: 901;}
+		#content_dc div{overflow: hidden; image-rendering: -webkit-optimize-contrast;}
+		
+		#orange_border{width:948px; height:228px; border:10px solid #ff7900; top:0; left:0; margin:0;}
+		#orange_box{width:410px; height:65px; background-color:#ff7900;}
+		
+		.holder{width:970px; height:250px;}
+		.sprite{width:479px; height:43px; overflow: hidden;}
+		
+		:focus {outline:none;}
+		::-moz-focus-inner {border:0;}
+
+	</style>
+	
+	<script>
+		/*VERSION VARIABLES*/
+		var w = 970
+		var h = 250
+		var clickTag="https://centralmarket.com"
+				
+		var rt = 1.8
+		
+		window.onload = function() {	
+			bgExit = document.getElementById('background_exit_dc')
+			bgExit.addEventListener('click', bgExitHandler, false)
+			startBanner()
+		}
+
+		/*ANIMATION*/
+		function startBanner()
+		{	
+			TweenMax.set("#t1",{x:46, y:69})
+			TweenMax.set("#t2",{x:46, y:136})
+			TweenMax.set("#orange_box",{x:80, y:122})
+			TweenMax.set(["#t1-holder","#t2-holder"],{width:0})
+			TweenMax.set("#icon1",{x:449,y:126})
+			TweenMax.set("#icon2",{x:843,y:126})
+			TweenMax.set("#logo",{scale:.52,x:"+=98",y:"-=23"})
+			var d = 0;
+			TweenMax.set("#cover",{autoAlpha:0,delay:d})
+			TweenMax.from("#food",.5,{x:w,ease:Cubic.easeOut,delay:d})
+			TweenMax.to("#t1-ss",13/24,{y:-516,ease:SteppedEase.config(12),repeat:10,delay:d})
+			TweenMax.to("#t2-ss",13/24,{y:-516,ease:SteppedEase.config(12),repeat:10,delay:d})
+			TweenMax.set("#t1-holder",{width:230,delay:d+=.4})
+			TweenMax.set("#t1-holder",{width:400,delay:d+=.35})
+			TweenMax.set("#t1-holder",{width:w,delay:d+=.35})
+			TweenMax.from("#orange_box",.3,{scaleY:-1,ease:Back.easeOut,transformOrigin:"50 0", delay:d+=.6})
+			TweenMax.from("#orange_box",.1,{autoAlpha:0,delay:d+.05})
+			TweenMax.set("#t2-holder",{width:350,delay:d+=.15})
+			TweenMax.set("#t2-holder",{width:w,delay:d+=.4})
+			TweenMax.to("#food",.5,{x:-w/1.85,ease:Cubic.easeInOut,delay:d+=rt})
+			TweenMax.to(["#orange_box","#t1-holder","#t2-holder"],.6,{width:0,delay:d+=.15})
+			TweenMax.set(["#orange_box","#t1-holder","#t2-holder"],{autoAlpha:0,delay:d+.6})
+			
+			TweenMax.from("#t3",.35,{autoAlpha:0,x:"-=100",ease:Back.easeOut,delay:d+=.1})
+			TweenMax.from("#logo",.35,{autoAlpha:0,x:"-=100",ease:Back.easeOut,delay:d+=.04})
+			TweenMax.from("#t5",0,{autoAlpha:0,delay:d+=.5})
+			TweenMax.from("#t6",.3,{autoAlpha:0,scaleX:0,ease:Back.easeOut,transformOrigin:"75% 0",delay:d+=.3})
+			TweenMax.from("#icon1",.5,{rotation:180,x:"+=50",autoAlpha:0,ease:Back.easeOut,delay:d+.2})
+			TweenMax.from("#icon2",.5,{rotation:-180,x:"-=50",autoAlpha:0,ease:Back.easeOut,delay:d+.2})
+			TweenMax.from("#t7",0,{autoAlpha:0,delay:d+=.45})
+			
+			TweenMax.to("#logo",.3,{scale:1,x:0,y:0,ease:Back.easeOut,delay:d+=rt*1.2})
+			TweenMax.to(['#t3,#t5',"#t6","#t7","#icon1","#icon2"],.1,{autoAlpha:0,delay:d+.01})
+			TweenMax.from("#cta",.3,{y:"-=20",autoAlpha:0,ease:Back.easeOut,delay:d})
+		}	
+        
+		
+	</script>
+</head>
+
+<body>
+
+	<div id="container_dc" style="margin:0;padding:0;">
+		<div id="content_dc">
+			<img src="bg.jpg" id="bg" width="970" height="250" >
+			<div id="orange_border"></div>
+			<div id="orange_box"></div>
+			<div class="holder" id="t1-holder"><div class="sprite" id="t1">
+				<img src="t1-ss.png" id="t1-ss" width="479" height="559" >
+			</div></div>
+			<div class="holder" id="t2-holder"><div class="sprite" id="t2">
+				<img src="t2-ss.png" id="t2-ss" width="479" height="559" >
+			</div></div>
+			<img src="t3.png" id="t3" width="970" height="250" >
+			<img src="t5.png" id="t5" width="970" height="250" >
+			<img src="t6.png" id="t6" width="970" height="250" >
+			<img src="t7.png" id="t7" width="970" height="250" >
+			<img src="icon1.png" id="icon1" width="77" height="78" >
+			<img src="icon2.png" id="icon2" width="77" height="78" >
+			<img src="cta.png" id="cta" width="970" height="250" >
+			<img src="logo.png" id="logo" width="970" height="250" >
+			<img src="food.png" id="food" width="970" height="250" >
+		</div>
+			
+		<div id="cover"></div>
+		<button id="background_exit_dc"></button>
+	</div>
+
+	<script>
+		function bgExitHandler(e) {
+			window.open(window.clickTag)
+		}
+	</script>
+	
+</body>
+</html>
