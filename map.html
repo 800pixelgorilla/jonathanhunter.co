@@ -1,0 +1,174 @@
+<html>
+	<body>
+	<div id="screen"></div>
+	<div id="map"></div>
+	<div id="result"></div>
+	
+	<div id="word"></div>
+	</body>
+	
+	<style>
+		#map{
+			display: flex;
+			flex-wrap:wrap;
+			width: 900px;
+			height: 900px;
+		}
+		button{
+			width: 60px;
+			height: 60px;
+		}
+		
+		button.clicked{
+			background-color: red;
+		}
+		
+	</style>
+	
+	
+	<script>
+		
+		var s = document.getElementById('screen')
+		var map = document.getElementById('map')
+		var result = document.getElementById('result')
+		var word = document.getElementById('word')
+		
+/* 		var startWord = "COVE" */
+/* 		var endWord = "BOLD" */
+		
+		var startWord = "COVE"
+		var endWord = "APEX"
+		
+		
+		
+		var startLetter = startWord.split('')
+		var endLetter = endWord.split('')
+		
+		var displayWord = []
+		
+		
+		var distances = []
+		var resultList = []
+		for(var i=0;i<4;i++)
+		{
+			distances.push(lDist(startLetter[i],endLetter[i]))
+			resultList.push(lDist(startLetter[i],endLetter[i]))
+			displayWord.push(l2n(startLetter[i]))
+		}
+		
+		trace(distances)
+		
+		updateresult()
+		
+		var posIndex = 0;
+		
+		var pathList = []
+		
+		var cols = 15	
+		var rows = 15
+		var grid = 40;
+		
+		
+		for(var r = 0; r<rows; r++)
+		{
+			for(var c = 0; c<cols; c++)
+			{
+				var btn = document.createElement('button')
+				btn.innerHTML = c +" / " + r
+				btn.setAttribute('col', c)
+				btn.setAttribute('row', r)
+				map.appendChild(btn)
+				
+				
+				
+				btn.onclick = function()
+				{
+					this.classList.toggle('clicked')
+					checkPath(this)
+				}
+			}
+		}
+		
+		
+		function checkPath(cell)
+		{
+			pathList.push([cell.getAttribute('col'),cell.getAttribute('row')])
+			
+			if(pathList.length > 1)
+			{
+				lastCell = pathList[pathList.length-1]
+				prevCell = pathList[pathList.length-2]
+				
+				distX = lastCell[0] - prevCell[0]
+				distY = lastCell[1] - prevCell[1]
+				
+				posIndex = (posIndex + distX) % 4;
+				if(posIndex < 0)
+				{
+					posIndex+=4;
+				}
+/* 				posIndex = posIndex%4; */
+				
+				console.log(posIndex)
+				
+				resultList[posIndex] = (resultList[posIndex] + distY)
+				
+				displayWord[posIndex] = (displayWord[posIndex] - distY)
+				
+				for(var i = 0; i<4; i++)
+				{
+/* 				console.log(displayWord[i]) */
+					if(displayWord[i] < -32)
+					{
+						displayWord[i] += 26
+					}
+					if(displayWord[i] > -7)
+					{
+						displayWord[i] -= 26
+					}
+				}
+				
+				console.log('-------')
+						
+				updateresult()
+			}
+		}
+		
+		function updateresult(){
+			result.innerHTML=resultList;
+			
+			
+			
+			word.innerHTML = String.fromCharCode(displayWord[0]+97)+String.fromCharCode(displayWord[1]+97)+String.fromCharCode(displayWord[2]+97)+String.fromCharCode(displayWord[3]+97);
+			
+			word.innerHTML += " | " + String.fromCharCode(displayWord[posIndex]+97)
+		}
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		function lDist(start,end)
+		{
+			return(l2n(end) - l2n(start))
+		}
+		
+		function l2n(letter)
+		{
+			return letter.charCodeAt(0)-97
+		}
+		
+		function trace(input)
+		{
+			s.innerHTML += input;
+			s.innerHTML += "<br />"
+		}
+	
+	</script>
+	
+</html>
