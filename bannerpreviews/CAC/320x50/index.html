@@ -2,23 +2,23 @@
 <html lang="en">
 <head>
 
-	<title>300x250</title>
+	<title>320x50</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-	<meta name="ad.size" content="width=300,height=250">
+	<meta name="ad.size" content="width=320,height=50">
 
 	<script src="https://s0.2mdn.net/ads/studio/cached_libs/gsap_3.5.1_min.js"></script>
 	
 	<style>
 
 		body, body * {position: absolute; vertical-align: baseline;border: 0;outline: 0;padding: 0;margin: 0;}
-		#container_dc {width:300px;height:250px; margin: auto;}
+		#container_dc {width:320px;height:50px; margin: auto;}
 		#content_dc {overflow: hidden;width: 100%;height: 100%;background-color: #cc6633; z-index: 100;background-repeat: no-repeat;}
 		#cover {width: 100%;height: 100%;background-color: #cc6633;z-index:1000;}
 		#background_exit_dc {width: 100%;height: 100%;cursor: pointer;opacity: 0;z-index: 1002;}
 		#content_dc div{overflow: hidden; image-rendering: -webkit-optimize-contrast;}
 		.border{width:100%;height:100%;border:1px solid #000;box-sizing: border-box;-moz-box-sizing: border-box;-webkit-box-sizing: border-box;;z-index: 1001;}
 		.holder{width:100%; height:100%; overflow: hidden}
-		.button{width:174px; height:39px; left:63px; top:188px; background: #212121}
+		.button{width:51px; height:26px; left:260px; top:12px; background: #212121}
 		:focus {outline:none;}
 		::-moz-focus-inner {border:0;}
 		
@@ -39,8 +39,8 @@
 		/*ANIMATION*/
 		function startBanner()
 		{	
-			let w = 300;
-			let h = 250;
+			let w = 320;
+			let h = 50;
 			let loop = 0
 			let loopMax = 1
 			let rt = 1.5
@@ -54,11 +54,10 @@
 			.to('#t1',{x:20,autoAlpha:0,ease:Sine.easeOut,duration:.2,delay:.9})
 			.from('#t2',.6,{x:-50,ease:Expo.easeOut,autoAlpha:0,delay:.1})
 			.to('#t2',.2,{x:20,ease:Sine.easeIn,autoAlpha:0,delay:.9})
-			.from('#t3',.6,{x:-50,ease:Expo.easeOut,autoAlpha:0,delay:.1})
-			.from('#t4',.6,{x:-50,ease:Expo.easeOut,autoAlpha:0})
-			.from('#t5',.6,{x:-50,ease:Expo.easeOut,autoAlpha:0} , '-=.55')
-			.to('#offer',.5,{scale:.80,y:5,ease:Cubic.easeOut,transformOrigin:'50% 0',delay:1.5})
-			.from(['#button','#cta'],.5,{y:15,autoAlpha:0,ease:Expo.easeOut}, '-=.4')
+			.from('#t3',.6,{x:-20,ease:Expo.easeOut,autoAlpha:0,delay:.1})
+			.from('#t4',.6,{x:-20,ease:Expo.easeOut,autoAlpha:0, delay: .5})
+/* 			.to('#offer',.4,{scale:.70,y:2,ease:Cubic.easeOut,transformOrigin:'20% 50%',delay:1.5}) */
+			.from(['#button','#cta'],.5,{x:15,autoAlpha:0,ease:Expo.easeOut,delay:.4})
 			.call(loopCheck)
 			.to(['#offer','#button','#cta'],.3,{autoAlpha:0,delay:2.5})
 			
@@ -78,19 +77,18 @@
 		
 		<div id="content_dc">
 			
-			<img src="logo.png" id="logo" width="300" height="250">
-			<img src="t1.png" id="t1" width="300" height="250">
+			<img src="logo.png" id="logo" width="320" height="50">
+			<img src="t1.png" id="t1" width="320" height="50">
 
-			<img src="t2.png" id="t2" width="300" height="250">
+			<img src="t2.png" id="t2" width="320" height="50">
 			
 			<div class="holder" id='offer'>
-				<img src="t3.png" id="t3" width="300" height="250">
-				<img src="t4.png" id="t4" width="300" height="250">
-				<img src="t5.png" id="t5" width="300" height="250">
+				<img src="t3.png" id="t3" width="320" height="50">
+				<img src="t4.png" id="t4" width="320" height="50">
 			</div>
 			
 			<div class="button" id="button"></div>
-			<img src="cta.png" id="cta" width="300" height="250">
+			<img src="cta.png" id="cta" width="320" height="50">
 			
 		</div>
 		
