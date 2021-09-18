@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+	<title>468x60</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta name="ad.size" content="width=468,height=60">
+
+	<script src="https://s0.2mdn.net/ads/studio/cached_libs/gsap_3.5.1_min.js"></script>
+	
+	<style>
+
+		body, body * {position: absolute; vertical-align: baseline;border: 0;outline: 0;padding: 0;margin: 0;}
+		#container_dc {width:468px;height:60px; margin: auto;}
+		#content_dc {overflow: hidden;width: 100%;height: 100%;background-color: #3953c2; z-index: 100;background-repeat: no-repeat;}
+		#cover {width: 100%;height: 100%;background-color: #3953c2;z-index:1000;}
+		#background_exit_dc {width: 100%;height: 100%;cursor: pointer;opacity: 0;z-index: 1002;}
+		#content_dc div{overflow: hidden; image-rendering: -webkit-optimize-contrast;}
+		.border{width:100%;height:100%;border:1px solid #000;box-sizing: border-box;-moz-box-sizing: border-box;-webkit-box-sizing: border-box;;z-index: 1001;}
+		.holder{width:100%; height:100%; overflow: hidden}
+		.button{width:98px; height:27px; left:350px; top:17px; background: #212121}
+		:focus {outline:none;}
+		::-moz-focus-inner {border:0;}
+		
+		
+
+	</style>
+	
+	<script>
+		
+		var clickTag="https://jobsatcaliber.com/";
+		
+		window.onload = function() {	
+			bgExit = document.getElementById('background_exit_dc');
+			bgExit.addEventListener('click', bgExitHandler, false)
+			startBanner();
+		}
+
+		/*ANIMATION*/
+		function startBanner()
+		{	
+			let w = 468;
+			let h = 60;
+			let loop = 0
+			let loopMax = 1
+			let rt = 1.5
+			let d = 0
+			
+			let sequence = new TimelineMax({repeat:loopMax,repeatDelay:.2})
+			
+			TweenMax.set('#cover',{autoAlpha:0})
+			
+			sequence.from('#t1',{x:-60,autoAlpha:0,ease:Expo.easeOut,duration:.6})
+			.to('#t1',{x:20,autoAlpha:0,ease:Sine.easeOut,duration:.2,delay:.9})
+			.from('#t2',.6,{x:-60,ease:Expo.easeOut,autoAlpha:0,delay:.1})
+			.to('#t2',.2,{x:20,ease:Sine.easeIn,autoAlpha:0,delay:.9})
+			.from('#t3',.6,{x:-20,ease:Expo.easeOut,autoAlpha:0,delay:.1})
+			.from('#t4',.6,{x:-20,ease:Expo.easeOut,autoAlpha:0, delay: .3})
+/* 			.to('#offer',.4,{scale:.70,y:2,ease:Cubic.easeOut,transformOrigin:'20% 60%',delay:1.5}) */
+			.from(['#button','#cta'],.5,{x:15,autoAlpha:0,ease:Expo.easeOut,delay:.4})
+			.call(loopCheck)
+			.to(['#offer','#button','#cta'],.3,{autoAlpha:0,delay:2.5})
+			
+			function loopCheck()
+			{
+				if(loop++ >= loopMax) sequence.pause()
+			}
+		}
+		
+		
+	</script>
+</head>
+
+<body>
+
+	<div id="container_dc" style="margin:0;padding:0;">
+		
+		<div id="content_dc">
+			
+			<img src="logo.png" id="logo" width="468" height="60">
+			<img src="t1.png" id="t1" width="468" height="60">
+
+			<img src="t2.png" id="t2" width="468" height="60">
+			
+			<div class="holder" id='offer'>
+				<img src="t3.png" id="t3" width="468" height="60">
+				<img src="t4.png" id="t4" width="468" height="60">
+			</div>
+			
+			<div class="button" id="button"></div>
+			<img src="cta.png" id="cta" width="468" height="60">
+			
+		</div>
+		
+		<div id="cover"></div>
+		<div class="border"></div>
+		<button id="background_exit_dc"></button>
+	
+	</div>
+
+	<script>
+	
+		function bgExitHandler(e) {
+			window.open(window.clickTag);
+		}
+		
+	</script>
+	
+</body>
+</html>
