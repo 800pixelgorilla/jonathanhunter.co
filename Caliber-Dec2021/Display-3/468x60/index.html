@@ -52,8 +52,9 @@
 			
 			sequence
 			.from('#t1',.6,{y:15,autoAlpha:0,ease:Expo.easeOut},"+=.2")
+			.from('#t1a',.6,{y:15,autoAlpha:0,ease:Expo.easeOut},"+=.2")
 			.from('#legal',.4,{autoAlpha:0},'+=.5')
-			.to(['#t1','#legal'],.3,{autoAlpha:0},"+=2")
+			.to(['#t1','#t1a','#legal'],.3,{autoAlpha:0},"+=2")
 			.from('#t2',.6,{y:15,autoAlpha:0,ease:Expo.easeOut},"-=.1")
 			.from('#t3',.6,{y:15,autoAlpha:0,ease:Expo.easeOut},"+=.1")
 			.from('#button',.3,{scaleX:0,autoAlpha:0,ease:Expo.easeOut},"+=.3")
@@ -82,6 +83,7 @@
 			<img src="legal.png" id="legal" width="468" height="60">
 			
 			<img src="t1.png" id="t1" width="468" height="60">
+			<img src="t1a.png" id="t1a" width="468" height="60">
 			<img src="t2.png" id="t2" width="468" height="60">
 			<img src="t3.png" id="t3" width="468" height="60">
 			
