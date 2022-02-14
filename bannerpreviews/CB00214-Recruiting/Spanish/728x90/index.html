@@ -51,22 +51,15 @@
 			TweenMax.set('#cover',{autoAlpha:0})
 			
 			sequence
-			.from('#bg',1,{autoAlpha:0,x:-w/2,scale:2,ease:Cubic.easeOut})
-			.from('#logo',.5,{autoAlpha:0,scale:1.5,y:120,ease:Expo.easeOut,},"-=.5")
-			.from('#t1',.6,{y:15,autoAlpha:0,ease:Expo.easeOut},"-=.1")
-			.from('#t2',.6,{y:15,autoAlpha:0,ease:Expo.easeOut},"-=.3")
-			.from('#t3',.6,{y:15,autoAlpha:0,ease:Expo.easeOut},"-=.3")
-			.from('#t4',.6,{y:15,autoAlpha:0,ease:Expo.easeOut},"+=.5")
-			.from('#t5',.6,{y:15,autoAlpha:0,ease:Expo.easeOut},"-=.3")
-			.to(['#t1','#t2','#t3','#t4','#t5'],.3,{autoAlpha:0},"+=2")
-			.from('#t6',.6,{y:15,autoAlpha:0,ease:Expo.easeOut},"-=.1")
-			.from('#t7',.6,{y:15,autoAlpha:0,ease:Expo.easeOut},"-=.3")
-			.from('#t8',.6,{y:15,autoAlpha:0,ease:Expo.easeOut},"-=.1")
-			.from('#t9',.6,{y:15,autoAlpha:0,ease:Expo.easeOut},"-=.3")
+			.from('#t1',.6,{y:15,autoAlpha:0,ease:Expo.easeOut},"+=.2")
+			.from('#t3',.6,{y:15,autoAlpha:0,ease:Expo.easeOut},"+=.5")
+			.to(['#t1','#t3'],.3,{autoAlpha:0},"+=2")
+			.from('#t4',.6,{y:15,autoAlpha:0,ease:Expo.easeOut},"-=.1")
+			.from('#t5',.6,{y:15,autoAlpha:0,ease:Expo.easeOut},"+=.1")
 			.from('#button',.3,{scaleX:0,autoAlpha:0,ease:Expo.easeOut},"+=.3")
 			.from('#cta',.5,{autoAlpha:0,ease:Expo.easeOut},'-=.1')
 			.call(loopCheck)
-			.to(['#t6','#t7','#t8','#t9','#button','#cta','#logo','#bg'],.4,{autoAlpha:0,},'+=2.5')
+			.to(['#t4','#t5','#button','#cta'],.4,{autoAlpha:0,},'+=2.5')
 			
 			function loopCheck()
 			{
