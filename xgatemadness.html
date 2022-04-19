@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+	<title>How even does math work anyways?</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	
+	<style>
+
+		
+		#field{display: grid; grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;}
+		.perc{text-align: center;}
+		
+	</style>
+	
+	<script>
+		/*VERSION VARIABLES*/
+		var w = 728;
+		var h = 90;
+		var clickTag="http://www.mcdonalds.com";
+		
+		var rt = 2
+		
+		
+		window.onload = function() {	
+			start();
+		}
+
+		/*ANIMATION*/
+		function start()
+		{	
+			for (let i=1; i<=10; i++)
+			{
+				document.getElementById("num"+i).addEventListener('change', update);
+			}
+			
+			function update()
+			{
+				var list = [];
+				var percs = [];
+				
+				for (let i=1; i<=10; i++)
+				{
+					if(document.getElementById('num'+i).value > 0)
+					{
+						list.push(document.getElementById('num'+i).value)
+					}
+				}
+				
+				for (let i=0; i<list.length; i++)
+				{
+					let x = list[i];
+					let n = list.length;
+					let r = 0;
+						
+						base = getBase()
+						t = 0;
+						for(let k = i; k>0; k--)
+						{
+							t += percs[k-1] / (n-i)
+						}
+						r = base - t
+						
+					// }
+					
+					function getBase()
+					{
+						y = 1;
+						for(j = i; j<n; j++)
+						{
+							y *= list[i]/list[j]  		
+						}
+						y /= (n-i)
+						return y
+					}
+					
+					percs.push(Math.round((r + Number.EPSILON) * 1000) / 1000)
+		
+				}
+				
+				for (let i=1; i<=10; i++)
+				{
+					document.getElementById('perc'+i).innerHTML = percs[i-1]
+				}
+			}
+			
+			function doMath(){
+				
+			}
+		}
+		
+		
+	</script>
+</head>
+
+<body>
+
+	<div id='field'>
+	
+	<input type="number" id="num1" name="num1" min="0" max="1000000">
+	<input type="number" id="num2" name="num2" min="0" max="1000000">
+	<input type="number" id="num3" name="num3" min="0" max="1000000">
+	<input type="number" id="num4" name="num4" min="0" max="1000000">
+	<input type="number" id="num5" name="num5" min="0" max="1000000">
+	<input type="number" id="num6" name="num6" min="0" max="1000000">
+	<input type="number" id="num7" name="num7" min="0" max="1000000">
+	<input type="number" id="num8" name="num8" min="0" max="1000000">
+	<input type="number" id="num9" name="num9" min="0" max="1000000">
+	<input type="number" id="num10" name="num10" min="0" max="1000000">
+	<div class="perc" id="perc1"></div>
+	<div class="perc" id="perc2"></div>
+	<div class="perc" id="perc3"></div>
+	<div class="perc" id="perc4"></div>
+	<div class="perc" id="perc5"></div>
+	<div class="perc" id="perc6"></div>
+	<div class="perc" id="perc7"></div>
+	<div class="perc" id="perc8"></div>
+	<div class="perc" id="perc9"></div>
+	<div class="perc" id="perc10"></div>
+	
+	<div/>
+
+</body>
+</html>
