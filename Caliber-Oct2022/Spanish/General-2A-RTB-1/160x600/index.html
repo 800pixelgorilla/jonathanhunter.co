@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+	<title>160x600</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta name="ad.size" content="width=160,height=600">
+
+	<script src="https://s0.2mdn.net/ads/studio/cached_libs/gsap_3.11.1_min.js"></script>
+	
+	<style>
+
+		body, body * {position: absolute; vertical-align: baseline;border: 0;outline: 0;padding: 0;margin: 0;}
+		#container_dc {width:160px;height:600px; margin: auto;}
+		#content_dc {overflow: hidden;width: 100%;height: 100%;background-color: #007db3; z-index: 100;background-repeat: no-repeat;}
+		#cover {width: 100%;height: 100%;background-color: #000;z-index:1000;}
+		#background_exit_dc {width: 100%;height: 100%;cursor: pointer;opacity: 0;z-index: 1002;}
+		#content_dc div{overflow: hidden; image-rendering: -webkit-optimize-contrast;}
+		.border{width:100%;height:100%;border:1px solid #000;box-sizing: border-box;-moz-box-sizing: border-box;-webkit-box-sizing: border-box;;z-index: 1001;}
+		.holder{width:100%; height:100%; overflow: hidden;}
+		.textsplit{width:100%; overflow: hidden;}
+		:focus {outline:none;}
+		::-moz-focus-inner {border:0;}
+		
+		#button{ left:14px; top:494px; width:129px; height:28px; background-color: #222;}
+		#pic-over {width:100%; height:100%; background-color: #007db3}
+		
+	</style>
+	
+	<script>
+		/*VERSION VARIABLES*/
+		var w = 160;
+		var h = 600;
+		var clickTag="https://jobsatcaliber.com/";
+		
+		var rt = 2
+		
+		window.onload = function() {	
+			bgExit = document.getElementById('background_exit_dc');
+			bgExit.addEventListener('click', bgExitHandler, false)
+			startBanner();
+		}
+
+		/*ANIMATION*/
+		function startBanner()
+		{	
+			let w = 160;
+			let h = 600;
+			let loop = 0
+			let loopMax = 0
+			let rt = 2
+			let d = 0
+			
+			let sequence = new TimelineMax({repeat:loopMax,repeatDelay:.2})
+			
+			TweenMax.set('#cover',{autoAlpha:0})
+			
+			sequence
+			.from('#t1',.8,{y:30,autoAlpha:0,ease:Expo.easeOut},"+=.2")
+			.from('#t2',.8,{y:30,autoAlpha:0,ease:Expo.easeOut},"-=.3")
+			.from('#button',.6,{scaleX:0,autoAlpha:0,ease:Expo.easeOut},"-=.2")
+			.from('#cta',.4,{autoAlpha:0,ease:Expo.easeOut},'-=.4')
+			.to('#t2',.3,{autoAlpha:0},'+=1.5')
+			.from('#t3',.8,{y:30,autoAlpha:0,ease:Expo.easeOut},"+=.2")
+			.to(['#t1','#t3'],.3,{autoAlpha:0},'+=1.5')
+			.from('#t4',.8,{y:30,autoAlpha:0,ease:Expo.easeOut},"-=.0")
+			.from('#t5',.8,{y:30,autoAlpha:0,ease:Expo.easeOut},"-=.2")
+			.to(['#t4','#t5'],.3,{autoAlpha:0,delay:3})
+			.to(['#button','#cta'],1,{y:"-=185",ease:Cubic.easeInOut})
+			.to('#pic-over',.8,{autoAlpha:0},'-=.6')
+			.from('#pic',.8,{scale:2,y:h/2,ease:Expo.easeOut},'-=.8')
+			.from('#end-1',.8,{y:30,autoAlpha:0,ease:Expo.easeOut},"-=.8")
+			.from('#end-2',.8,{y:30,autoAlpha:0,ease:Expo.easeOut},"-=.7")
+			.call(loopCheck)
+			.to(['#end-1','#end-2','#cta','#pic','#button'],.4,{autoAlpha:0,},'+=3')
+			
+			function loopCheck()
+			{
+				if(loop++ >= loopMax) sequence.pause()
+			}
+			
+		}
+		
+		
+	</script>
+</head>
+
+<body>
+
+	<div id="container_dc" style="margin:0;padding:0;">
+		
+		<div id="content_dc">
+		
+			<img src="pic.jpg" id="pic" width="160" height="600">
+			
+			<div id="pic-over"></div>
+			
+			<img src="legal.png" id="legal" width="160" height="600">
+			<div id="button"></div>
+			
+			<img src="cta.png" id="cta" width="160" height="600">
+			<img src="t1.png" id="t1" width="160" height="600">
+			<img src="t2.png" id="t2" width="160" height="600">
+			<img src="t3.png" id="t3" width="160" height="600">
+			<img src="t4.png" id="t4" width="160" height="600">
+			<img src="t5.png" id="t5" width="160" height="600">
+			
+			<img src="end-1.png" id="end-1" width="160" height="600">
+			<img src="end-2.png" id="end-2" width="160" height="600">
+			
+			<img src="header.png" id="header" width="160" height="600">
+			
+		</div>
+		
+		<div id="cover"></div>
+		<div class="border"></div>
+		<button id="background_exit_dc"></button>
+	
+	</div>
+
+	<script>
+	
+		function bgExitHandler(e) {
+			window.open(window.clickTag);
+		}
+		
+	</script>
+	
+</body>
+</html>
