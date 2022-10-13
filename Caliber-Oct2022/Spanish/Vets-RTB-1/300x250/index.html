@@ -64,7 +64,8 @@
 			.to('#t3',.3,{autoAlpha:0},'+=1.75')
 			
 			.from('#t4',.8,{x:30,autoAlpha:0,ease:Expo.easeOut},"+=.1")
-			.to(['#t4'],.3,{autoAlpha:0},'+=2.5')
+			.from('#t5',.8,{x:30,autoAlpha:0,ease:Expo.easeOut},"-=.7")
+			.to(['#t4','#t5'],.3,{autoAlpha:0},'+=2.5')
 			
 			.to('#box',.6,{y:-h,ease:Expo.easeIn},'-=.4')
 			.from('#pic',.8,{scale:1,x:w/2,autoAlpha:0,ease:Expo.easeOut},'-=.1')
@@ -98,6 +99,7 @@
 			<img src="t2.png" id="t2" width="300" height="250">
 			<img src="t3.png" id="t3" width="300" height="250">
 			<img src="t4.png" id="t4" width="300" height="250">
+			<img src="t5.png" id="t5" width="300" height="250">
 			
 			<img src="end-1.png" id="end-1" width="300" height="250">
 			<img src="end-2.png" id="end-2" width="300" height="250">
