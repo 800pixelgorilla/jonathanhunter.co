@@ -60,8 +60,8 @@
 			.to('#t2',.3,{autoAlpha:0},'+=1.5')
 			.from('#t3',.8,{x:30,autoAlpha:0,ease:Expo.easeOut},"+=.2")
 			.to(['#t1','#t3'],.3,{autoAlpha:0},'+=1.5')
-			.from('#t4',.8,{x:30,autoAlpha:0,ease:Expo.easeOut},"-=.0")
-			.to('#t4',.3,{autoAlpha:0,delay:rt})
+			.from(['#t4','#t5'],.8,{x:30,autoAlpha:0,ease:Expo.easeOut},"-=.0")
+			.to(['#t4','#t5'],.3,{autoAlpha:0,delay:rt})
 			.from('#end-1',.8,{x:30,autoAlpha:0,ease:Expo.easeOut},"+=.2")
 			.call(loopCheck)
 			.to(['#end-1','#end-2',],.4,{autoAlpha:0,},'+=3')
@@ -86,6 +86,7 @@
 			<img src="legal.png" id="legal" width="320" height="50">
 			<img src="t1.png" id="t1" width="320" height="50">
 			<img src="t4.png" id="t4" width="320" height="50">
+			<img src="t5.png" id="t5" width="320" height="50">
 			<img src="t2.png" id="t2" width="320" height="50">
 			<img src="t3.png" id="t3" width="320" height="50">
 			
