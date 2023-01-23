@@ -92,6 +92,9 @@
 			
 		
 			TweenMax.from("#t2",1,{x:43,autoAlpha:0,ease:Expo.easeOut,delay:d+=.7})
+			
+			TweenMax.to(["#t2"],.4,{x:"-=15",ease:Expo.easeIn,autoAlpha:0,delay:d+=rt*1.25})
+			TweenMax.from("#cta",1,{x:43,autoAlpha:0,ease:Expo.easeOut,delay:d+=.7})
 		}
 		
 		
@@ -143,6 +146,7 @@
 			
 			<img src="t1.png" id="t1" width="320" height="50">
 			<img src="t2.png" id="t2" width="320" height="50">
+			<img src="cta.png" id="cta" width="320" height="50" style="top:2px">
 
 			
 						
