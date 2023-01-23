@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+	<title>300x600</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta name="ad.size" content="width=300,height=600">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+
+<!-- 	<script src="https://s0.2mdn.net/ads/studio/cached_libs/gsap_3.11.1_min.js"></script> -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+
+
+	
+	<style>
+
+		body, body * {position: absolute; vertical-align: baseline;border: 0;outline: 0;padding: 0;margin: 0;}
+		#container_dc {width:300px;height:600px; margin: auto;}
+		#content_dc {overflow: hidden;width: 100%;height: 100%;background-color: #ffffff; z-index: 100;background-repeat: no-repeat;}
+		#cover {width: 100%;height: 100%;background-color: #ffffff;z-index:1000;}
+		#background_exit_dc {width: 100%;height: 100%;cursor: pointer;opacity: 0;z-index: 1002;}
+		#content_dc div{overflow: hidden; image-rendering: -webkit-optimize-contrast;}
+		.border{width:100%;height:100%;border:1px solid #000;box-sizing: border-box;-moz-box-sizing: border-box;-webkit-box-sizing: border-box;z-index: 1001;}
+		.holder{width:100%; height:100%; overflow: hidden;}
+		:focus {outline:none;}
+		::-moz-focus-inner {border:0;}
+		
+		.brownbox{width:100%;height:100%;background-color: #322923;}
+		
+		.tri1{-webkit-clip-path: polygon(300px 150px, 0px 150px, 300px 300px);clip-path: polygon(300px 150px, 0px 150px, 300px 450px);}
+		.tri2{-webkit-clip-path: polygon(150px 150px, 300px 0px, 300px 150px);clip-path: polygon(150px 150px, 300px 0px, 300px 150px);}
+		.tri3{-webkit-clip-path: polygon(150px 150px, 0px 0px, 0px 150px);clip-path: polygon(150px 150px, 0px 0px, 0px 150px);}
+		.tri4{-webkit-clip-path: polygon(196px 105px, 336px 105px, 336px -35px);clip-path: polygon(-1px 0px, 301px 0px, 150px 151px);}
+		.tri5{-webkit-clip-path: polygon(0px 150px, 226px 375px, 0px 600px);clip-path: polygon(0px 150px, 226px 375px, 0px 600px);}
+		.tri6{-webkit-clip-path: polygon(225px 375px, 382px 530px, 70px 530px);clip-path: polygon(225px 375px, 382px 530px, 70px 530px);}
+		.tri7{-webkit-clip-path: polygon(70px 530px, 300px 530px, 300px 600px, 0px 600px);clip-path: polygon(70px 530px, 300px 530px, 300px 600px, 0px 600px);}
+			
+		
+		
+	</style>
+	
+	<script>
+		/*VERSION VARIABLES*/
+		var w = 300;
+		var h = 600;
+		var clickTag="http://www.https://bkvenergy.com/";
+		
+		var rt = 1.75
+		
+		window.onload = function() {	
+			bgExit = document.getElementById('background_exit_dc');
+			bgExit.addEventListener('click', bgExitHandler, false)
+		
+			d = .2
+			TweenMax.set('#cover',{autoAlpha:0,delay:d})
+			
+			TweenMax.set("#elipse2",{x:12})
+			TweenMax.set("#elipse3",{x:24})
+			TweenMax.set(["#grad2a","#grad2b","#grad2c","#grad2d"],{scale:2.5})
+			
+			TweenMax.from("#h1",1,{autoAlpha:0,delay:d+=.2})
+			
+			
+			TweenMax.from("#elipse1",.7,{autoAlpha:0,delay:d+.2})
+			TweenMax.from("#elipse2",.7,{autoAlpha:0,delay:d+.4})
+			TweenMax.from("#elipse3",.7,{autoAlpha:0,delay:d+.5})
+			
+			for(let i = 1; i<=8;i++)
+			{
+				TweenMax.from("#logo"+i,.5,{scale:0,ease:Cubic.easeOut,delay:d+.05*i})
+			}
+			
+			TweenMax.from("#logo1-b",.7,{x:-55,ease:Cubic.easeOut,delay:d+=.1})
+			TweenMax.from("#logo2-b",.7,{y:100,ease:Cubic.easeOut,delay:d+=.2})
+			TweenMax.from("#logo3-b",.8,{y:-100,ease:Cubic.easeOut,delay:d+=.1})
+			TweenMax.from("#energy",.8,{autoAlpha:0,delay:d+=.2})
+			
+			
+			
+			TweenMax.from("#h1",1,{x:24,ease:Expo.easeInOut,delay:d+=.3})
+			TweenMax.to(["#elipse1","#elipse2","#elipse3"],.4,{x:"-=15",ease:Expo.easeIn,autoAlpha:0,delay:d+.05})
+			TweenMax.from("#car1",1,{autoAlpha:0,delay:d+.3})
+			TweenMax.to('#logo',.5,{autoAlpha:0,delay:d+=.5})
+			TweenMax.from('#logo-color',.5,{autoAlpha:0,delay:d})
+			TweenMax.from("#h2",.7,{x:43,autoAlpha:0,ease:Expo.easeOut,delay:d+=.5})
+			TweenMax.from("#h3",.7,{x:43,autoAlpha:0,ease:Expo.easeOut,delay:d+.2})
+			TweenMax.from("#car2",.2,{autoAlpha:0,yoyo:true,repeat:20,delay:d+=.6})
+			TweenMax.from("#h4",.7,{x:43,autoAlpha:0,ease:Expo.easeOut,delay:d+=.6})
+			
+			
+			
+			TweenMax.from("#tri1",3,{y:20,x:w*2,ease:Expo.easeInOut,delay:d+=rt*1})
+			TweenMax.from("#tri3box",2,{y:-20,x:-50,width:0,ease:Expo.easeInOut,delay:d+=.5})
+			TweenMax.from("#tri2box",2,{width:150,ease:Expo.easeInOut,delay:d+.3})
+			TweenMax.from("#tri4box",1.5,{scale:0,transformOrigin:"50% 25%",ease:Expo.easeInOut,delay:d+.8})
+			TweenMax.from("#tri6box",1.5,{scale:0,transformOrigin:"75% 60%",ease:Expo.easeInOut,delay:d+.8})
+			TweenMax.from("#tri5",2,{x:-w/2,width:0,ease:Expo.easeInOut,delay:d+.9})
+			TweenMax.from("#tri7",2,{x:w,ease:Expo.easeInOut,delay:d+.8})
+			
+			TweenMax.from(["#grad2a","#grad2b","#grad2c","#grad2d"],8,{rotation:180,delay:d+2})
+			TweenMax.to(["#grad2a","#grad2b","#grad2c","#grad2d"],8,{autoAlpha:0,delay:d+2})
+			
+			TweenMax.to('#logo',.5,{autoAlpha:1,delay:d+1.8})
+			TweenMax.to('#logo-color',.5,{autoAlpha:0,delay:d+1.8})
+		
+			TweenMax.from("#t1",1,{x:43,autoAlpha:0,ease:Expo.easeOut,delay:d+=1.8})
+			TweenMax.from("#t2",1,{x:43,autoAlpha:0,ease:Expo.easeOut,delay:d+=.2})
+			TweenMax.from("#t3",1,{x:43,autoAlpha:0,ease:Expo.easeOut,delay:d+=.2})
+			TweenMax.from("#t4",1,{x:43,autoAlpha:0,ease:Expo.easeOut,delay:d+=.2})
+			
+			TweenMax.to(["#t1","#t2","#t3","#t4"],.4,{x:"-=15",ease:Expo.easeIn,autoAlpha:0,delay:d+=rt*1.25})
+			
+		
+			TweenMax.from("#t5",1,{x:43,autoAlpha:0,ease:Expo.easeOut,delay:d+=.7})
+			TweenMax.from("#t6",1,{x:43,autoAlpha:0,ease:Expo.easeOut,delay:d+=.2})
+			TweenMax.from("#t7",1,{x:43,autoAlpha:0,ease:Expo.easeOut,delay:d+=.2})
+		}
+		
+		
+	</script>
+</head>
+
+<body>
+
+	<div id="container_dc" style="margin:0;padding:0;">
+		
+		<div id="content_dc">
+			
+			<div class="brownbox"></div>
+			
+			<img src="car1.jpg" id="car1" width="300" height="600">
+			
+			<img src="car2.jpg" id="car2" width="300" height="600">
+			
+			<img src="h1.png" id="h1" width="300" height="600">
+			<img src="elipse.png" id="elipse1" width="300" height="600">
+			<img src="elipse.png" id="elipse2" width="300" height="600">
+			<img src="elipse.png" id="elipse3" width="300" height="600">
+			<img src="h2.png" id="h2" width="300" height="600">
+			<img src="h3.png" id="h3" width="300" height="600">
+			<img src="h4.png" id="h4" width="300" height="600">
+			
+			<div class="holder tri1" id="tri1" style="overflow:visible">
+				<img src="grad1.jpg" id="grad1" width="300" height="600">
+				<img src="grad1.jpg" id="grad2a" width="300" height="600">
+			</div>
+			
+			<div class="holder tri5" id="tri5" style="">
+				<img src="grad1.jpg" id="grad1" width="300" height="600">
+				<img src="grad1.jpg" id="grad2a" width="300" height="600">
+			</div>
+			
+			<div class="holder" id="tri6box">
+				<div class="holder tri6" id="tri6">
+					<img src="grad1.jpg" id="grad1" width="300" height="600">
+					<img src="grad1.jpg" id="grad2b" width="300" height="600">
+				</div>
+			</div>
+			
+			<div class="holder tri7" id="tri7" style="">
+				<img src="grad1.jpg" id="grad1" width="300" height="600">
+				<img src="grad1.jpg" id="grad2a" width="300" height="600">
+			</div>
+			
+			<div class="holder" id="tri2box">
+				<div class="holder tri2" id="tri2">
+					<img src="grad1.jpg" id="grad1" width="300" height="600">
+					<img src="grad1.jpg" id="grad2b" width="300" height="600">
+				</div>
+			</div>
+			
+			<div class="holder" id="tri3box">
+				<div class="holder tri3" id="tri3">
+					<img src="grad1.jpg" id="grad1" width="300" height="600">
+					<img src="grad1.jpg" id="grad2c" width="300" height="600">
+				</div>
+			</div>
+			
+			<div class="holder" id="tri4box">
+				<div class="holder tri4" id="tri4">
+					<img src="grad1.jpg" id="grad1" width="300" height="600">
+					<img src="grad1.jpg" id="grad2d" width="300" height="600">
+				</div>
+			</div>
+
+			<img src="cta.png" id="cta" width="300" height="600">
+
+			<div class="holder" id="logo">
+			<svg id="logo1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 94.81 105.68" style="width:54px; left:66px; top:505px;">
+				<g id="c">
+					<path d="m36.36,63.47c0,1.4,1.69,2.1,2.68,1.11l21.83-21.83c.28-.28,21.58-21.71,31.81-42.75-4.46,4.67-17.38,15.32-50.21,27.33l-6.11,2.13v34.01Z" style="fill:#fff;"/>
+				</g>
+			</svg>
+			
+			<svg id="logo2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 94.81 105.68" style="width:54px; left:66px; top:505px;">
+				<g id="c">
+					<path d="m33.42,63.47V30.48s-9.42,3.29-9.42,3.29c-5.69,1.98-10.61,5.32-14.51,9.55l21.25,21.26c.99.99,2.68.29,2.68-1.11Z" style="fill:#fff;"/>
+				</g>
+			</svg>
+			
+			<svg id="logo3" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 94.81 105.68" style="width:54px; left:66px; top:505px;">
+				<g id="c">
+					<path d="m27.6,69.37H0s0-1.81,0-1.81c0-8.17,2.79-15.84,7.59-21.99l21.12,21.12c.99.99.29,2.68-1.11,2.68Z" style="fill:#fff;"/>
+				</g>
+			</svg>
+			
+			<svg id="logo4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 94.81 105.68" style="width:54px; left:66px; top:505px;">
+				<g id="c">
+					<path d="m0,72.3v18.15c0,3.68,1.3,7.05,3.47,9.68l25.15-25.15c.99-.99.29-2.68-1.11-2.68H0Z" style="fill:#fff;"/>
+				</g>
+			</svg>
+			
+			<svg id="logo5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 94.81 105.68" style="width:54px; left:66px; top:505px;">
+				<g id="c">
+					<path d="m30.74,77.02l-25.19,25.19c2.63,2.17,6.01,3.47,9.68,3.47h18.18s0-27.55,0-27.55c0-1.4-1.69-2.1-2.68-1.11Z" style="fill:#fff;"/>
+				</g>
+			</svg>
+			
+			<svg id="logo6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 94.81 105.68" style="width:54px; left:66px; top:505px;">
+				<g id="c">
+					<path d="m39.03,77.02c-.99-.99-2.68-.29-2.68,1.11v27.56s1.77,0,1.77,0c8.17,0,15.84-2.79,21.99-7.58l-21.08-21.08Z" style="fill:#fff;"/>
+				</g>
+			</svg>
+			
+			<svg id="logo7" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 94.81 105.68" style="width:54px; left:66px; top:505px;">
+				<g id="c">
+					<path d="m41.15,74.98l21.21,21.22c4.23-3.9,7.57-8.82,9.55-14.51l3.27-9.38h-32.93c-1.4,0-2.1,1.69-1.11,2.67Z" style="fill:#fff;"/>
+				</g>
+			</svg>
+			
+			<svg id="logo8" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 94.81 105.68" style="width:54px; left:66px; top:505px;">
+				<g id="c">
+					<path  d="m94.81,2.35c-.64,11.22-17.42,63.65-17.42,63.65l-1.18,3.37h-34.03c-1.4,0-2.1-1.69-1.11-2.68l21.87-21.87c.09-.09,9.06-9.08,18.15-21.06,5.87-7.73,10.43-14.88,13.71-21.42Z" style="fill:#fff;"/></g>
+			</svg>
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 174.51 61.27" style="width:100px; left:133px; top:509px;">
+				<g id="c">
+					<path id="logo1-b" d="m38.58,29.2c4.52-2.35,8.7-6.26,8.7-13.56v-.18c0-4.08-1.39-7.38-4.09-10.08C39.71,1.91,34.24,0,27.29,0H0v60.83h28.16c13.55,0,22.5-5.82,22.5-16.69v-.17c0-8.26-4.95-12.34-12.08-14.77ZM10.51,9.47h15.39c6.86,0,10.69,2.95,10.69,7.73v.18c0,5.56-4.61,8.25-11.48,8.25h-14.6V9.47Zm29.47,33.54c0,5.48-4.44,8.35-11.74,8.35H10.51v-16.69h16.95c8.43,0,12.52,3.04,12.52,8.17v.17Z" style="fill:#fff;"/>
+				</g>
+			</svg>
+			
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 174.51 61.27" style="width:100px; left:134px; top:509px;">
+				<g id="logo2-b">
+					<polygon points="58.64 0 69.33 0 69.33 30.59 98.27 0 111.4 0 86.11 26.16 112.53 60.83 99.58 60.83 78.81 33.46 69.33 43.19 69.33 60.83 58.64 60.83 58.64 0" style="fill:#ffff;"/>
+				</g>
+			</svg>
+			
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 174.51 61.27" style="width:100px; left:134px; top:509px;">
+				<g id="logo3-b">
+					<polygon points="114.54 0 126.36 0 144.7 46.75 162.95 0 174.51 0 149.22 61.27 139.83 61.27 114.54 0" style="fill:#fff;"/>
+				</g>
+			</svg>
+			
+			</div>
+			<img src="energy.png" id="energy" width="300" height="600">
+			
+			
+			<img src="t1.png" id="t1" width="300" height="600">
+			<img src="t2.png" id="t2" width="300" height="600">
+			<img src="t3.png" id="t3" width="300" height="600">
+			<img src="t4.png" id="t4" width="300" height="600">
+			<img src="t5.png" id="t5" width="300" height="600">
+			<img src="t6.png" id="t6" width="300" height="600">
+			<img src="t7.png" id="t7" width="300" height="600">
+
+			
+			<img src="logo-color.png" id="logo-color" width="300" height="600">
+			
+						
+		</div>
+		
+		<div id="cover"></div>
+		<div class="border"></div>
+		<button id="background_exit_dc"></button>
+	
+	</div>
+
+	<script>
+	
+		function bgExitHandler(e) {
+			window.open(window.clickTag);
+		}
+		
+	</script>
+	
+</body>
+</html>
