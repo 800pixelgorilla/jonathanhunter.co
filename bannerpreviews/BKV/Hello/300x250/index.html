@@ -75,7 +75,15 @@
 			
 			TweenMax.to("#brownbox",1,{autoAlpha:0,delay:d+=0})
 			TweenMax.from("#sky",.2,{autoAlpha:0,delay:d})
-			TweenMax.to("#sky",4,{y:-400+h,ease:Cubic.easeInOut,delay:d-1})
+			
+			TweenMax.from("#light2",1,{autoAlpha:0,delay:d+.5})
+			TweenMax.from("#light1",1,{autoAlpha:0,delay:d+.75})
+			TweenMax.from("#light3",.75,{autoAlpha:0,delay:d+1.5})
+			TweenMax.to("#light2",1.5,{autoAlpha:0,delay:d+1.5})
+			TweenMax.to("#light1",1.5,{autoAlpha:0,delay:d+2.25})
+			TweenMax.to("#light3",1.5,{autoAlpha:0,delay:d+2.75})
+			
+			TweenMax.to(["#sky","#light1","#light2","#light3"],4,{y:-400+h,ease:Cubic.easeInOut,delay:d-1})
 			TweenMax.from("#h3",.7,{x:43,autoAlpha:0,ease:Expo.easeOut,delay:d+=1.5})
 			
 			
@@ -114,6 +122,9 @@
 			
 			
 			<img src="sky.jpg" id="sky" width="300" height="470" style="top:-70px">
+			<img src="light1.png" id="light1" width="300" height="470" style="top:-70px; opacity:1;">
+			<img src="light2.png" id="light2" width="300" height="470" style="top:-70px; opacity:1;">
+			<img src="light3.png" id="light3" width="300" height="470" style="top:-70px; opacity:1;">
 			<div class="brownbox" id="brownbox"></div>
 			
 			<img src="h1.png" id="h1" width="300" height="250">
