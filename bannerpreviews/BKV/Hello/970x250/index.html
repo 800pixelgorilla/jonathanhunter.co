@@ -36,6 +36,10 @@
 		.tri6{-webkit-clip-path: polygon(225px 375px, 382px 530px, 70px 530px);clip-path: polygon(330px 0px, 490px 0px, 490px 160px);}
 		.tri7{-webkit-clip-path: polygon(70px 530px, 970px 530px, 970px 250px, 0px 250px);clip-path: polygon(0px -331px, 0px 250px, 581px 250px);}
 			
+		#h1{ 
+		  -webkit-filter: drop-shadow(5px 5px 12px rgba(34, 34, 34, 0.5));
+		  filter: drop-shadow(5px 5px 12px rgba(34, 34, 34, 0.5);
+		  }
 		
 		
 	</style>
@@ -84,7 +88,7 @@
 			TweenMax.to("#light1",1.5,{autoAlpha:0,delay:d+2.25})
 			TweenMax.to("#light3",1.5,{autoAlpha:0,delay:d+2.75})
 			
-			TweenMax.to(["#sky","#light1","#light2","#light3"],4,{y:-100,ease:Cubic.easeInOut,delay:d-1})
+			TweenMax.to(["#sky","#light1","#light2","#light3"],4,{y:-50,ease:Cubic.easeInOut,delay:d-1})
 			TweenMax.from("#h3",.7,{x:43,autoAlpha:0,ease:Expo.easeOut,delay:d+=1.5})
 			
 			
@@ -133,9 +137,9 @@
 			
 			<div class="brownbox" id="brownbox"></div>
 			
-			<img src="h1.png" id="h1" width="970" height="250">
-			<img src="h2.png" id="h2" width="970" height="250">
-			<img src="h3.png" id="h3" width="970" height="250">
+			<img src="h1.png" id="h1" width="970" height="250" style="top:20px">
+			<img src="h2.png" id="h2" width="970" height="250" style="top:10px">
+			<img src="h3.png" id="h3" width="970" height="250" style="top:10px">
 			
 			<div class="holder tri1" id="tri1" style="overflow:visible">
 				<img src="grad1.jpg" id="grad2a" width="970" height="250">

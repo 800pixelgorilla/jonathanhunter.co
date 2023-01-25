@@ -33,6 +33,10 @@
 		.tri3{-webkit-clip-path: polygon(150px 150px, 0px 0px, 0px 150px);clip-path: polygon(150px 150px, 0px 0px, 0px 150px);}
 		.tri4{-webkit-clip-path: polygon(196px 105px, 336px 105px, 336px -35px);clip-path: polygon(-1px 0px, 301px 0px, 150px 151px);}
 			
+		#h1{ 
+		  -webkit-filter: drop-shadow(5px 5px 12px rgba(34, 34, 34, 0.5));
+		  filter: drop-shadow(5px 5px 12px rgba(34, 34, 34, 0.5);
+		  }
 		
 		
 	</style>
@@ -83,7 +87,7 @@
 			TweenMax.to("#light1",1.5,{autoAlpha:0,delay:d+2.25})
 			TweenMax.to("#light3",1.5,{autoAlpha:0,delay:d+2.75})
 			
-			TweenMax.to(["#sky","#light1","#light2","#light3"],4,{y:-400+h,ease:Cubic.easeInOut,delay:d-1})
+			TweenMax.to(["#sky","#light1","#light2","#light3"],4,{y:-70,ease:Cubic.easeInOut,delay:d-1})
 			TweenMax.from("#h3",.7,{x:43,autoAlpha:0,ease:Expo.easeOut,delay:d+=1.5})
 			
 			
