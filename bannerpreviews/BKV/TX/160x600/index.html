@@ -45,7 +45,7 @@
 	
 	<script>
 		/*VERSION VARIABLES*/
-		var w = 300;
+		var w = 160;
 		var h = 600;
 		var clickTag="http://www.https://bkvenergy.com/";
 		
@@ -75,6 +75,7 @@
 			TweenMax.from("#logo3-b",.8,{y:-100,ease:Cubic.easeOut,delay:d+=.1})
 			TweenMax.from("#energy",.8,{autoAlpha:0,delay:d+=.2})
 			
+			TweenMax.from(["#light1"],4,{x:-170,ease:Cubic.easeInOut,delay:d-1})
 			
 			TweenMax.to("#brownbox",1,{autoAlpha:0,delay:d+=.6})
 			TweenMax.to(["#h1"],.3,{autoAlpha:0,delay:d+=.3})
@@ -114,7 +115,7 @@
 		<div id="content_dc">
 			
 			
-			<img src="light1.jpg" id="light1" width="160" height="600">
+			<img src="light1.jpg" id="light1" width="330" height="600">
 			
 			<div class="brownbox" id="brownbox"></div>
 			

@@ -77,6 +77,7 @@
 			TweenMax.from("#energy",.8,{autoAlpha:0,delay:d+=.2})
 			
 			
+			TweenMax.from(["#light1"],4,{x:-160,ease:Cubic.easeInOut,delay:d-1})
 			
 			TweenMax.to("#brownbox",1,{autoAlpha:0,delay:d+=.6})
 			TweenMax.to(["#h1","#h2"],.3,{autoAlpha:0,delay:d+=.3})
@@ -122,7 +123,7 @@
 		<div id="content_dc">
 			
 			
-			<img src="light1.jpg" id="light1" width="300" height="600">
+			<img src="light1.jpg" id="light1" width="460" height="600">
 			
 			<div class="brownbox" id="brownbox"></div>
 			
