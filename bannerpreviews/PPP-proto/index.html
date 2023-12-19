@@ -61,7 +61,10 @@
 			gsap.from('#h2',.3,{scale:0,transformOrigin:'30% 80%',ease:Back.easeOut,delay:d+=.2})
 			gsap.from('#h3',.3,{x:30,autoAlpha:0,ease:Expo.easeOut,delay:d+=.4})
 
+		
+
 			gsap.to(['#h1','#h2','#h3'],.3,{x:50,autoAlpha:0,ease:Expo.easeIn,delay:d+=rt})
+			gsap.to('#black',3,{autoAlpha:0,delay:d})
 			gsap.to('#logo-big',.3,{x:-50,autoAlpha:0,ease:Expo.easeIn,delay:d+=.1})
 			
 
