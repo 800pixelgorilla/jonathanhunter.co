@@ -26,6 +26,7 @@
 		#line1{stroke-dashoffset:300; stroke-dasharray: 300;}
 		#line2{stroke-dashoffset:-300; stroke-dasharray: 300;}
 
+		#black{background-color: #000; opacity: .26;}
 		/* #lights{left:-250px; top:-109px; mix-blend-mode: screen;} */
 
 		/* .box{left: 12px; top: 14px; width: 161px; height: 101px; border: 4px solid #ffb700; }
@@ -55,15 +56,20 @@
 			gsap.set('#cover',{autoAlpha:0})
 			gsap.set('#pizza-top',{scale:.5,x:-75, y:-62.5})
 
+			gsap.from('#logo-big',.3,{y:30,autoAlpha:0,ease:Back.easeOut,delay:d+=.2})
+			gsap.from('#h1',.3,{x:30,autoAlpha:0,ease:Expo.easeOut,delay:d+=.5})
+			gsap.from('#h2',.3,{scale:0,transformOrigin:'30% 80%',ease:Back.easeOut,delay:d+=.2})
+			gsap.from('#h3',.3,{x:30,autoAlpha:0,ease:Expo.easeOut,delay:d+=.4})
 
-			gsap.from('#pizza-top',1,{ease:CountQueuingStrategy.easeIn,scale:4,rotation:360,ease:Cubic.easeOut})
+			gsap.to(['#h1','#h2','#h3'],.3,{x:50,autoAlpha:0,ease:Expo.easeIn,delay:d+=rt})
+			gsap.to('#logo-big',.3,{x:-50,autoAlpha:0,ease:Expo.easeIn,delay:d+=.1})
+			
 
-			gsap.to('#pizza-top',.5,{x:-10, y: -17, scaleX:.5,scaleY:.2,ease:Cubic.easeInOut,delay:d+=.3})
-			gsap.from('#pizza',.5,{scaleX:2,scaleY:4.5,x:-128,y:-198,ease:Cubic.easeInOut,delay:d})
-			gsap.to('#pizza-top',.05,{autoAlpha:0,delay:d+.3})
+			gsap.from('#pizza',.4,{x:w,ease:Expo.easeOut,delay:d+=.2})
 
 			gsap.from('#wings',.5,{y:-50,x:200,ease:Expo.easeOut,delay:d+=.3})
 
+			d-=.1
 			gsap.from('#promo',.5,{scale:0,transformOrigin:"30% 15%",ease:Back.easeOut,delay:d})
 
 			gsap.to('#line1',.65,{ease:Cubic.easeIn,strokeDashoffset:0,delay:d+.35 - .5})
@@ -90,7 +96,13 @@
 				
 			<img src="bg.jpg" width="300px" height="250px">
 			<img src="vignette.png" width="300px" height="250px">
-			
+
+			<div class="holder" id="black"></div>
+			<img src="logo-big.png" id="logo-big">
+			<img src="h1.png" id="h1">
+			<img src="h2.png" id="h2">
+			<img src="h3.png" id="h3">
+
 			<svg class="line" id="line1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 250"><polyline points="92 16 14 16 14 113 92 113" style="fill:none;stroke-miterlimit:10;stroke-width:4px"/></svg>
 			<svg class="line" id="line2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 250"><polyline points="92 113 178 113 178 16 92 16" style="fill:none;stroke-miterlimit:10;stroke-width:4px"/></svg>
 
@@ -103,7 +115,7 @@
 			<img src="logo.png" id="logo" width="300px" height="250px">
 			
 			<img src="pizza.png" id="pizza" width="300px" height="250px">
-			<img src="pizza-top.png" id="pizza-top">
+			<!-- <img src="pizza-top.png" id="pizza-top"> -->
 			<img src="wings.png" id="wings" width="300px" height="250px">
 			<!-- <img src="lights.jpg" id="lights"> -->
 
