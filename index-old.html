@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html >
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="google" value="notranslate">
+    <link rel='stylesheet' href='http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css'>
+    <link rel='stylesheet' href='css/normalize.css'>
+    <link rel='stylesheet' href='css/style.css'>
+    <link rel="stylesheet" type="text/css" href="css/jquery.fullPage.css" />
+    <script src="https://use.typekit.net/lzt7ctc.js"></script>
+	<script>try{Typekit.load({ async: true });}catch(e){}</script>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-T502WQPZ23"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-T502WQPZ23');
+</script>	  
+	  
+</head>
+<body>
+	<div class="logo">
+	<img class="gor" src="gor/gor.gif">
+	<div class="myname">Jonathan Hunter</div>
+<!-- 	<div class="subhead">animator developer illustrator</div> -->
+	</div>
+	<!--
+<div class='header-container'>
+		<header>
+				<img class="gor" src="gor/gor.gif">
+				<div class="myname"><h1>Jonathan Hunter</h1></div>
+				<nav>
+					<ul>contact</ul>
+				</nav>
+		</header>
+	</div>
+-->
+	<div id="fullpage">
+	<section class="section" id="first-section" style="background-color:#fef0d4; color:#724724">
+				<div class="loading"></div>
+				<img class="single" data-loading="false" data-full="images/hamburgerDay.gif" data-prev="images/hamburgerDay.png" src="images/hamburgerDay.gif">
+				<div class="section-title">
+					<h1>Bunbrella</h1>
+					<h2>National Hamburger day</h2>
+				</div>
+	</section>
+	<section class="section" style="background-color:#7574b3; color:white">
+				<div class="loading"></div>
+				<img class="single" data-loading="false" data-full="images/videoGameDay.gif" data-prev="images/videoGameDay.png" src="images/videoGameDay.png">
+				<div class="section-title">
+					<h1>Lunch Run</h1>
+					<h2 style="font-weight:300;">National Videogame day</h2>
+				</div>
+	</section>
+	<section class="section" style="background-color:#80dcdd; color:#525273">
+				<div class="loading"></div>
+				<img class="single" data-loading="false" data-full="images/girl.gif" data-prev="images/girl.png" src="images/girl.png">
+				<div class="section-title">
+					<h1>Sip of Glee</h1>
+					<h2>McDonald’s Sweet Tea </h2>
+				</div>
+	</section>
+	<section class="section" style="background-color:#ffe6ca; color:#6b2b52">
+				<div class="loading"></div>
+				<img class="single" data-loading="false" data-full="images/summer.gif" data-prev="images/summer.png" src="images/summer.png">
+				<div class="section-title">
+					<h1>Summer Moments</h1>
+					<h2>McDonald’s Summer Social Post</h2>
+				</div>
+	</section>
+	<section class="section" style="background-color:#ade9f8; color:#026182">
+				<div class="loading"></div>
+				<img class="single" data-loading="false" data-full="images/memorialdaycup.gif" data-prev="images/memorialdaycup.png"  src="images/memorialdaycup.png">
+				<div class="section-title">
+					<h1>Hats Off</h1>
+					<h2>Memorial Day</h2>
+				</div>
+	</section>
+	<section class="section" style="background-color:#3f3967; color:#fed26b">
+				<div class="loading"></div>
+				<img class="single" data-loading="false" data-full="images/frysprinkler.gif" data-prev="images/frysprinkler.png" src="images/frysprinkler.png">
+				<div class="section-title">
+					<h1>Ketchup Sprinkler</h1>
+					<h2 style="font-weight:300;">Its not blood.</h2>
+				</div>
+	</section>
+		
+	<section class="section" style="background-color:#3f3967; color:#6b2b52">
+				<div class="loading"></div>
+				<img class="single"  data-full="images/BECBis2.gif" data-prev="images/8BitBreakfast.png" src="images/8BitBreakfast.png">
+				<div class="section-title">
+					<h1>8 Bit Breakfast</h1>
+					<h2 style="font-weight:300;"></h2>
+				</div>
+	</section>
+	
+	</div>
+	
+	<div class="mobile-nav">
+		<div class="b-up button" onclick="nextPost('up')">▲</div>
+		<div class="b-down button" onclick="nextPost('down')">▼</div>
+	</div>
+	
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	<script>
+	
+	var scrollQueue =[];
+	var currentPos = 9999;
+	
+	$(function() {
+		setupScrollQueue();
+	});
+	
+	function setupScrollQueue(){
+		$('section').each(function(index){
+			scrollQueue.push($(this));
+			var pos = $(this).offset();
+			if(index < currentPos && pos.top+100 > $(window).scrollTop())
+			{
+				currentPos = index;
+			}
+			
+		})
+	}
+	
+	function nextPost(direction)
+	{
+		var nextPos = 0;
+		if(direction == 'down')
+		{
+			if(currentPos == scrollQueue.length-1)currentPos = -1;
+			nextPos = $("#fullpage").children().eq(currentPos+1).offset().top;
+			nextPos-=65;
+			currentPos++;
+			$('html, body').animate({
+		 					
+                    scrollTop: nextPos
+					}, 0);
+		}
+		else
+		{
+			if(currentPos == 0)currentPos = scrollQueue.length;
+			nextPos = $("#fullpage").children().eq(currentPos-1).offset().top;
+			nextPos-=65;
+			currentPos--;
+			$('html, body').animate({
+		 					
+                    scrollTop: nextPos
+					}, 0);
+		}
+		swap();
+	}
+	
+	var didScroll = false;
+	window.onscroll = doThisStuffOnScroll;
+
+	function doThisStuffOnScroll() {
+	    didScroll = true;
+	}
+	
+	setInterval(function() {
+	    if(didScroll) {
+	       didScroll = false;
+	       swap()
+	    }
+	}, 100);
+	
+	function swap(){
+		$("section").each(function(){
+		     	var $elem = $(this).children('img');
+			 	var $window = $(window);
+	
+			 	var docViewTop = $window.scrollTop();
+			 	var docViewBottom = docViewTop + $window.height();
+	
+			 	var elemTop = $elem.offset().top;
+			 	var elemBottom = elemTop + $elem.height();
+			 	var imgURL = ""; 
+			 	(elemBottom <= docViewBottom) && (elemTop >= docViewTop) ? imgURL = $(this).children('img').data('full') : imgURL = $(this).children('img').data('prev');
+			 	if(imgURL != $(this).children('img').attr('src'))
+			 	{
+			 		getImage($(this),imgURL);
+			 	}
+	       });
+	}
+	
+	function getImage(target,url)
+	{
+		if( target.children('img').data('loading') == false)
+		{
+			target.children(".loading").addClass("spinner");
+			target.children('img').data('loading',true);
+			var img = new Image()
+		
+			img.onload = function (){
+				target.children(".loading").removeClass("spinner");
+				target.children('img').attr('src',url);
+				target.children('img').data('loading',false);
+				}
+			img.src = url;
+		}
+	}
+	
+	</script>
+</body>
+
+</html>
