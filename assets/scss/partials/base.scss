@@ -11,6 +11,8 @@ body{
     overflow: hidden;
     margin: 0;
     padding: 0;
+    max-width: 2000px;
+    margin: 0 auto;
 }
 
 .nowrap{
@@ -21,7 +23,7 @@ h1{
     font-family: var(--font-family--sans-serif);
     color: var(--color--primary);
     text-transform: uppercase;
-    font-size: 40vw;
+    font-size: clamp(13rem, 40vw, 46rem);
     // transform: rotateZ(-.5deg);
     letter-spacing: -.25rem;
     line-height: .7;
@@ -31,7 +33,9 @@ h1{
     
     &.even-bigger{
         font-size: 50vw;
-        margin-top: 3vw;
+
+        font-size: clamp(16rem, 50vw, 56rem);
+        margin-top: clamp(1rem, 3vw, 3rem);
         // transform: rotateZ(2deg);
     }
 }
