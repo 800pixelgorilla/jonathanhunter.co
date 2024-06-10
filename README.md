@@ -1,2 +1,2 @@
-# jonathanhunter.digital
+# 800pixelgorilla.com
 Portfolio Static Site

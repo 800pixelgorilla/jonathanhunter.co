@@ -1,4 +1,8 @@
-.nav {
+body{
+  background-color: #312243;
+}
+
+/*.nav {
   overflow: hidden; }
 .nav a {
   float: left;
@@ -34,4 +38,4 @@
 .menu-toggle--open .menu-toggle__bar2 {
   opacity: 0; }
 .menu-toggle--open .menu-toggle__bar3 {
-  transform: translate(0, -7px) rotate(45deg); }
+  transform: translate(0, -7px) rotate(45deg); }*/
