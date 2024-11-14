@@ -60,7 +60,6 @@
 			const textIn = { scale:1, y:-20, autoAlpha:0, ease:Back.easeOut, transformOrigin:'50% 100%', duration:0.35 }
 
 			split('h1',[47,75])
-			split('h3',[35,60])
 
 			gsap.set('#star1',{width:26, x:70, y: 135, rotation:-10, transformOrigin:'50% 50%'})
 			gsap.set('#star2',{width: 31, x:65, y: 200, rotation:-20, transformOrigin:'50% 50%'})
@@ -106,16 +105,12 @@
 			  .to('#star5', { y:h, autoAlpha:0, ease:Cubic.easeInOut, duration: 0.65 }, d + 0.05)
 			  .to('#mascot2', { y:h, autoAlpha:0, ease:Cubic.easeInOut, duration: 0.65 }, d + 0.05)
 			  .from('#store', {scale:2, y:h*2, ease:Expo.easeOut, duration: 0.5}, d += 0.5)
-			  .from('#h3_0', textIn, d += 0.4)
-			  .from('#h3_1', textIn, d += 0.05)
+			  .from('#h3', textIn, d += 0.4)
 			  .from('#cta', textIn, d+= 0.3)
 			  .from('#star7', {x:'-=20', y: '-=30', scale:0, rotation: '+=180', ease:Back.easeOut, duration: 0.35}, d)
 			  .from('#star6', {x:'+=20', y: '+=30', scale:0, rotation: '+=180', ease:Back.easeOut, duration: 0.35}, d+= 0.25)
 			  .to('#cta', {scale:1.1, ease:Sine.easeInOut, duration:0.4, transformOrigin:'50% 33%'}, d+= 1)
 			  .to('#cta', {scale:1, ease:Back.easeOut, duration:0.25}, d+= 0.4)
-
-			  // .to('#star6', {rotation: 360 * 2, duration:5}, d)
-			  // .to('#star7', {rotation: 360 * 2, duration:8}, d)
 			  
 
 			 
