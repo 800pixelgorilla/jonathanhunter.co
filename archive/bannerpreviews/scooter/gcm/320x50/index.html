@@ -60,11 +60,12 @@
 			const textIn = { scale:1, y:20, autoAlpha:0, ease:Back.easeOut, transformOrigin:'50% 100%', duration:0.35 }
 
 			split('h1',[25,h])
+			split('h4',[25,h])
 
 			gsap.set('#h1_1',{x:2})
 			gsap.set('#star1',{width:30, x:229, y: 18, rotation:-9, transformOrigin:'50% 50%'})
 			gsap.set('#star2',{width: 50, x:264, y: -9, rotation:30, transformOrigin:'50% 50%'})
-			gsap.set('#star4',{width: 90, x:184, y: -28, rotation:15, transformOrigin:'50% 50%'})
+			gsap.set('#star4',{width: 90, x:184, y: -25, rotation:15, transformOrigin:'50% 50%'})
 			gsap.set('#star5',{width: 30, x:2, y: 30, rotation:-9, transformOrigin:'50% 50%'})
 			gsap.set('#star6',{width: 90, x:-45, y: -28, rotation:15, transformOrigin:'50% 50%'})
 			gsap.set('#star7',{width: 30, x:217, y: 30, rotation:-9, transformOrigin:'50% 50%'})
@@ -105,6 +106,9 @@
 			  .from('#star7', {x:'-=20', y: '-=20', scale:0, rotation: '+=180', ease:Back.easeOut, duration: 0.35}, d+= 0.1)
 			  .from('#logo', textIn, d+= 0.3)
 			  .from('#arrow3', {duration: 0.4, x: -50, ease:Back.easeOut, autoAlpha:0}, d+= 0.3)
+			  .to('#h3', { y:-150, autoAlpha:0, ease:Cubic.easeInOut, duration: 0.8 }, d += rt)
+			  .from('#h4_0', textIn, d += 0.2)
+			  .from('#h4_1', textIn, d += 0.05)
 			  
 
 			 
@@ -139,6 +143,7 @@
 			<img src="logo.png" id="logo" width="320px" height="50px" />
 			<svg id="star6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 26 25"><polygon points="13 0 17.67 7.33 26 9.55 20.55 16.3 21.03 25 13 21.85 4.97 25 5.45 16.3 0 9.55 8.33 7.33 13 0" style="fill:#ee2939;"/></svg>
 			<svg id="star7" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 26 25"><polygon points="13 0 17.67 7.33 26 9.55 20.55 16.3 21.03 25 13 21.85 4.97 25 5.45 16.3 0 9.55 8.33 7.33 13 0" style="fill:#ee2939;"/></svg>
+			<img src='headline1.png' id="h4" width="320px" height="50px" style='left:-14px'/>
 
 
 			<div id="cover"></div>
