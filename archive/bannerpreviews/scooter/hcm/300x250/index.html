@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+	<title>Scooter's Coffee - Texas - 300x250</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta name="ad.size" content="width=300,height=250">
+
+	<script src="gsap.min.js"></script>
+	
+	<style>
+
+		body, body * {position: absolute; vertical-align: baseline;border: 0;outline: 0;padding: 0;margin: 0;}
+		#container_dc {width:300px;height:250px; margin: auto;}
+		#content_dc {overflow: hidden;width: 100%;height: 100%;background-color: #f6eee7; z-index: 1;background-repeat: no-repeat;}
+		#cover {width: 100%;height: 100%;background-color: #f6eee7; z-index:2;}
+		#background_exit_dc {width: 100%;height: 100%;cursor: pointer;opacity: 0;z-index: 1002;}
+		#content_dc div{overflow: hidden; image-rendering: -webkit-optimize-contrast;}
+		.border{width:100%;height:100%;border:1px solid #000;box-sizing: border-box;-moz-box-sizing: border-box;-webkit-box-sizing: border-box;;z-index: 1001;}
+		.holder{width:100%; height:100%; overflow: hidden;}
+		:focus {outline:none;}
+		::-moz-focus-inner {border:0;}
+		
+
+	</style>
+	
+	<script>
+		/*VERSION VARIABLES*/
+		
+		var clickTag="https://www.scooterscoffee.com/";
+		
+		window.onload = function() {	
+			var bgExit = document.getElementById('background_exit_dc');
+			bgExit.addEventListener('click', bgExitHandler, false)
+			
+			function split(id,cuts,d) {
+				const i = document.getElementById(id), h = document.createElement('div');
+				h.id = id + "_holder"; h.className = 'holder';
+				let o = 0, p = 0;
+				cuts.forEach((cut, n) => {
+					const div = document.createElement('div'), c = i.cloneNode();
+					cut -= p;
+				    div.className = "holder"; div.id = id + "_" + n;
+				    div.style[d ? 'width' : 'height'] = cut + 'px';
+				    div.style[d ? 'left' : 'top'] = o + 'px';
+				    c.style[d ? 'left' : 'top'] = -o + 'px';
+				    div.appendChild(c); h.appendChild(div);
+				    o += cut; p = cuts[n];
+				});
+				i.parentElement.replaceChild(h, i);
+			}
+
+			const w = 300
+			const h = 250
+			const rt = 2
+			const tl = gsap.timeline();
+
+			let d = 0.0
+
+			const textIn = { scale:1, y:-20, autoAlpha:0, ease:Back.easeOut, transformOrigin:'50% 100%', duration:0.35 }
+
+			split('h1',[35,61,h])
+			split('h3',[33,h])
+
+			gsap.set('#star1',{width:26, x:70, y: 135, rotation:-10, transformOrigin:'50% 50%'})
+			gsap.set('#star2',{width: 31, x:65, y: 200, rotation:-20, transformOrigin:'50% 50%'})
+			gsap.set('#star3',{width: 45, x:190, y: 106, rotation:30, transformOrigin:'50% 50%'})
+			gsap.set('#star4',{width: 288, x:-15, y: 76, rotation:-132, transformOrigin:'50% 50%'})
+			gsap.set('#star5',{width: 40, x:219, y: 105, rotation:-12, transformOrigin:'50% 50%'})
+			gsap.set('#star6',{width: 33, x:10, y: 105, rotation:20, transformOrigin:'50% 50%'})
+			gsap.set('#star7',{width: 67, x:255, y: 198, rotation:-20, transformOrigin:'50% 50%'})
+			gsap.set('#mascot2',{scaleX:-1})
+
+			gsap.set(['#cover'], { autoAlpha: 0 })
+			
+			tl.from('#h1_0', textIn, d += 0.2)
+			  .from('#h1_1', textIn, d += 0.05)
+			  .from('#h1_2', textIn, d += 0.05)
+			  .from('#star1', {x:'+=20', y: '+=30', scale:0, rotation: '+=180', ease:Back.easeOut, duration: 0.35}, d)
+			  .to('#star1', {rotation: 360 * 2, duration:5}, d)
+			  .from('#star3', {x:'-=20', y: '+=30', scale:0, rotation: '+=180', ease:Back.easeOut, duration: 0.35}, d+ 0.25)
+			  .to('#star3', {rotation: 360 * 2, duration:8}, d+0.25)
+			  .from('#star2', {x:'+=20', y: '+=30', scale:0, rotation: '+=180', ease:Back.easeOut, duration: 0.35}, d+ 0.5)
+			  .to('#star2', {rotation: 360 * 2, duration:6}, d+0.5)
+			  .from('#mascot1', {x:'-=20', y: '+=30', scale:0, ease:Back.easeOut, duration: 0.35}, d+= 0.05)
+			  .to('#box1', { y:h, ease:Cubic.easeInOut, duration: 0.8 }, d += rt)
+			  .to('#h1_holder', { y:h/2, autoAlpha:0, ease:Cubic.easeInOut, duration: 0.8 }, d)
+			  .to('#worker', { y:h/4, ease:Cubic.easeInOut, duration: 0.8 }, d)
+			  .to('#star1', {y:h, ease:Cubic.easeInOut, duration: 1}, d)
+			  .to('#star2', {y:h, ease:Cubic.easeInOut, duration: .8}, d + 0.025)
+			  .to('#star3', {y:h, ease:Cubic.easeInOut, duration: 1}, d + 0.025)
+			  .to('#mascot1', {y:h, ease:Cubic.easeInOut, duration: 1}, d + 0.05)
+			  .from('#product', {scale:2, y:h, ease:Expo.easeOut, duration: 0.5}, d += 0.5)
+			  .from('#star4', {x:'+=0', y: '-=0', scale:.75, autoAlpha:0, rotation: '+=90', ease:Expo.easeOut, duration: 0.6}, d)
+			  .from('#star5', {x:'-=20', y: '+=30', scale:0, rotation: '+=180', ease:Back.easeOut, duration: 0.35}, d+= 0.2)
+			  // .to('#star5', {rotation: 360 * 2, duration:6}, d)
+			  .from('#mascot2', {x:'+=20', y: '+=30', scale:0, ease:Back.easeOut, duration: 0.35}, d+= 0.05)
+			  .from('#h2', textIn, d += 0.4)
+			  .from('#underline', {x:'-=20', autoAlpha:0, ease:Back.easeOut, transformOrigin:"0% 50%", duration: 0.3}, d+ 0.4)
+			  .from('#rtb1', {scale:0.5, autoAlpha:0, ease:Back.easeOut, duration: 0.4}, d+= 1.25)
+			   .from('#rtb2', {scale:0.5, autoAlpha:0, ease:Back.easeOut, duration: 0.4}, d)
+			  .from('#arrow1',{x:-20, y:10, autoAlpha:0, ease:Back.easeOut , duration: 0.5}, d+= 0.2)
+			  .from('#arrow2',{x:20, y:-10, autoAlpha:0, ease:Back.easeOut , duration: 0.5}, d)
+			  .to(['#h2','#underline'], { y:h/2, autoAlpha:0, ease:Cubic.easeInOut, duration: 0.8 }, d += rt)
+			  .to('#product', { y:h, ease:Cubic.easeInOut, duration: 0.6 }, d)
+			  .to(['#star4','#rtb1','#rtb2','#arrow1','#arrow2'], { rotation:'+=30', y:h, autoAlpha:0, ease:Cubic.easeInOut, duration: 0.6 }, d + 0.05)
+			  .to('#star5', { y:h, autoAlpha:0, ease:Cubic.easeInOut, duration: 0.65 }, d + 0.05)
+			  .to('#mascot2', { y:h, autoAlpha:0, ease:Cubic.easeInOut, duration: 0.65 }, d + 0.05)
+			  .from('#store', {scale:2, y:h*2, ease:Expo.easeOut, duration: 0.5}, d += 0.5)
+			  .from('#h3_0', textIn, d += 0.4)
+			  .from('#h3_1', textIn, d += 0.05)
+			  .from('#cta', textIn, d+= 0.3)
+			  .from('#star7', {x:'-=20', y: '-=30', scale:0, rotation: '+=180', ease:Back.easeOut, duration: 0.35}, d)
+			  .from('#star6', {x:'+=20', y: '+=30', scale:0, rotation: '+=180', ease:Back.easeOut, duration: 0.35}, d+= 0.25)
+			  .to('#cta', {scale:1.1, ease:Sine.easeInOut, duration:0.4, transformOrigin:'50% 33%'}, d+= 1)
+			  .to('#cta', {scale:1, ease:Back.easeOut, duration:0.25}, d+= 0.4)
+			  
+
+			 
+		}
+
+		
+	</script>
+</head>
+
+<body>
+
+	<div id="container_dc" style="margin:0;padding:0;">
+		
+		<div id="content_dc">
+
+			<img src='worker.jpg' id="worker" width="300px" height="250px" />
+			<svg id="star1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 26 25"><polygon points="13 0 17.67 7.33 26 9.55 20.55 16.3 21.03 25 13 21.85 4.97 25 5.45 16.3 0 9.55 8.33 7.33 13 0" style="fill:#ee2939;"/></svg>
+			<svg id="star2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 26 25"><polygon points="13 0 17.67 7.33 26 9.55 20.55 16.3 21.03 25 13 21.85 4.97 25 5.45 16.3 0 9.55 8.33 7.33 13 0" style="fill:#ee2939;"/></svg>
+			<svg id="star3" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 26 25"><polygon points="13 0 17.67 7.33 26 9.55 20.55 16.3 21.03 25 13 21.85 4.97 25 5.45 16.3 0 9.55 8.33 7.33 13 0" style="fill:#ee2939;"/></svg>
+			<img src="mascot.png" id="mascot1" style="width:65px; left:197px; top:158px;"/>
+			<div id="box1" style="width: 100%; height: 344px; top:-250px; background-color: #f6eee7;"></div>
+			<img src='store.jpg' id="store" width="300px" height="250px" />
+			<img src='headline1.png' id="h1" width="300px" height="250px" />
+			<img src='headline2.png' id="h2" width="300px" height="250px" />
+			<svg id="star4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 26 25"><polygon points="13 0 17.67 7.33 26 9.55 20.55 16.3 21.03 25 13 21.85 4.97 25 5.45 16.3 0 9.55 8.33 7.33 13 0" style="fill:#ee2939;"/></svg>
+			<svg id="star5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 26 25"><polygon points="13 0 17.67 7.33 26 9.55 20.55 16.3 21.03 25 13 21.85 4.97 25 5.45 16.3 0 9.55 8.33 7.33 13 0" style="fill:#ee2939;"/></svg>
+			<img src="mascot.png" id="mascot2" style="width:65px; left:55px; top:51px;"/>
+			<img src='headline3.png' id="h3" width="300px" height="250px" />
+			<img src='product.png' id="product" width="300px" height="250px" />
+			<img src="arrow1.png" id="arrow1" width="300px" height="250px" />
+			<img src="arrow2.png" id="arrow2" width="300px" height="250px" />
+			<img src="rtb1.png" id="rtb1" width="300px" height="250px" />
+			<img src="rtb2.png" id="rtb2" width="300px" height="250px" />
+			<img src="underline.png" id="underline" width="300px" height="250px" style="right:0;"/>
+			<img src="cta.png" id="cta" width="300px" height="250px" />
+			<svg id="star6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 26 25"><polygon points="13 0 17.67 7.33 26 9.55 20.55 16.3 21.03 25 13 21.85 4.97 25 5.45 16.3 0 9.55 8.33 7.33 13 0" style="fill:#ee2939;"/></svg>
+			<svg id="star7" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 26 25"><polygon points="13 0 17.67 7.33 26 9.55 20.55 16.3 21.03 25 13 21.85 4.97 25 5.45 16.3 0 9.55 8.33 7.33 13 0" style="fill:#ee2939;"/></svg>
+
+
+			<div id="cover"></div>
+
+		</div>
+		
+		<div class="border"></div>
+		<button id="background_exit_dc"></button>
+	
+	</div>
+
+	<script>
+	
+		function bgExitHandler(e) {
+			window.open(window.clickTag);
+		}
+		
+	</script>
+	
+</body>
+</html>

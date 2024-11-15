@@ -59,7 +59,8 @@
 
 			const textIn = { scale:1, y:20, autoAlpha:0, ease:Back.easeOut, transformOrigin:'50% 100%', duration:0.35 }
 
-			split('h1',[45,h])
+			split('h1',[30,60,h])
+			split('h3',[45,h])
 
 			gsap.set('#h1_1',{x:2})
 			gsap.set('#star1',{width:42, x:23, y: 31, rotation:-20, transformOrigin:'50% 50%'})
@@ -75,6 +76,7 @@
 			
 			tl.from('#h1_0', textIn, d += 0.2)
 			  .from('#h1_1', textIn, d += 0.05)
+			  .from('#h1_2', textIn, d += 0.05)
 			  .from('#star1', {x:'+=20', y: '+=0', scale:0, rotation: '+=180', ease:Back.easeOut, duration: 0.35}, d)
 			  .to('#star1', {rotation: 360 * 2, duration:15}, d)
 			  .from('#star3', {x:'-=20', y: '-=0', scale:0, rotation: '+=180', ease:Back.easeOut, duration: 0.35}, d+= 0.1)
@@ -105,7 +107,8 @@
 			  .to('#mascot2', { y:'-=150', autoAlpha:0, ease:Cubic.easeInOut, duration: 0.65 }, d + 0.05)
 			  .from('#store', { x:w*2, ease:Expo.easeOut, duration: 0.5}, d += 0.2)
 			  .from('#logo', textIn, d+= 0.3)
-			  .from('#h3', textIn, d += 0.5)
+			  .from('#h3_0', textIn, d += 0.3)
+			  .from('#h3_1', textIn, d += 0.05)
 			  .from('#cta', textIn, d+= 0.3)
 			  .from('#star6', {x:'-=20', y: '+=10', scale:0, rotation: '+=180', ease:Back.easeOut, duration: 0.35}, d)
 			  .from('#star7', {x:'-=20', y: '-=10', scale:0, rotation: '+=180', ease:Back.easeOut, duration: 0.35}, d+= 0.1)
