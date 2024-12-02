@@ -81,7 +81,8 @@
 			  .from('#h2_1', textInRight, d += 0.65)
 			  .from('#h2_2', textInRight, d += 0.05)
 			  .from('#h2_3', textInRight, d += 0.05)
-			  .to('#h2_0', textOutLeft, d += rt)
+			  .to(['#h1_0','#h1_1'], textOutLeft, d += rt)
+			  .to('#h2_0', textOutLeft, d += 0.025)
 			  .to('#hand1', { x:  w, y: 150, ease:Expo.easeIn, duration: 0.35 }, d)
 			  .to('#sprinkles', {autoAlpha: 0, duration: 0.2}, d)
 			  .to('#hand2', { x: -w, y: 150, ease:Expo.easeIn, duration: 0.35 }, d)
@@ -126,10 +127,13 @@
 
 			<img src='headline1.png' class="dropshadow" id="h1" width="300px" height="600px" />
 			<img src='headline2.png' class="dropshadow" id="h2" width="300px" height="600px" />
-			<img src='headline3.png' class="dropshadow" id="h3" width="300px" height="600px" />
-			<img src='headline4.png' class="dropshadow" id="h4" width="300px" height="600px" />
 
-			<img src='drink-lockup.png' id="drink" width="300px" height="600px" />
+			<div class="holder" style="top:-25px">
+				<img src='headline3.png' class="dropshadow" id="h3" width="300px" height="600px" />
+				<img src='headline4.png' class="dropshadow" id="h4" width="300px" height="600px" />
+			</div>
+
+			<img src='drink-lockup.png' id="drink" width="300px" height="600px" style="top:-15px" />
 			<img src='name.png' id="name" width="300px" height="600px" />
 
 			<img src='worker.jpg' id="worker" width="300px" height="600px" />
