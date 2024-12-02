@@ -95,6 +95,7 @@
 			  .from('#h4_0', textInRight, d += 0.5)
 			  .from('#h4_1', textInRight, d += 0.05)
 			  .from('#name', {autoAlpha: 0, duration: 1}, d += 0.5)
+			  .from('#legal', {autoAlpha:0, duration:1}, d += 0.5)
 			  .from('#worker', {scale: 2, autoAlpha:0, ease:Cubic.easeInOut, duration: 0.55} , d+=rt)
 			  .set('#name',{autoAlpha:0}, d + 0.55)
 			  .from('#logo', {autoAlpha:0, duration: 0.3} , d+=0.4)
@@ -139,6 +140,8 @@
 
 			<img src='drink-lockup.png' id="drink" width="300px" height="600px" style="top:-15px" />
 			<img src='name.png' id="name" width="300px" height="600px" />
+
+			<img src='legal.png' id="legal" width="300px" height="600px" />
 
 			<img src='worker.jpg' id="worker" width="300px" height="600px" />
 			<img src='logo-end.png' id="logo" width="300px" height="600px" />
