@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+	<title>Scooter's Coffee - Texas - 320x50</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta name="ad.size" content="width=320,height=50">
+
+	<script src="gsap.min.js"></script>
+	
+	<style>
+
+		body, body * {position: absolute; vertical-align: baseline;border: 0;outline: 0;padding: 0;margin: 0;}
+		#container_dc {width:320px;height:50px; margin: auto;}
+		#content_dc {overflow: hidden;width: 100%;height: 100%;background-color: #f6eee7; z-index: 1;background-repeat: no-repeat;}
+		#cover {width: 100%;height: 100%;background-color: #f6eee7; z-index:2;}
+		#background_exit_dc {width: 100%;height: 100%;cursor: pointer;opacity: 0;z-index: 1002;}
+		#content_dc div{overflow: hidden; image-rendering: -webkit-optimize-contrast;}
+		.border{width:100%;height:100%;border:1px solid #000;box-sizing: border-box;-moz-box-sizing: border-box;-webkit-box-sizing: border-box;;z-index: 1001;}
+		.holder{width:100%; height:100%; overflow: hidden;}
+		.dropshadow{filter: drop-shadow(rgba(0,40,90,.4) 2px 1px 3px);}
+		:focus {outline:none;}
+		::-moz-focus-inner {border:0;}
+		
+
+	</style>
+	
+	<script>
+		/*VERSION VARIABLES*/
+		
+		var clickTag="https://www.scooterscoffee.com/";
+		
+		window.onload = function() {	
+			var bgExit = document.getElementById('background_exit_dc');
+			bgExit.addEventListener('click', bgExitHandler, false)
+			
+			function split(id,cuts,d) {
+				const i = document.getElementById(id), h = document.createElement('div');
+				h.id = id + "_holder"; h.className = 'holder';
+				let o = 0, p = 0;
+				cuts.forEach((cut, n) => {
+					const div = document.createElement('div'), c = i.cloneNode();
+					cut -= p;
+				    div.className = "holder"; div.id = id + "_" + n;
+				    div.style[d ? 'width' : 'height'] = cut + 'px';
+				    div.style[d ? 'left' : 'top'] = o + 'px';
+				    c.style[d ? 'left' : 'top'] = -o + 'px';
+				    div.appendChild(c); h.appendChild(div);
+				    o += cut; p = cuts[n];
+				});
+				i.parentElement.replaceChild(h, i);
+			}
+
+			const w = 320
+			const h = 50
+			const rt = 2.5
+			const tl = gsap.timeline();
+
+			let d = 0.0
+
+			// const textIn = { scale:1, y:20, autoAlpha:0, ease:Back.easeOut, transformOrigin:'50% 100%', duration:0.35 }
+
+			const textInRight = { scaleX: 1.15, x: 25, autoAlpha: 0, ease: Back.easeOut, transformOrigin: '0% 0%', duration: 0.4 }
+			const textOutLeft = { scaleX: 1, x: -25, autoAlpha: 0, ease: Expo.easeIn, transformOrigin: '100% 0%', duration: 0.4 }
+
+			split('h1',[108,183,w],1)
+			split('h2',[138,w],1)
+			split('h4',[15,32,h])
+
+			
+			gsap.set(['#cover'], { autoAlpha: 0 })
+			
+			tl.from('#drink', { x:  w, ease:Expo.easeOut, duration: 0.6 }, d)
+			  .from('#h1_0', textInRight, d += 0.2)
+			  .from('#h1_1', textInRight, d += 0.1)
+			  .from('#h1_2', { scale: 3, autoAlpha: 0, ease: Back.easeOut, transformOrigin: '25% 50%', duration: 0.35 }, d += 0.5)
+			  .from('#h2_0', textInRight, d += 0.65)
+			  .from('#h2_1', textInRight, d += 0.05)
+			  .to(['#h1_0','#h1_1','#h1_2'], textOutLeft, d += rt)
+			  .to(['#h2_0','#h2_1'], textOutLeft, d += 0.025)
+			  .from('#h4_0', textInRight, d += 0.4)
+			  .from('#h4_1', textInRight, d += 0.1)
+			  .from('#h4_2', textInRight, d += 0.5)
+			  .from('#legal', {autoAlpha:0, duration:1}, d += 0.5)
+			  .from('#logo', {autoAlpha:0, duration: 0.3} , d)
+			  .from('#cta', {autoAlpha:0 , duration: 0.4} , d+=0.2)
+			  .from('#cta-text', { x: 50, autoAlpha:0, ease:Back.easeOut, duration: 0.35 }, d)
+		}
+
+		
+	</script>
+</head>
+
+<body>
+
+	<div id="container_dc" style="margin:0;padding:0;">
+		
+		<div id="content_dc">
+
+
+			<img src='bg.jpg' id="bg" width="320px" height="50px" />
+
+
+			<img src='headline1.png' class="dropshadow" id="h1" width="320px" height="50px" />
+			<img src='headline2.png' class="dropshadow" id="h2" width="320px" height="50px" />
+
+			<img src='headline4.png' class="dropshadow" id="h4" width="320px" height="50px" />
+
+			<img src='drink-lockup.png' class="dropshadow" id="drink" width="320px" height="50px" />
+
+			<img src='legal.png' id="legal" width="320px" height="50px" />
+
+			<img src='logo-end.png' id="logo" width="320px" height="50px" />
+
+			<div class="holder" id="cta">
+				<img src='cta-back.png' id="" width="320px" height="50px" />
+				<img src='arrow.png' id="cta-text" width="320px" height="50px" />
+			</div>
+			
+
+			<div id="cover"></div>
+
+		</div>
+		
+		<div class="border"></div>
+		<button id="background_exit_dc"></button>
+	
+	</div>
+
+	<script>
+	
+		function bgExitHandler(e) {
+			window.open(window.clickTag);
+		}
+		
+	</script>
+	
+</body>
+</html>
